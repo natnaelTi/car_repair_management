@@ -76,7 +76,7 @@ after_install = "car_repair_management.install.create_customizations"
 # Fixtures: export workspace, charts, number cards, reports under our module
 fixtures = [
     {"doctype": "Workspace", "filters": [["module", "=", "Car Repair Management"]]},
-    {"doctype": "Dashboard Chart", "filters": [["module", "=", "Car Repair Management"]]},
+    {"doctype": "Dashboard Chart", "filters": [["module", "=", "Car Repair Management"], ["is_standard", "=", 0]]},
     {"doctype": "Number Card", "filters": [["module", "=", "Car Repair Management"]]},
     {"doctype": "Report", "filters": [["module", "=", "Car Repair Management"]]},
     {"doctype": "Custom Field", "filters": [["module", "=", "Car Repair Management"]]},
