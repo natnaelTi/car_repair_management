@@ -1,0 +1,22 @@
+{
+ "action": "Create Entry",
+ "action_label": "Let\u2019s create an Operation",
+ "creation": "2020-05-12 16:15:31.706756",
+ "description": "",
+ "docstatus": 0,
+ "doctype": "Onboarding Step",
+ "idx": 0,
+ "intro_video_url": "",
+ "is_complete": 0,
+ "is_single": 0,
+ "is_skipped": 0,
+ "modified": "2025-10-10 10:27:09.539602",
+ "modified_by": "Administrator",
+ "name": "Operation",
+ "owner": "Administrator",
+ "reference_document": "Operation",
+ "show_form_tour": 1,
+ "show_full_form": 1,
+ "title": "Operation",
+ "validate_action": 1
+}

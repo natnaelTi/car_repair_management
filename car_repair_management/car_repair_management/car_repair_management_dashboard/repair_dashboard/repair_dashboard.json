@@ -1,0 +1,68 @@
+{
+ "cards": [
+  {
+   "card": "ROs Today"
+  },
+  {
+   "card": "In Progress-3"
+  },
+  {
+   "card": "Awaiting Parts-3"
+  },
+  {
+   "card": "Due Today-3"
+  },
+  {
+   "card": "Ready for Handover-3"
+  },
+  {
+   "card": "Overdue-3"
+  }
+ ],
+ "charts": [
+  {
+   "chart": "Most Repaired Vehicles",
+   "width": "Full"
+  },
+  {
+   "chart": "ROs by Status (30d)",
+   "width": "Half"
+  },
+  {
+   "chart": "Billable vs FoC Parts (30d)",
+   "width": "Half"
+  },
+  {
+   "chart": "Purchase Order Trends",
+   "width": "Half"
+  },
+  {
+   "chart": "Top Suppliers",
+   "width": "Half"
+  },
+  {
+   "chart": "Warehouse wise Stock Value",
+   "width": "Full"
+  },
+  {
+   "chart": "Oldest Items",
+   "width": "Half"
+  },
+  {
+   "chart": "Completed Operation",
+   "width": "Half"
+  }
+ ],
+ "creation": "2025-10-09 16:44:43.485717",
+ "dashboard_name": "Repair Dashboard",
+ "docstatus": 0,
+ "doctype": "Dashboard",
+ "idx": 0,
+ "is_default": 0,
+ "is_standard": 1,
+ "modified": "2025-10-12 03:16:33.824529",
+ "modified_by": "Administrator",
+ "module": "Car Repair Management",
+ "name": "Repair Dashboard",
+ "owner": "Administrator"
+}

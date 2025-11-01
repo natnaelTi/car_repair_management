@@ -1,0 +1,13 @@
+{
+  "name": "Job Profitability Report",
+  "report_name": "Job Profitability Report",
+  "doctype": "Report",
+  "ref_doctype": "Repair Order",
+  "is_standard": "Yes",
+  "report_type": "Script Report",
+  "module": "Car Repair Management",
+  "filters": [
+    {"fieldname": "from_date", "label": "From Date", "fieldtype": "Date", "reqd": 1},
+    {"fieldname": "to_date", "label": "To Date", "fieldtype": "Date", "reqd": 1}
+  ]
+}

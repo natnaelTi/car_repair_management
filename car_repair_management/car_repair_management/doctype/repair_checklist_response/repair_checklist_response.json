@@ -1,0 +1,51 @@
+{
+ "actions": [],
+ "autoname": "format:RPR-CHK-RSPN-{check_item}-{#####}",
+ "creation": "2025-10-04 12:59:27.020772",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "check_item",
+  "value",
+  "notes",
+  "passed"
+ ],
+ "fields": [
+  {
+   "fieldname": "check_item",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Check Item"
+  },
+  {
+   "fieldname": "value",
+   "fieldtype": "Data",
+   "label": "Value"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  },
+  {
+   "default": "0",
+   "fieldname": "passed",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Passed"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2025-10-29 09:20:12.328916",
+ "modified_by": "Administrator",
+ "module": "Car Repair Management",
+ "name": "Repair Checklist Response",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

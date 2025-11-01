@@ -1,0 +1,12 @@
+{
+  "name": "Repeat Repairs / Warranty Returns",
+  "report_name": "Repeat Repairs / Warranty Returns",
+  "doctype": "Report",
+  "ref_doctype": "Repair Order",
+  "is_standard": "Yes",
+  "report_type": "Script Report",
+  "module": "Car Repair Management",
+  "filters": [
+    {"fieldname": "days", "label": "Within Days", "fieldtype": "Int", "default": 30}
+  ]
+}

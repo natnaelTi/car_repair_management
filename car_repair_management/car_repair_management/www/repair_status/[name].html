@@ -1,0 +1,23 @@
+<h2>Repair Order {{ repair_order.name }}</h2>
+<p>Status: {{ repair_order.status }}</p>
+<p>Customer: {{ repair_order.customer }} | Vehicle: {{ repair_order.vehicle }}</p>
+
+<h3>Timeline</h3>
+<ul>
+  {% for t in tasks %}
+  <li>{{ t.subject }} - {{ t.status }} ({{ t.exp_start_date }} - {{ t.exp_end_date }})</li>
+  {% endfor %}
+</ul>
+
+<h3>SLA</h3>
+<p>Response By: {{ repair_order.sla_response_by }} | Delivery By: {{ repair_order.sla_delivery_by }}</p>
+
+<h3>Costs</h3>
+<p>Quoted: {{ repair_order.quoted_amount or 0 }} | Invoiced: {{ repair_order.invoiced_amount or 0 }} | Actual: {{ repair_order.total_job_cost or 0 }}</p>
+
+<h3>Customer Updates</h3>
+<ul>
+  {% for u in updates %}
+  <li>{{ u.update_type }} - {{ u.message }}</li>
+  {% endfor %}
+</ul>

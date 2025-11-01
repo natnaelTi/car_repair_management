@@ -1,0 +1,114 @@
+[
+ {
+  "allow_roles": [
+   {
+    "parent": "Workshop Onboarding",
+    "parentfield": "allow_roles",
+    "parenttype": "Module Onboarding",
+    "role": "Manufacturing Manager"
+   },
+   {
+    "parent": "Workshop Onboarding",
+    "parentfield": "allow_roles",
+    "parenttype": "Module Onboarding",
+    "role": "Manufacturing User"
+   },
+   {
+    "parent": "Workshop Onboarding",
+    "parentfield": "allow_roles",
+    "parenttype": "Module Onboarding",
+    "role": "Maintenance Manager"
+   },
+   {
+    "parent": "Workshop Onboarding",
+    "parentfield": "allow_roles",
+    "parenttype": "Module Onboarding",
+    "role": "Maintenance User"
+   },
+   {
+    "parent": "Workshop Onboarding",
+    "parentfield": "allow_roles",
+    "parenttype": "Module Onboarding",
+    "role": "Accounts Manager"
+   },
+   {
+    "parent": "Workshop Onboarding",
+    "parentfield": "allow_roles",
+    "parenttype": "Module Onboarding",
+    "role": "Accounts User"
+   }
+  ],
+  "docstatus": 0,
+  "doctype": "Module Onboarding",
+  "documentation_url": "NaN",
+  "is_complete": 0,
+  "modified": "2025-10-12 03:00:24.365217",
+  "module": "Car Repair Management",
+  "name": "Workshop Onboarding",
+  "steps": [
+   {
+    "parent": "Workshop Onboarding",
+    "parentfield": "steps",
+    "parenttype": "Module Onboarding",
+    "step": "Create Vehicle"
+   },
+   {
+    "parent": "Workshop Onboarding",
+    "parentfield": "steps",
+    "parenttype": "Module Onboarding",
+    "step": "Workstation"
+   },
+   {
+    "parent": "Workshop Onboarding",
+    "parentfield": "steps",
+    "parenttype": "Module Onboarding",
+    "step": "Operation"
+   },
+   {
+    "parent": "Workshop Onboarding",
+    "parentfield": "steps",
+    "parenttype": "Module Onboarding",
+    "step": "Service Template"
+   },
+   {
+    "parent": "Workshop Onboarding",
+    "parentfield": "steps",
+    "parenttype": "Module Onboarding",
+    "step": "Create Your Employees"
+   },
+   {
+    "parent": "Workshop Onboarding",
+    "parentfield": "steps",
+    "parenttype": "Module Onboarding",
+    "step": "Create Driver"
+   },
+   {
+    "parent": "Workshop Onboarding",
+    "parentfield": "steps",
+    "parenttype": "Module Onboarding",
+    "step": "Create a Customer"
+   },
+   {
+    "parent": "Workshop Onboarding",
+    "parentfield": "steps",
+    "parenttype": "Module Onboarding",
+    "step": "Create Your First Repair Order"
+   },
+   {
+    "parent": "Workshop Onboarding",
+    "parentfield": "steps",
+    "parenttype": "Module Onboarding",
+    "step": "Create a Material Request"
+   },
+   {
+    "parent": "Workshop Onboarding",
+    "parentfield": "steps",
+    "parenttype": "Module Onboarding",
+    "step": "Create your first Purchase Order"
+   }
+  ],
+  "subtitle": "Vehicles, Workstations, Operations, Customers, Employees, Repair Orders, Analytics, and more.",
+  "success_message": "The Workshop Module is all set up!",
+  "title": "Let's Set Up the Workshop Module."
+ }
+]

@@ -1,0 +1,68 @@
+{
+ "allow_roles": [
+  {
+   "role": "Manufacturing Manager"
+  },
+  {
+   "role": "Manufacturing User"
+  },
+  {
+   "role": "Maintenance Manager"
+  },
+  {
+   "role": "Maintenance User"
+  },
+  {
+   "role": "Accounts Manager"
+  },
+  {
+   "role": "Accounts User"
+  }
+ ],
+ "creation": "2025-10-12 02:39:44.730706",
+ "docstatus": 0,
+ "doctype": "Module Onboarding",
+ "documentation_url": "NaN",
+ "idx": 0,
+ "is_complete": 0,
+ "modified": "2025-10-12 03:00:24.365217",
+ "modified_by": "Administrator",
+ "module": "Car Repair Management",
+ "name": "Workshop Onboarding",
+ "owner": "Administrator",
+ "steps": [
+  {
+   "step": "Create Vehicle"
+  },
+  {
+   "step": "Workstation"
+  },
+  {
+   "step": "Operation"
+  },
+  {
+   "step": "Service Template"
+  },
+  {
+   "step": "Create Your Employees"
+  },
+  {
+   "step": "Create Driver"
+  },
+  {
+   "step": "Create a Customer"
+  },
+  {
+   "step": "Create Your First Repair Order"
+  },
+  {
+   "step": "Create a Material Request"
+  },
+  {
+   "step": "Create your first Purchase Order"
+  }
+ ],
+ "subtitle": "Vehicles, Workstations, Operations, Customers, Employees, Repair Orders, Analytics, and more.",
+ "success_message": "The Workshop Module is all set up!",
+ "title": "Let's Set Up the Workshop Module."
+}

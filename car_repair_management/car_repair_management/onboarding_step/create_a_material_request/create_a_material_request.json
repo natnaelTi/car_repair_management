@@ -1,0 +1,22 @@
+{
+ "action": "Show Form Tour",
+ "action_label": "Let\u2019s create your first Material Request",
+ "creation": "2020-05-15 14:39:09.818764",
+ "description": "",
+ "docstatus": 0,
+ "doctype": "Onboarding Step",
+ "idx": 0,
+ "intro_video_url": "",
+ "is_complete": 0,
+ "is_single": 0,
+ "is_skipped": 0,
+ "modified": "2025-10-10 10:27:09.339396",
+ "modified_by": "Administrator",
+ "name": "Create a Material Request",
+ "owner": "Administrator",
+ "reference_document": "Material Request",
+ "show_form_tour": 1,
+ "show_full_form": 1,
+ "title": "Track Material Request",
+ "validate_action": 1
+}

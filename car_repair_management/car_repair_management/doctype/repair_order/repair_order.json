@@ -1,0 +1,325 @@
+{
+ "actions": [],
+ "autoname": "naming_series:",
+ "creation": "2025-10-04 12:59:25.220243",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "amended_from",
+  "status",
+  "customer",
+  "vehicle",
+  "intake_channel",
+  "problem_summary",
+  "problem_details",
+  "priority",
+  "sla_response_by",
+  "sla_delivery_by",
+  "project",
+  "service_template",
+  "quotation",
+  "sales_order",
+  "sales_invoice",
+  "section_operations",
+  "operations",
+  "section_parts",
+  "parts_plan",
+  "section_checklist",
+  "handover_checklist",
+  "section_customer_updates",
+  "customer_updates",
+  "col_costs",
+  "parts_cost",
+  "labor_cost",
+  "other_charges",
+  "total_job_cost",
+  "quoted_amount",
+  "invoiced_amount",
+  "gross_margin",
+  "feedback_score",
+  "feedback_notes"
+ ],
+ "fields": [
+  {
+   "default": "RO-.YYYY.-.#####",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Naming Series",
+   "options": "RO-.YYYY.-.#####",
+   "reqd": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Repair Order",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "default": "Draft",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Draft\nScheduled\nIn Progress\nAwaiting Parts\nReady for Handover\nDelivered\nClosed\nOn Hold\nCancelled",
+   "reqd": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Customer",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "fieldname": "vehicle",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Vehicle",
+   "options": "Vehicle",
+   "reqd": 1
+  },
+  {
+   "fieldname": "intake_channel",
+   "fieldtype": "Select",
+   "label": "Intake Channel",
+   "options": "Walk-in\nWeb Intake\nPhone\nPartner"
+  },
+  {
+   "fieldname": "problem_summary",
+   "fieldtype": "Small Text",
+   "label": "Problem Summary"
+  },
+  {
+   "fieldname": "problem_details",
+   "fieldtype": "Long Text",
+   "label": "Problem Details"
+  },
+  {
+   "default": "Normal",
+   "fieldname": "priority",
+   "fieldtype": "Select",
+   "label": "Priority",
+   "options": "Low\nNormal\nHigh\nUrgent"
+  },
+  {
+   "fieldname": "sla_response_by",
+   "fieldtype": "Datetime",
+   "label": "SLA Response By"
+  },
+  {
+   "fieldname": "sla_delivery_by",
+   "fieldtype": "Datetime",
+   "label": "SLA Delivery By"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Project",
+   "options": "Project",
+   "read_only": 1
+  },
+  {
+   "fieldname": "service_template",
+   "fieldtype": "Link",
+   "label": "Service Template",
+   "options": "Service Template"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "quotation",
+   "fieldtype": "Link",
+   "label": "Quotation",
+   "options": "Quotation",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "sales_order",
+   "fieldtype": "Link",
+   "label": "Sales Order",
+   "options": "Sales Order",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "sales_invoice",
+   "fieldtype": "Link",
+   "label": "Sales Invoice",
+   "options": "Sales Invoice",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_operations",
+   "fieldtype": "Section Break",
+   "label": "Operations"
+  },
+  {
+   "fieldname": "operations",
+   "fieldtype": "Table",
+   "label": "Operations",
+   "options": "Repair Operation Line"
+  },
+  {
+   "fieldname": "section_parts",
+   "fieldtype": "Section Break",
+   "label": "Parts Plan"
+  },
+  {
+   "fieldname": "parts_plan",
+   "fieldtype": "Table",
+   "label": "Parts Plan",
+   "options": "Repair Parts Plan"
+  },
+  {
+   "fieldname": "section_checklist",
+   "fieldtype": "Section Break",
+   "label": "Handover Checklist"
+  },
+  {
+   "fieldname": "handover_checklist",
+   "fieldtype": "Table",
+   "label": "Handover Checklist",
+   "options": "Repair Checklist Response"
+  },
+  {
+   "fieldname": "section_customer_updates",
+   "fieldtype": "Section Break",
+   "label": "Customer Updates"
+  },
+  {
+   "fieldname": "customer_updates",
+   "fieldtype": "Table",
+   "label": "Customer Updates",
+   "options": "Customer Update"
+  },
+  {
+   "fieldname": "col_costs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "parts_cost",
+   "fieldtype": "Currency",
+   "label": "Parts Cost",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "labor_cost",
+   "fieldtype": "Currency",
+   "label": "Labor Cost",
+   "read_only": 1
+  },
+  {
+   "fieldname": "other_charges",
+   "fieldtype": "Currency",
+   "label": "Other Charges"
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "total_job_cost",
+   "fieldtype": "Currency",
+   "label": "Total Job Cost",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "quoted_amount",
+   "fieldtype": "Currency",
+   "label": "Quoted Amount",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "invoiced_amount",
+   "fieldtype": "Currency",
+   "label": "Invoiced Amount",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "gross_margin",
+   "fieldtype": "Currency",
+   "label": "Gross Margin",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "feedback_score",
+   "fieldtype": "Int",
+   "label": "Feedback Score",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "feedback_notes",
+   "fieldtype": "Small Text",
+   "label": "Feedback Notes",
+   "read_only": 1
+  }
+ ],
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2025-10-29 02:28:00.221091",
+ "modified_by": "Administrator",
+ "module": "Car Repair Management",
+ "name": "Repair Order",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "read": 1,
+   "role": "System Manager",
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "read": 1,
+   "role": "Projects Manager",
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Maintenance Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Maintenance User",
+   "share": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

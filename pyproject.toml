@@ -1,0 +1,19 @@
+[project]
+name = "car_repair_management"
+authors = [
+    { name = "Selfmade Cloud Solutions", email = "support@selfmadecs.com"}
+]
+description = "Car Repair Management app compatible with ERPNext v15."
+requires-python = ">=3.10"
+readme = "README.md"
+dynamic = ["version"]
+dependencies = [
+    # Managed by bench; keep empty to avoid external deps.
+]
+
+[build-system]
+requires = ["flit_core >=3.4,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.bench.dev-dependencies]
+# Add optional dev-only deps here when needed

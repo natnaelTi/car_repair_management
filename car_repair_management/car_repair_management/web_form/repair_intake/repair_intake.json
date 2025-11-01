@@ -1,0 +1,22 @@
+{
+  "doctype": "Web Form",
+  "name": "repair-intake",
+  "module": "Car Repair Management",
+  "is_standard": 1,
+  "published": 1,
+  "route": "repair-intake",
+  "title": "Repair Intake",
+  "doc_type": "Repair Order",
+  "login_required": 0,
+  "allow_multiple": 0,
+  "introduction_text": "Submit your vehicle repair request.",
+  "web_form_fields": [
+    {"fieldname": "customer", "label": "Customer", "fieldtype": "Link", "options": "Customer", "reqd": 1},
+    {"fieldname": "vehicle", "label": "Vehicle", "fieldtype": "Link", "options": "Vehicle", "reqd": 1},
+    {"fieldname": "problem_summary", "label": "Problem Summary", "fieldtype": "Small Text"},
+    {"fieldname": "problem_details", "label": "Problem Details", "fieldtype": "Long Text"},
+    {"fieldname": "priority", "label": "Priority", "fieldtype": "Select", "options": "Low\nNormal\nHigh\nUrgent", "reqd": 1}
+  ],
+  "custom_css": "",
+  "custom_js": "frappe.web_form.after_load = () => { frappe.web_form.set_value('intake_channel', 'Web Intake'); }; frappe.web_form.after_save = () => { frappe.msgprint(__('Your repair request has been submitted.')); };"
+}

@@ -1,0 +1,64 @@
+{
+ "actions": [],
+ "autoname": "format:RPR-OP-{task}-{#####}",
+ "creation": "2025-10-04 12:59:27.136348",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "task",
+  "operation_name",
+  "planned_minutes",
+  "assigned_to",
+  "workstation",
+  "is_qc"
+ ],
+ "fields": [
+  {
+   "fieldname": "task",
+   "fieldtype": "Link",
+   "label": "Task",
+   "options": "Task"
+  },
+  {
+   "fieldname": "operation_name",
+   "fieldtype": "Data",
+   "label": "Operation Name"
+  },
+  {
+   "fieldname": "planned_minutes",
+   "fieldtype": "Int",
+   "label": "Planned Minutes"
+  },
+  {
+   "fieldname": "assigned_to",
+   "fieldtype": "Link",
+   "label": "Assigned To",
+   "options": "User"
+  },
+  {
+   "fieldname": "workstation",
+   "fieldtype": "Link",
+   "label": "Workstation",
+   "options": "Workstation"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_qc",
+   "fieldtype": "Check",
+   "label": "Is QC"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2025-10-29 09:58:18.751610",
+ "modified_by": "Administrator",
+ "module": "Car Repair Management",
+ "name": "Repair Operation Line",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

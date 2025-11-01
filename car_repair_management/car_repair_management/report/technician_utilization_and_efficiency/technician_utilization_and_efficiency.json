@@ -1,0 +1,14 @@
+{
+  "name": "Technician Utilization and Efficiency",
+  "report_name": "Technician Utilization and Efficiency",
+  "doctype": "Report",
+  "ref_doctype": "Timesheet",
+  "is_standard": "Yes",
+  "report_type": "Script Report",
+  "module": "Car Repair Management",
+  "filters": [
+    {"fieldname": "from_date", "label": "From Date", "fieldtype": "Date"},
+    {"fieldname": "to_date", "label": "To Date", "fieldtype": "Date"},
+    {"fieldname": "employee", "label": "Employee", "fieldtype": "Link", "options": "Employee"}
+  ]
+}

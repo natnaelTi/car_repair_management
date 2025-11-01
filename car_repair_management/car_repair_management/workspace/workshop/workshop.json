@@ -1,0 +1,513 @@
+{
+    "charts": [],
+    "content": "[{\"id\":\"wme2QC-Ocw\",\"type\":\"onboarding\",\"data\":{\"onboarding_name\":\"Workshop Onboarding\",\"col\":12}},{\"id\":\"2K5RJIVX7r\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"kOeWE7zq8w\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Your Shortcuts</b></span>\",\"col\":12}},{\"id\":\"V3ngZI93NR\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Vehicle\",\"col\":3}},{\"id\":\"OICMjHgXKv\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Repair Order\",\"col\":3}},{\"id\":\"M7MvIRkr-E\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Service Template\",\"col\":3}},{\"id\":\"3KKX4cfgSR\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Material Request\",\"col\":3}},{\"id\":\"yzbrU9asbB\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Dashboard\",\"col\":3}},{\"id\":\"gv3Oudw3HJ\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"jXxV8N_uc2\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Work in Progress</b></span>\",\"col\":12}},{\"id\":\"TTIKTDHPSs\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Open Work In Progress Kanban\",\"col\":3}},{\"id\":\"tQqRrbXFZa\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Project Gantt\",\"col\":3}},{\"id\":\"xh74PvfaPV\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Technician Calendar\",\"col\":3}},{\"id\":\"klINxPs43a\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"ZNIUqqcVvn\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>My Work</b></span>\",\"col\":12}},{\"id\":\"GqzS79MSRB\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"My Assigned ROs\",\"col\":3}},{\"id\":\"NgBKFcjFoF\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"My Tasks\",\"col\":3}},{\"id\":\"czokuOwAn5\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Ready for Handover\",\"col\":3}},{\"id\":\"6PV5Y6ievn\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Waiting for Parts\",\"col\":3}},{\"id\":\"sAbZK8qR_6\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Approvals Needed\",\"col\":3}},{\"id\":\"yJHOYpdFO2\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"45fx4YMfLc\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\"><b>Reports &amp; Masters</b></span>\",\"col\":12}},{\"id\":\"LeVc0GVZjK\",\"type\":\"card\",\"data\":{\"card_name\":\"Accounting\",\"col\":4}},{\"id\":\"cUyvWMDvrz\",\"type\":\"card\",\"data\":{\"card_name\":\"Setup\",\"col\":4}},{\"id\":\"K4fByvKpIm\",\"type\":\"card\",\"data\":{\"card_name\":\"Template\",\"col\":4}},{\"id\":\"IUP12AAY1k\",\"type\":\"card\",\"data\":{\"card_name\":\"Operation\",\"col\":4}},{\"id\":\"xWb81PQ0x6\",\"type\":\"card\",\"data\":{\"card_name\":\"Commercial\",\"col\":4}},{\"id\":\"62NW--bcEt\",\"type\":\"card\",\"data\":{\"card_name\":\"Reports\",\"col\":4}}]",
+    "creation": "2025-10-10 10:27:01.736530",
+    "custom_blocks": [],
+    "docstatus": 0,
+    "doctype": "Workspace",
+    "for_user": "",
+    "hide_custom": 0,
+    "icon": "tool",
+    "idx": 0,
+    "indicator_color": "",
+    "is_hidden": 0,
+    "label": "Workshop",
+    "links": [
+        {
+            "hidden": 0,
+            "is_query_report": 0,
+            "label": "Accounting",
+            "link_count": 5,
+            "link_type": "DocType",
+            "onboard": 0,
+            "type": "Card Break"
+        },
+        {
+            "hidden": 0,
+            "is_query_report": 0,
+            "label": "Company",
+            "link_count": 0,
+            "link_to": "Company",
+            "link_type": "DocType",
+            "onboard": 0,
+            "type": "Link"
+        },
+        {
+            "hidden": 0,
+            "is_query_report": 0,
+            "label": "Account",
+            "link_count": 0,
+            "link_to": "Account",
+            "link_type": "DocType",
+            "onboard": 0,
+            "type": "Link"
+        },
+        {
+            "hidden": 0,
+            "is_query_report": 0,
+            "label": "Customer",
+            "link_count": 0,
+            "link_to": "Customer",
+            "link_type": "DocType",
+            "onboard": 0,
+            "type": "Link"
+        },
+        {
+            "hidden": 0,
+            "is_query_report": 0,
+            "label": "Supplier",
+            "link_count": 0,
+            "link_to": "Supplier",
+            "link_type": "DocType",
+            "onboard": 0,
+            "type": "Link"
+        },
+        {
+            "hidden": 0,
+            "is_query_report": 0,
+            "label": "Employee",
+            "link_count": 0,
+            "link_to": "Employee",
+            "link_type": "DocType",
+            "onboard": 0,
+            "type": "Link"
+        },
+        {
+            "hidden": 0,
+            "is_query_report": 0,
+            "label": "Setup",
+            "link_count": 4,
+            "link_type": "DocType",
+            "onboard": 0,
+            "type": "Card Break"
+        },
+        {
+            "hidden": 0,
+            "is_query_report": 0,
+            "label": "Vehicle",
+            "link_count": 0,
+            "link_to": "Vehicle",
+            "link_type": "DocType",
+            "onboard": 0,
+            "type": "Link"
+        },
+        {
+            "hidden": 0,
+            "is_query_report": 0,
+            "label": "Driver",
+            "link_count": 0,
+            "link_to": "Driver",
+            "link_type": "DocType",
+            "onboard": 0,
+            "type": "Link"
+        },
+        {
+            "hidden": 0,
+            "is_query_report": 0,
+            "label": "Workstation",
+            "link_count": 0,
+            "link_to": "Workstation",
+            "link_type": "DocType",
+            "onboard": 0,
+            "type": "Link"
+        },
+        {
+            "hidden": 0,
+            "is_query_report": 0,
+            "label": "Item",
+            "link_count": 0,
+            "link_to": "Item",
+            "link_type": "DocType",
+            "onboard": 0,
+            "type": "Link"
+        },
+        {
+            "hidden": 0,
+            "is_query_report": 0,
+            "label": "Template",
+            "link_count": 7,
+            "link_type": "DocType",
+            "onboard": 0,
+            "type": "Card Break"
+        },
+        {
+            "hidden": 0,
+            "is_query_report": 0,
+            "label": "Operation",
+            "link_count": 0,
+            "link_to": "Operation",
+            "link_type": "DocType",
+            "onboard": 0,
+            "type": "Link"
+        },
+        {
+            "hidden": 0,
+            "is_query_report": 0,
+            "label": "Activity Type",
+            "link_count": 0,
+            "link_to": "Activity Type",
+            "link_type": "DocType",
+            "onboard": 0,
+            "type": "Link"
+        },
+        {
+            "hidden": 0,
+            "is_query_report": 0,
+            "label": "Workstation Type",
+            "link_count": 0,
+            "link_to": "Workstation Type",
+            "link_type": "DocType",
+            "onboard": 0,
+            "type": "Link"
+        },
+        {
+            "hidden": 0,
+            "is_query_report": 0,
+            "label": "Handover Checklist Item",
+            "link_count": 0,
+            "link_to": "Handover Checklist Item",
+            "link_type": "DocType",
+            "onboard": 0,
+            "type": "Link"
+        },
+        {
+            "hidden": 0,
+            "is_query_report": 0,
+            "label": "Repair Checklist",
+            "link_count": 0,
+            "link_to": "Repair Checklist",
+            "link_type": "DocType",
+            "onboard": 0,
+            "type": "Link"
+        },
+        {
+            "hidden": 0,
+            "is_query_report": 0,
+            "label": "Service Template",
+            "link_count": 0,
+            "link_to": "Service Template",
+            "link_type": "DocType",
+            "onboard": 0,
+            "type": "Link"
+        },
+        {
+            "hidden": 0,
+            "is_query_report": 0,
+            "label": "Notification",
+            "link_count": 0,
+            "link_to": "Notification",
+            "link_type": "DocType",
+            "onboard": 0,
+            "type": "Link"
+        },
+        {
+            "hidden": 0,
+            "is_query_report": 0,
+            "label": "Operation",
+            "link_count": 5,
+            "link_type": "DocType",
+            "onboard": 0,
+            "type": "Card Break"
+        },
+        {
+            "hidden": 0,
+            "is_query_report": 0,
+            "label": "Repair Order",
+            "link_count": 0,
+            "link_to": "Repair Order",
+            "link_type": "DocType",
+            "onboard": 0,
+            "type": "Link"
+        },
+        {
+            "hidden": 0,
+            "is_query_report": 0,
+            "label": "Material Request",
+            "link_count": 0,
+            "link_to": "Material Request",
+            "link_type": "DocType",
+            "onboard": 0,
+            "type": "Link"
+        },
+        {
+            "hidden": 0,
+            "is_query_report": 0,
+            "label": "Stock Entry",
+            "link_count": 0,
+            "link_to": "Stock Entry",
+            "link_type": "DocType",
+            "onboard": 0,
+            "type": "Link"
+        },
+        {
+            "hidden": 0,
+            "is_query_report": 0,
+            "label": "Task",
+            "link_count": 0,
+            "link_to": "Task",
+            "link_type": "DocType",
+            "onboard": 0,
+            "type": "Link"
+        },
+        {
+            "hidden": 0,
+            "is_query_report": 0,
+            "label": "Inbox",
+            "link_count": 0,
+            "link_to": "Communication",
+            "link_type": "DocType",
+            "onboard": 0,
+            "type": "Link"
+        },
+        {
+            "hidden": 0,
+            "is_query_report": 0,
+            "label": "Commercial",
+            "link_count": 6,
+            "link_type": "DocType",
+            "onboard": 0,
+            "type": "Card Break"
+        },
+        {
+            "hidden": 0,
+            "is_query_report": 0,
+            "label": "Quotation",
+            "link_count": 0,
+            "link_to": "Quotation",
+            "link_type": "DocType",
+            "onboard": 0,
+            "type": "Link"
+        },
+        {
+            "hidden": 0,
+            "is_query_report": 0,
+            "label": "Purchase Order",
+            "link_count": 0,
+            "link_to": "Purchase Order",
+            "link_type": "DocType",
+            "onboard": 0,
+            "type": "Link"
+        },
+        {
+            "hidden": 0,
+            "is_query_report": 0,
+            "label": "Purchase Invoice",
+            "link_count": 0,
+            "link_to": "Purchase Invoice",
+            "link_type": "DocType",
+            "onboard": 0,
+            "type": "Link"
+        },
+        {
+            "hidden": 0,
+            "is_query_report": 0,
+            "label": "Sales Order",
+            "link_count": 0,
+            "link_to": "Sales Order",
+            "link_type": "DocType",
+            "onboard": 0,
+            "type": "Link"
+        },
+        {
+            "hidden": 0,
+            "is_query_report": 0,
+            "label": "Sales Invoice",
+            "link_count": 0,
+            "link_to": "Sales Invoice",
+            "link_type": "DocType",
+            "onboard": 0,
+            "type": "Link"
+        },
+        {
+            "hidden": 0,
+            "is_query_report": 0,
+            "label": "Payment Entry",
+            "link_count": 0,
+            "link_to": "Payment Entry",
+            "link_type": "DocType",
+            "onboard": 0,
+            "type": "Link"
+        },
+        {
+            "hidden": 0,
+            "is_query_report": 0,
+            "label": "Reports",
+            "link_count": 6,
+            "link_type": "DocType",
+            "onboard": 0,
+            "type": "Card Break"
+        },
+        {
+            "hidden": 0,
+            "is_query_report": 1,
+            "label": "Repeat Repairs and Warranty Returns",
+            "link_count": 0,
+            "link_to": "Repeat Repairs and Warranty Returns",
+            "link_type": "Report",
+            "onboard": 0,
+            "type": "Link"
+        },
+        {
+            "hidden": 0,
+            "is_query_report": 1,
+            "label": "Job Profitability Report",
+            "link_count": 0,
+            "link_to": "Job Profitability Report",
+            "link_type": "Report",
+            "onboard": 0,
+            "type": "Link"
+        },
+        {
+            "hidden": 0,
+            "is_query_report": 1,
+            "label": "Parts Consumption Billable vs FoC",
+            "link_count": 0,
+            "link_to": "Parts Consumption Billable vs FoC",
+            "link_type": "Report",
+            "onboard": 0,
+            "type": "Link"
+        },
+        {
+            "hidden": 0,
+            "is_query_report": 1,
+            "label": "WIP Aging",
+            "link_count": 0,
+            "link_to": "WIP Aging",
+            "link_type": "Report",
+            "onboard": 0,
+            "type": "Link"
+        },
+        {
+            "hidden": 0,
+            "is_query_report": 1,
+            "label": "Purchase Invoice Trends",
+            "link_count": 0,
+            "link_to": "Purchase Invoice Trends",
+            "link_type": "Report",
+            "onboard": 0,
+            "type": "Link"
+        },
+        {
+            "hidden": 0,
+            "is_query_report": 1,
+            "label": "Technician Utilization and Efficiency",
+            "link_count": 0,
+            "link_to": "Technician Utilization and Efficiency",
+            "link_type": "Report",
+            "onboard": 0,
+            "type": "Link"
+        }
+    ],
+    "modified": "2025-10-12 09:07:09.161519",
+    "modified_by": "Administrator",
+    "module": "Car Repair Management",
+    "name": "Workshop",
+    "number_cards": [],
+    "owner": "Administrator",
+    "parent_page": "",
+    "public": 1,
+    "quick_lists": [],
+    "roles": [
+        {
+            "role": "Accounts User"
+        },
+        {
+            "role": "System Manager"
+        }
+    ],
+    "sequence_id": 14.0,
+    "shortcuts": [
+        {
+            "color": "Green",
+            "doc_view": "List",
+            "format": "{} Awaiting Orders",
+            "label": "Material Request",
+            "link_to": "Material Request",
+            "stats_filter": "[[\"Material Request\",\"status\",\"=\",\"Submitted\",false]]",
+            "type": "DocType"
+        },
+        {
+            "color": "Blue",
+            "doc_view": "List",
+            "format": "{} In Progress",
+            "label": "Repair Order",
+            "link_to": "Repair Order",
+            "stats_filter": "[[\"Repair Order\",\"status\",\"=\",\"In Progress\",false]]",
+            "type": "DocType"
+        },
+        {
+            "color": "Cyan",
+            "doc_view": "List",
+            "format": "{} Active",
+            "label": "Vehicle",
+            "link_to": "Vehicle",
+            "stats_filter": "[]",
+            "type": "DocType"
+        },
+        {
+            "color": "Grey",
+            "doc_view": "List",
+            "label": "Service Template",
+            "link_to": "Service Template",
+            "stats_filter": "[]",
+            "type": "DocType"
+        },
+        {
+            "doc_view": "",
+            "label": "Open Work In Progress Kanban",
+            "type": "URL",
+            "url": "/app/List/Repair%20Order/Kanban/Repair%20Order%20by%20Status"
+        },
+        {
+            "doc_view": "",
+            "label": "Dashboard",
+            "link_to": "Repair Dashboard",
+            "type": "Dashboard"
+        },
+        {
+            "doc_view": "",
+            "label": "Project Gantt",
+            "type": "URL",
+            "url": "/app/project?view=Gantt"
+        },
+        {
+            "doc_view": "",
+            "label": "Technician Calendar",
+            "type": "URL",
+            "url": "/app/task/view/calendar/default?status=Open&department=%5B\"like\"%2C\"%25Operation%25\"%5D"
+        },
+        {
+            "doc_view": "",
+            "label": "My Assigned ROs",
+            "link_to": "Repair Order",
+            "stats_filter": "{\n    \"_assign\": [\"like\", '%' + frappe.session.user + '%']\n}",
+            "type": "DocType"
+        },
+        {
+            "doc_view": "",
+            "label": "My Tasks",
+            "link_to": "Task",
+            "stats_filter": "{\n    \"_assign\": [\"like\", '%' + frappe.session.user + '%']\n}",
+            "type": "DocType"
+        },
+        {
+            "doc_view": "",
+            "label": "Ready for Handover",
+            "type": "URL",
+            "url": "/app/repair-order?status=Ready+for+Handover"
+        },
+        {
+            "doc_view": "",
+            "label": "Waiting for Parts",
+            "type": "URL",
+            "url": "/app/repair-order?status=Awaiting+Parts"
+        },
+        {
+            "doc_view": "",
+            "label": "Approvals Needed",
+            "type": "URL",
+            "url": "/app/repair-order?status=On+Hold"
+        }
+    ],
+    "title": "Workshop"
+}

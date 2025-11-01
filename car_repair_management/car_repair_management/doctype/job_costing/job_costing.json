@@ -1,0 +1,116 @@
+{
+ "actions": [],
+ "autoname": "format:JB-COST-{repair_order}-{YY}",
+ "creation": "2025-10-04 12:59:25.879512",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "repair_order",
+  "project",
+  "vehicle",
+  "parts_cost",
+  "labor_cost",
+  "other_charges",
+  "total_job_cost",
+  "margin_snapshot"
+ ],
+ "fields": [
+  {
+   "fieldname": "repair_order",
+   "fieldtype": "Link",
+   "label": "Repair Order",
+   "options": "Repair Order"
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Project",
+   "options": "Project"
+  },
+  {
+   "fieldname": "vehicle",
+   "fieldtype": "Link",
+   "label": "Vehicle",
+   "options": "Vehicle"
+  },
+  {
+   "fieldname": "parts_cost",
+   "fieldtype": "Currency",
+   "label": "Parts Cost"
+  },
+  {
+   "fieldname": "labor_cost",
+   "fieldtype": "Currency",
+   "label": "Labor Cost"
+  },
+  {
+   "fieldname": "other_charges",
+   "fieldtype": "Currency",
+   "label": "Other Charges"
+  },
+  {
+   "fieldname": "total_job_cost",
+   "fieldtype": "Currency",
+   "label": "Total Job Cost",
+   "read_only": 1
+  },
+  {
+   "fieldname": "margin_snapshot",
+   "fieldtype": "Currency",
+   "label": "Margin Snapshot"
+  }
+ ],
+ "links": [],
+ "modified": "2025-10-29 10:07:18.236692",
+ "modified_by": "Administrator",
+ "module": "Car Repair Management",
+ "name": "Job Costing",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "read": 1,
+   "role": "System Manager",
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Projects Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Maintenance Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Maintenance User",
+   "share": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

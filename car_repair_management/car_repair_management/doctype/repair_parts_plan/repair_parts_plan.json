@@ -1,0 +1,74 @@
+{
+ "actions": [],
+ "autoname": "format:RPR-PRT-{item_code}-{#####}",
+ "creation": "2025-10-04 12:59:26.406611",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "item_code",
+  "item_name",
+  "uom",
+  "qty_planned",
+  "is_billable",
+  "is_foc",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "label": "Item Code",
+   "options": "Item"
+  },
+  {
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Item Name"
+  },
+  {
+   "fieldname": "uom",
+   "fieldtype": "Link",
+   "label": "UOM",
+   "options": "UOM"
+  },
+  {
+   "fieldname": "qty_planned",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Qty Planned"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_billable",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Is Billable"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_foc",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Is FoC"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  }
+ ],
+ "istable": 1,
+ "links": [],
+ "modified": "2025-10-29 09:05:28.743905",
+ "modified_by": "Administrator",
+ "module": "Car Repair Management",
+ "name": "Repair Parts Plan",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

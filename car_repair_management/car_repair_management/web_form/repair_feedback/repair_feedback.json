@@ -1,0 +1,20 @@
+{
+  "doctype": "Web Form",
+  "name": "repair-feedback",
+  "module": "Car Repair Management",
+  "is_standard": 1,
+  "published": 1,
+  "route": "repair-feedback",
+  "title": "Repair Feedback",
+  "doc_type": "Repair Order",
+  "login_required": 0,
+  "allow_multiple": 0,
+  "introduction_text": "Provide your feedback for the repair order.",
+  "web_form_fields": [
+    {"fieldname": "name", "label": "Repair Order ID", "fieldtype": "Data", "reqd": 1},
+    {"fieldname": "feedback_score", "label": "Score", "fieldtype": "Int", "reqd": 1},
+    {"fieldname": "feedback_notes", "label": "Notes", "fieldtype": "Small Text"}
+  ],
+  "custom_css": "",
+  "custom_js": "frappe.web_form.after_save = () => { const name = frappe.web_form.get_value('name'); const score = frappe.web_form.get_value('feedback_score'); const notes = frappe.web_form.get_value('feedback_notes'); if (name) { frappe.call('frappe.client.set_value', { doctype: 'Repair Order', name: name, fieldname: { feedback_score: score, feedback_notes: notes } }).then(() => { frappe.msgprint(__('Thank you for your feedback.')); }); } };"
+}

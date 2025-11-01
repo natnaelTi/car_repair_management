@@ -1,0 +1,22 @@
+{
+ "action": "Create Entry",
+ "action_label": "Let\u2019s create your first Customer",
+ "creation": "2020-05-14 17:46:41.831517",
+ "description": "",
+ "docstatus": 0,
+ "doctype": "Onboarding Step",
+ "idx": 1,
+ "intro_video_url": "",
+ "is_complete": 0,
+ "is_single": 0,
+ "is_skipped": 0,
+ "modified": "2025-10-10 10:27:08.922608",
+ "modified_by": "Administrator",
+ "name": "Create a Customer",
+ "owner": "Administrator",
+ "reference_document": "Customer",
+ "show_form_tour": 0,
+ "show_full_form": 0,
+ "title": "Create a Customer",
+ "validate_action": 1
+}

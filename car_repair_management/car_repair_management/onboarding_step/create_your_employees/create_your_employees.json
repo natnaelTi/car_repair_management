@@ -1,0 +1,18 @@
+{
+ "action": "Create Entry",
+ "creation": "2025-10-12 02:58:33.614334",
+ "docstatus": 0,
+ "doctype": "Onboarding Step",
+ "idx": 0,
+ "is_complete": 0,
+ "is_single": 0,
+ "is_skipped": 0,
+ "modified": "2025-10-12 02:58:33.614334",
+ "modified_by": "Administrator",
+ "name": "Create Your Employees",
+ "owner": "Administrator",
+ "show_form_tour": 0,
+ "show_full_form": 0,
+ "title": "Create Your Employees",
+ "validate_action": 1
+}
