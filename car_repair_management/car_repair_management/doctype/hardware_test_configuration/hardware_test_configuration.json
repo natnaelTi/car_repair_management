@@ -1,0 +1,199 @@
+{
+ "actions": [],
+ "autoname": "field:configuration_name",
+ "creation": "2026-08-17 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "configuration_name",
+  "enabled",
+  "section_endpoint",
+  "endpoint_url",
+  "http_method",
+  "column_break_endpoint",
+  "api_key_header",
+  "api_key",
+  "section_request",
+  "request_body_json",
+  "response_root",
+  "column_break_request",
+  "ingest_on_run",
+  "max_records_per_run",
+  "section_status",
+  "last_run",
+  "last_status",
+  "column_break_status",
+  "last_ingested_count",
+  "last_error",
+  "last_response_sample"
+ ],
+ "fields": [
+  {
+   "fieldname": "configuration_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Configuration Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "default": "1",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Enabled"
+  },
+  {
+   "fieldname": "section_endpoint",
+   "fieldtype": "Section Break",
+   "label": "Endpoint"
+  },
+  {
+   "fieldname": "endpoint_url",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Endpoint URL",
+   "reqd": 1
+  },
+  {
+   "default": "GET",
+   "fieldname": "http_method",
+   "fieldtype": "Select",
+   "label": "HTTP Method",
+   "options": "GET\nPOST",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_endpoint",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "key",
+   "fieldname": "api_key_header",
+   "fieldtype": "Data",
+   "label": "API Key Header",
+   "reqd": 1
+  },
+  {
+   "fieldname": "api_key",
+   "fieldtype": "Password",
+   "label": "API Key"
+  },
+  {
+   "fieldname": "section_request",
+   "fieldtype": "Section Break",
+   "label": "Request & Response"
+  },
+  {
+   "description": "Optional JSON body for POST requests.",
+   "fieldname": "request_body_json",
+   "fieldtype": "Code",
+   "label": "Request Body JSON",
+   "options": "JSON"
+  },
+  {
+   "description": "Optional dot path to the array/object inside the response, e.g. data.objects.",
+   "fieldname": "response_root",
+   "fieldtype": "Data",
+   "label": "Response Root"
+  },
+  {
+   "fieldname": "column_break_request",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "1",
+   "fieldname": "ingest_on_run",
+   "fieldtype": "Check",
+   "label": "Ingest On Run"
+  },
+  {
+   "default": "50",
+   "fieldname": "max_records_per_run",
+   "fieldtype": "Int",
+   "label": "Max Records Per Run"
+  },
+  {
+   "fieldname": "section_status",
+   "fieldtype": "Section Break",
+   "label": "Last Run"
+  },
+  {
+   "fieldname": "last_run",
+   "fieldtype": "Datetime",
+   "label": "Last Run",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_status",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Last Status",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_status",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "last_ingested_count",
+   "fieldtype": "Int",
+   "label": "Last Ingested Count",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_error",
+   "fieldtype": "Small Text",
+   "label": "Last Error",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_response_sample",
+   "fieldtype": "Code",
+   "label": "Last Response Sample",
+   "options": "JSON",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "is_submittable": 0,
+ "istable": 0,
+ "links": [],
+ "modified": "2026-08-17 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Car Repair Management",
+ "name": "Hardware Test Configuration",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Telemetry Integration Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 0,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

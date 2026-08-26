@@ -1,0 +1,32 @@
+# Compose override for frappe_docker that swaps every frappe/erpnext service
+# over to the custom car-repair-management image.
+#
+# Drop this file next to your existing frappe_docker compose files and
+# include it on the command line, e.g.:
+#
+#   docker compose \
+#     -f compose.yaml \
+#     -f overrides/compose.mariadb.yaml \
+#     -f overrides/compose.redis.yaml \
+#     -f compose.car-repair-management.yaml \
+#     up -d
+#
+# Adjust the image tag below to whatever you tagged your build with.
+
+x-image: &image car-repair-management:v15.79.0
+
+services:
+  backend:
+    image: *image
+  configurator:
+    image: *image
+  frontend:
+    image: *image
+  websocket:
+    image: *image
+  queue-short:
+    image: *image
+  queue-long:
+    image: *image
+  scheduler:
+    image: *image

@@ -79,6 +79,7 @@ scheduler_events = {
 # Installation hooks
 # Run custom field creation, dashboard links, and seed demo data
 after_install = "car_repair_management.install.after_install"
+after_migrate = "car_repair_management.install.setup_telemetry_integration"
 
 # Fixtures: export workspace, charts, number cards, reports under our module
 fixtures = [
@@ -99,4 +100,3 @@ override_doctype_dashboards = {
 website_route_rules = [
     {"from_route": "/workshop/<path:app_path>", "to_route": "workshop"},
 ]
-

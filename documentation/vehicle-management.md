@@ -42,6 +42,7 @@ The Vehicle module extends ERPNext's core Vehicle DocType with extensive custom 
 - `revenue_billed_to_date` — Total billed revenue
 
 ### GPS Tracking
+- `custom_telematics_imei` — Hardware tracker IMEI used by the central telemetry ingestion API to map incoming sensor data to this Vehicle
 - `custom_last_known_latitude`, `custom_last_known_longitude`
 - `custom_last_location_update`
 

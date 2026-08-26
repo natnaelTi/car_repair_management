@@ -1,0 +1,2 @@
+import{d as t,o as a,e as n,n as l,l as i}from"./index-de5859a2.js";const d=t({__name:"Skeleton",props:{variant:{default:"text"},width:{},height:{}},setup(e){return(r,o)=>(a(),n("div",{class:l(["animate-pulse bg-gray-200 dark:bg-gray-700",e.variant==="circle"?"rounded-full":"rounded",e.variant==="text"?"h-4":""]),style:i({width:e.width,height:e.height})},null,6))}});export{d as _};
+//# sourceMappingURL=Skeleton.vue_vue_type_script_setup_true_lang-32a11904.js.map

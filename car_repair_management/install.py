@@ -61,6 +61,7 @@ def _ensure_asset_master_data():
 
 def after_install():
     create_doctypes()
+    setup_telemetry_integration()
     _ensure_asset_master_data()
     create_customizations()
     # Seed demo data on fresh install
@@ -116,10 +117,70 @@ def create_doctypes():
         {"fieldname": "unit", "label": "Unit", "fieldtype": "Data"}
     ])
 
+
+def _ensure_telemetry_roles():
+    """Create narrow roles for hardware telemetry API users."""
+    roles = [
+        {
+            "role_name": "Telemetry Integration User",
+            "desk_access": 0,
+        },
+        {
+            "role_name": "Telemetry Integration Manager",
+            "desk_access": 1,
+        },
+    ]
+    for role in roles:
+        if not frappe.db.exists("Role", role["role_name"]):
+            frappe.get_doc({"doctype": "Role", **role}).insert(ignore_permissions=True)
+
+
+def setup_telemetry_integration():
+    """Ensure hardware telemetry API roles and traceability fields exist."""
+    create_doctypes()
+    _ensure_telemetry_roles()
+    create_custom_fields(_get_telemetry_custom_fields(), ignore_validate=True)
+
+
+def _get_telemetry_custom_fields():
+    return {
+        "Vehicle": [
+            dict(fieldname="custom_telematics_imei", label="Telematics IMEI", fieldtype="Data", insert_after="license_plate", unique=1),
+            dict(fieldname="custom_last_known_latitude", label="Last Known Latitude", fieldtype="Float", insert_after="custom_telematics_imei", read_only=1),
+            dict(fieldname="custom_last_known_longitude", label="Last Known Longitude", fieldtype="Float", insert_after="custom_last_known_latitude", read_only=1),
+            dict(fieldname="custom_last_location_update", label="Last Location Update", fieldtype="Datetime", insert_after="custom_last_known_longitude", read_only=1),
+            dict(fieldname="custom_fuel_level", label="Latest Fuel Level (%)", fieldtype="Percent", insert_after="custom_last_location_update", read_only=1),
+            dict(fieldname="custom_engine_hours", label="Engine Hours", fieldtype="Float", insert_after="custom_fuel_level", read_only=1),
+        ],
+        "Vehicle Location": [
+            dict(fieldname="telemetry_batch_id", label="Telemetry Batch ID", fieldtype="Data", insert_after="speed", read_only=1, in_standard_filter=1),
+            dict(fieldname="source_imei", label="Source IMEI", fieldtype="Data", insert_after="telemetry_batch_id", read_only=1, in_standard_filter=1),
+            dict(fieldname="device_name", label="Device Name", fieldtype="Data", insert_after="source_imei", read_only=1),
+            dict(fieldname="altitude", label="Altitude", fieldtype="Float", insert_after="device_name", read_only=1),
+        ],
+        "Vehicle Fuel Level": [
+            dict(fieldname="telemetry_batch_id", label="Telemetry Batch ID", fieldtype="Data", insert_after="location", read_only=1, in_standard_filter=1),
+            dict(fieldname="source_imei", label="Source IMEI", fieldtype="Data", insert_after="telemetry_batch_id", read_only=1, in_standard_filter=1),
+            dict(fieldname="device_name", label="Device Name", fieldtype="Data", insert_after="source_imei", read_only=1),
+        ],
+        "Vehicle Sensor Data": [
+            dict(fieldname="telemetry_batch_id", label="Telemetry Batch ID", fieldtype="Data", insert_after="unit", read_only=1, in_standard_filter=1),
+            dict(fieldname="source_imei", label="Source IMEI", fieldtype="Data", insert_after="telemetry_batch_id", read_only=1, in_standard_filter=1),
+            dict(fieldname="device_name", label="Device Name", fieldtype="Data", insert_after="source_imei", read_only=1),
+        ],
+    }
+
+
 def create_customizations():
     # Custom Fields definitions
     custom_fields = {
         "Vehicle": [
+            dict(fieldname="custom_telematics_imei", label="Telematics IMEI", fieldtype="Data", insert_after="license_plate", unique=1),
+            dict(fieldname="custom_last_known_latitude", label="Last Known Latitude", fieldtype="Float", insert_after="custom_telematics_imei", read_only=1),
+            dict(fieldname="custom_last_known_longitude", label="Last Known Longitude", fieldtype="Float", insert_after="custom_last_known_latitude", read_only=1),
+            dict(fieldname="custom_last_location_update", label="Last Location Update", fieldtype="Datetime", insert_after="custom_last_known_longitude", read_only=1),
+            dict(fieldname="custom_fuel_level", label="Latest Fuel Level (%)", fieldtype="Percent", insert_after="custom_last_location_update", read_only=1),
+            dict(fieldname="custom_engine_hours", label="Engine Hours", fieldtype="Float", insert_after="custom_fuel_level", read_only=1),
             dict(fieldname="variant", label="Variant", fieldtype="Data", insert_after="model"),
             dict(fieldname="year", label="Year", fieldtype="Int", insert_after="variant"),
             dict(fieldname="transmission", label="Transmission", fieldtype="Select", options="Manual\nAutomatic\nCVT", insert_after="year"),
@@ -198,6 +259,22 @@ def create_customizations():
         ],
         "Purchase Invoice": [
             dict(fieldname="repair_order", label="Repair Order", fieldtype="Link", options="Repair Order", insert_after="company", hidden=1),
+        ],
+        "Vehicle Location": [
+            dict(fieldname="telemetry_batch_id", label="Telemetry Batch ID", fieldtype="Data", insert_after="speed", read_only=1, in_standard_filter=1),
+            dict(fieldname="source_imei", label="Source IMEI", fieldtype="Data", insert_after="telemetry_batch_id", read_only=1, in_standard_filter=1),
+            dict(fieldname="device_name", label="Device Name", fieldtype="Data", insert_after="source_imei", read_only=1),
+            dict(fieldname="altitude", label="Altitude", fieldtype="Float", insert_after="device_name", read_only=1),
+        ],
+        "Vehicle Fuel Level": [
+            dict(fieldname="telemetry_batch_id", label="Telemetry Batch ID", fieldtype="Data", insert_after="location", read_only=1, in_standard_filter=1),
+            dict(fieldname="source_imei", label="Source IMEI", fieldtype="Data", insert_after="telemetry_batch_id", read_only=1, in_standard_filter=1),
+            dict(fieldname="device_name", label="Device Name", fieldtype="Data", insert_after="source_imei", read_only=1),
+        ],
+        "Vehicle Sensor Data": [
+            dict(fieldname="telemetry_batch_id", label="Telemetry Batch ID", fieldtype="Data", insert_after="unit", read_only=1, in_standard_filter=1),
+            dict(fieldname="source_imei", label="Source IMEI", fieldtype="Data", insert_after="telemetry_batch_id", read_only=1, in_standard_filter=1),
+            dict(fieldname="device_name", label="Device Name", fieldtype="Data", insert_after="source_imei", read_only=1),
         ],
     }
 

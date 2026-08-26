@@ -52,6 +52,19 @@ def get_settings_home():
 			integrations.append({"name": ea.email_account_name or ea.name, "type": "Email", "status": "Connected"})
 	except Exception:
 		pass
+	try:
+		hardware_configs = frappe.get_all("Hardware Test Configuration",
+			filters={"enabled": 1},
+			fields=["name", "configuration_name", "last_status"],
+			limit=5)
+		for config in hardware_configs:
+			integrations.append({
+				"name": config.configuration_name or config.name,
+				"type": "Mock Hardware",
+				"status": config.last_status or "Configured",
+			})
+	except Exception:
+		pass
 
 	return {
 		"system_info": system_info,
@@ -475,10 +488,25 @@ def _cat_integrations():
 	except Exception:
 		pass
 
+	hardware_test_configurations = []
+	try:
+		hardware_test_configurations = frappe.get_all("Hardware Test Configuration",
+			fields=[
+				"name", "configuration_name", "enabled", "endpoint_url", "http_method",
+				"api_key_header", "response_root", "ingest_on_run",
+				"max_records_per_run", "last_run", "last_status",
+				"last_ingested_count", "last_error"
+			],
+			order_by="modified desc",
+			limit=20)
+	except Exception:
+		pass
+
 	return {
 		"settings": {
 			"email_accounts": email_accounts,
 			"webhooks": webhooks,
+			"hardware_test_configurations": hardware_test_configurations,
 		},
 		"last_modified_by": None,
 		"last_modified_on": None,

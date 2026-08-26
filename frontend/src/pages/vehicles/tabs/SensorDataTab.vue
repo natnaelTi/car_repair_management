@@ -110,6 +110,11 @@ function formatValue(value: any, unit: string = ''): string {
   return `${Number(value).toLocaleString()}${unit}`
 }
 
+function formatText(value: any): string {
+  if (value === null || value === undefined || value === '') return '—'
+  return String(value)
+}
+
 function formatDateTime(dateStr: string | null): string {
   if (!dateStr) return '—'
   return new Date(dateStr).toLocaleString()
@@ -200,7 +205,7 @@ watch(timeframe, () => {
           </div>
         </div>
 
-        <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+        <div class="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-8 gap-4">
           <div class="p-4 rounded-xl flex flex-col items-center justify-center transition-all hover:bg-surface-secondary/50 border border-transparent hover:border-default" style="background-color: var(--bg-tertiary);">
             <LucideGauge class="size-6 mb-2" style="color: var(--text-muted);" />
             <p class="text-xl font-bold" style="color: var(--text-primary);">{{ formatValue(sensorData.live_status?.odometer, ' km') }}</p>
@@ -210,6 +215,21 @@ watch(timeframe, () => {
             <LucideFuel class="size-6 mb-2" style="color: var(--text-muted);" />
             <p class="text-xl font-bold" style="color: var(--text-primary);">{{ formatValue(sensorData.live_status?.fuel_level, '%') }}</p>
             <p class="text-xs uppercase tracking-wider font-semibold" style="color: var(--text-muted);">Fuel Level</p>
+          </div>
+          <div class="p-4 rounded-xl flex flex-col items-center justify-center transition-all hover:bg-surface-secondary/50 border border-transparent hover:border-default" style="background-color: var(--bg-tertiary);">
+            <LucideDroplets class="size-6 mb-2" style="color: var(--text-muted);" />
+            <p class="text-xl font-bold" style="color: var(--text-primary);">{{ sensorData.live_status?.fuel_volume_ml !== null && sensorData.live_status?.fuel_volume_ml !== undefined ? formatValue(Number(sensorData.live_status.fuel_volume_ml) / 1000, ' L') : '—' }}</p>
+            <p class="text-xs uppercase tracking-wider font-semibold" style="color: var(--text-muted);">Fuel Volume</p>
+          </div>
+          <div class="p-4 rounded-xl flex flex-col items-center justify-center transition-all hover:bg-surface-secondary/50 border border-transparent hover:border-default" style="background-color: var(--bg-tertiary);">
+            <LucideActivity class="size-6 mb-2" style="color: var(--text-muted);" />
+            <p class="text-xl font-bold" style="color: var(--text-primary);">{{ formatText(sensorData.live_status?.engine_state) }}</p>
+            <p class="text-xs uppercase tracking-wider font-semibold" style="color: var(--text-muted);">Engine</p>
+          </div>
+          <div class="p-4 rounded-xl flex flex-col items-center justify-center transition-all hover:bg-surface-secondary/50 border border-transparent hover:border-default" style="background-color: var(--bg-tertiary);">
+            <LucideGauge class="size-6 mb-2" style="color: var(--text-muted);" />
+            <p class="text-xl font-bold" style="color: var(--text-primary);">{{ formatValue(sensorData.live_status?.speed, ' km/h') }}</p>
+            <p class="text-xs uppercase tracking-wider font-semibold" style="color: var(--text-muted);">Speed</p>
           </div>
           <div class="p-4 rounded-xl flex flex-col items-center justify-center transition-all hover:bg-surface-secondary/50 border border-transparent hover:border-default" style="background-color: var(--bg-tertiary);">
             <LucideClock class="size-6 mb-2" style="color: var(--text-muted);" />
@@ -227,6 +247,21 @@ watch(timeframe, () => {
               {{ sensorData.has_sensors ? 'Connected' : 'N/A' }}
             </p>
             <p class="text-xs uppercase tracking-wider font-semibold" style="color: var(--text-muted);">Backend Link</p>
+          </div>
+        </div>
+
+        <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
+          <div class="px-3 py-2 rounded-lg" style="background-color: var(--bg-tertiary);">
+            <span style="color: var(--text-muted);">Device IMEI</span>
+            <p class="font-medium mt-1" style="color: var(--text-primary);">{{ formatText(sensorData.live_status?.device_id) }}</p>
+          </div>
+          <div class="px-3 py-2 rounded-lg" style="background-color: var(--bg-tertiary);">
+            <span style="color: var(--text-muted);">Device Name</span>
+            <p class="font-medium mt-1" style="color: var(--text-primary);">{{ formatText(sensorData.live_status?.device_name) }}</p>
+          </div>
+          <div class="px-3 py-2 rounded-lg" style="background-color: var(--bg-tertiary);">
+            <span style="color: var(--text-muted);">Tracker Status</span>
+            <p class="font-medium mt-1" style="color: var(--text-primary);">{{ formatText(sensorData.live_status?.tracker_status) }}</p>
           </div>
         </div>
       </Card>

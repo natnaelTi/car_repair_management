@@ -1,2 +1,0 @@
-import{d as s,o as n,e as r,E as d,n as l}from"./index-30a407de.js";const c=s({__name:"Card",props:{padding:{default:"md"},hoverable:{type:Boolean,default:!1}},setup(e){const a={none:"",sm:"p-3",md:"p-4",lg:"p-6"};return(o,t)=>(n(),r("div",{class:l(["card",a[e.padding],e.hoverable?"card-hoverable cursor-pointer":""])},[d(o.$slots,"default")],2))}});export{c as _};
-//# sourceMappingURL=Card.vue_vue_type_script_setup_true_lang-b6a97809.js.map

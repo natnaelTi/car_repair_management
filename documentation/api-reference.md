@@ -30,6 +30,212 @@ Related records for vehicle dashboard.
 
 ---
 
+## Telemetry API — `car_repair_management.api.telemetry`
+
+### Central CRUD endpoint
+
+All hardware telemetry integrations should use this endpoint:
+
+`/api/method/car_repair_management.api.telemetry.telemetry`
+
+Use a Frappe API user with one of these roles:
+
+- `Telemetry Integration User`: create/read/list telemetry batches.
+- `Telemetry Integration Manager`: create/read/list/update/delete telemetry batches.
+- `System Manager`: full access.
+
+Authentication:
+
+```http
+Authorization: token API_KEY:API_SECRET
+Content-Type: application/json
+```
+
+#### `action="create"`
+
+Accepts the provider payload format directly:
+
+```json
+{
+  "action": "create",
+  "payload": {
+    "imei": "354002391335211",
+    "name": "P0325 AA",
+    "group": null,
+    "odometer": "185691",
+    "engine": "off",
+    "status": "Stopped 4 h 38 min 34 s",
+    "dt_server": "2026-08-14 07:19:10",
+    "dt_tracker": "2026-08-14 07:14:14",
+    "lat": "9.006303",
+    "lng": "38.89531",
+    "altitude": "2408",
+    "angle": "267",
+    "speed": "0",
+    "fuel_1": "0.00",
+    "fuel_2": "0.00",
+    "fuel_can_level_percent": null,
+    "fuel_can_level_value": 560,
+    "custom_fields": null
+  }
+}
+```
+
+Vehicle resolution:
+
+1. Preferred: match `payload.imei` to `Vehicle.custom_telematics_imei`.
+2. Fallback: match `payload.name` to `Vehicle.license_plate`.
+3. Fallback: match `payload.name` to `Vehicle.name`.
+
+Creates one telemetry batch containing:
+
+- `Vehicle Location` when `lat` and `lng` are present.
+- `Vehicle Fuel Level` when `fuel_can_level_percent` is present.
+- `Vehicle Sensor Data` rows for odometer, engine, status, altitude, angle, speed, fuel_1, fuel_2, fuel_can_level_percent, fuel_can_level_value, group, and any `custom_fields` key/value pairs.
+
+Also updates the Vehicle's latest GPS fields and `last_odometer` when those values are present.
+
+Returns:
+
+```json
+{
+  "ok": true,
+  "action": "create",
+  "batch_id": "TLM-XXXXXXXXXXXX",
+  "vehicle": "VEHICLE-001",
+  "created": {
+    "location": "abc123",
+    "fuel_level": null,
+    "sensor_data": ["..."]
+  }
+}
+```
+
+#### `action="read"`
+
+```json
+{ "action": "read", "batch_id": "TLM-XXXXXXXXXXXX" }
+```
+
+Returns all `Vehicle Location`, `Vehicle Fuel Level`, and `Vehicle Sensor Data` records for that batch.
+
+#### `action="list"`
+
+```json
+{
+  "action": "list",
+  "vehicle": "VEHICLE-001",
+  "imei": "354002391335211",
+  "date_from": "2026-08-01 00:00:00",
+  "date_to": "2026-08-31 23:59:59",
+  "limit_start": 0,
+  "limit_page_length": 20
+}
+```
+
+Returns recent telemetry batches with record counts.
+
+#### `action="update"`
+
+Manager-only. Deletes records in the target batch and recreates the batch from the supplied payload:
+
+```json
+{
+  "action": "update",
+  "batch_id": "TLM-XXXXXXXXXXXX",
+  "payload": { "...": "..." }
+}
+```
+
+#### `action="delete"`
+
+Manager-only:
+
+```json
+{ "action": "delete", "batch_id": "TLM-XXXXXXXXXXXX" }
+```
+
+### Hardware test configuration endpoint
+
+Use this endpoint to configure external mock hardware APIs and optionally ingest their responses through the central telemetry endpoint:
+
+`/api/method/car_repair_management.api.telemetry.hardware_test_configuration`
+
+Required role:
+
+- `Telemetry Integration Manager` or `System Manager`
+
+#### `action="create"`
+
+```json
+{
+  "action": "create",
+  "data": {
+    "configuration_name": "Mellatech Mock Hardware",
+    "enabled": 1,
+    "endpoint_url": "https://mellatech.et/et/api/api.php?api=user&ver=1.0&cmd=USER_GET_OBJECTS",
+    "http_method": "GET",
+    "api_key_header": "key",
+    "api_key": "API_KEY_VALUE",
+    "response_root": "",
+    "ingest_on_run": 1,
+    "max_records_per_run": 50
+  }
+}
+```
+
+#### `action="list"`
+
+```json
+{ "action": "list" }
+```
+
+Returns saved mock hardware configurations without exposing API keys.
+
+#### `action="read"`
+
+```json
+{ "action": "read", "name": "Mellatech Mock Hardware" }
+```
+
+#### `action="update"`
+
+```json
+{
+  "action": "update",
+  "name": "Mellatech Mock Hardware",
+  "data": {
+    "enabled": 1,
+    "max_records_per_run": 100
+  }
+}
+```
+
+#### `action="run"`
+
+```json
+{
+  "action": "run",
+  "name": "Mellatech Mock Hardware"
+}
+```
+
+The run action:
+
+- Calls the configured external endpoint.
+- Sends the API key as the configured header, defaulting to `key`.
+- Extracts a payload array/object from `response_root` if set, or from common response keys like `data`, `objects`, `items`, or `results`.
+- Ingests each returned hardware payload when `ingest_on_run = 1`.
+- Updates last-run status, ingested count, error text, and a response sample on the configuration.
+
+#### `action="delete"`
+
+```json
+{ "action": "delete", "name": "Mellatech Mock Hardware" }
+```
+
+---
+
 ## Repair Order API — `car_repair_management.car_repair_management.doctype.repair_order.repair_order`
 
 ### `make_quotation_from_repair_order(name)`

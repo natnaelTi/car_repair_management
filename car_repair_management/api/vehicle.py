@@ -47,6 +47,8 @@ def get_vehicle_dashboard(vehicle_name):
     
     # Get recent work orders
     work_orders = get_recent_work_orders(vehicle_name)
+
+    telemetry_summary = get_vehicle_telemetry_summary(vehicle_name, vehicle=vehicle)
     
     return {
         "vehicle": {
@@ -80,6 +82,11 @@ def get_vehicle_dashboard(vehicle_name):
             "status": vehicle.custom_status or "Active",
             "vehicle_type": vehicle.vehicle_type or getattr(vehicle, "custom_vehicle_type", None) or "Car",
             "image": getattr(vehicle, "custom_image", None),
+            "telematics_imei": getattr(vehicle, "custom_telematics_imei", None),
+            "last_known_latitude": getattr(vehicle, "custom_last_known_latitude", None),
+            "last_known_longitude": getattr(vehicle, "custom_last_known_longitude", None),
+            "last_location_update": getattr(vehicle, "custom_last_location_update", None),
+            "fuel_level": getattr(vehicle, "custom_fuel_level", None),
         },
         "custodian": custodian,
         "drivers": drivers,
@@ -88,6 +95,7 @@ def get_vehicle_dashboard(vehicle_name):
         "service_reminders": service_reminders,
         "open_issues": open_issues,
         "work_orders": work_orders,
+        "telemetry": telemetry_summary,
     }
 
 
@@ -222,6 +230,122 @@ def get_recent_work_orders(vehicle_name):
         limit=10,
     )
     return work_orders
+
+
+def get_vehicle_telemetry_summary(vehicle_name, vehicle=None):
+    """Return dashboard-ready latest telemetry for a vehicle."""
+    vehicle = vehicle or frappe.get_doc("Vehicle", vehicle_name)
+    latest_location = _latest_vehicle_location(vehicle_name)
+    latest_fuel = _latest_vehicle_fuel(vehicle_name)
+    latest_sensors = _latest_vehicle_sensor_values(vehicle_name)
+
+    last_sync_candidates = [
+        latest_location.get("timestamp") if latest_location else None,
+        latest_fuel.get("timestamp") if latest_fuel else None,
+    ]
+    last_sync_candidates.extend(v.get("timestamp") for v in latest_sensors.values())
+    last_sync = max([str(v) for v in last_sync_candidates if v], default=None)
+
+    fuel_level = getattr(vehicle, "custom_fuel_level", None)
+    if fuel_level in (None, "") and latest_fuel:
+        fuel_level = latest_fuel.get("fuel_level")
+
+    return {
+        "device_id": getattr(vehicle, "custom_telematics_imei", None),
+        "device_name": _first_sensor_value(latest_sensors, "Device Name") or (latest_location or {}).get("device_name"),
+        "last_sync": last_sync,
+        "sensor_health": "Connected" if last_sync else "Not Linked",
+        "odometer": vehicle.last_odometer,
+        "fuel_level": fuel_level,
+        "fuel_volume_ml": _first_sensor_value(latest_sensors, "Fuel CAN Level Value"),
+        "engine_state": _first_sensor_value(latest_sensors, "Engine State"),
+        "tracker_status": _first_sensor_value(latest_sensors, "Tracker Status"),
+        "speed": (latest_location or {}).get("speed") or _first_sensor_value(latest_sensors, "Speed"),
+        "heading": (latest_location or {}).get("direction") or _first_sensor_value(latest_sensors, "Heading"),
+        "altitude": (latest_location or {}).get("altitude") or _first_sensor_value(latest_sensors, "Altitude"),
+        "latitude": (latest_location or {}).get("latitude") or getattr(vehicle, "custom_last_known_latitude", None),
+        "longitude": (latest_location or {}).get("longitude") or getattr(vehicle, "custom_last_known_longitude", None),
+        "location_record": (latest_location or {}).get("name"),
+        "fuel_record": (latest_fuel or {}).get("name"),
+        "record_counts": _vehicle_telemetry_record_counts(vehicle_name),
+    }
+
+
+def _latest_vehicle_location(vehicle_name):
+    if not frappe.db.exists("DocType", "Vehicle Location"):
+        return None
+
+    fields = ["name", "latitude", "longitude", "timestamp", "direction", "speed"]
+    for fieldname in ("source_imei", "device_name", "altitude", "telemetry_batch_id"):
+        if frappe.db.has_column("Vehicle Location", fieldname):
+            fields.append(fieldname)
+
+    rows = frappe.get_all(
+        "Vehicle Location",
+        filters={"vehicle": vehicle_name},
+        fields=fields,
+        order_by="timestamp desc",
+        limit=1,
+    )
+    return rows[0] if rows else None
+
+
+def _latest_vehicle_fuel(vehicle_name):
+    if not frappe.db.exists("DocType", "Vehicle Fuel Level"):
+        return None
+
+    fields = ["name", "fuel_level", "timestamp"]
+    for fieldname in ("source_imei", "device_name", "telemetry_batch_id"):
+        if frappe.db.has_column("Vehicle Fuel Level", fieldname):
+            fields.append(fieldname)
+
+    rows = frappe.get_all(
+        "Vehicle Fuel Level",
+        filters={"vehicle": vehicle_name},
+        fields=fields,
+        order_by="timestamp desc",
+        limit=1,
+    )
+    return rows[0] if rows else None
+
+
+def _latest_vehicle_sensor_values(vehicle_name):
+    if not frappe.db.exists("DocType", "Vehicle Sensor Data"):
+        return {}
+
+    fields = ["name", "sensor_type", "value", "unit", "timestamp"]
+    for fieldname in ("source_imei", "device_name", "telemetry_batch_id"):
+        if frappe.db.has_column("Vehicle Sensor Data", fieldname):
+            fields.append(fieldname)
+
+    rows = frappe.get_all(
+        "Vehicle Sensor Data",
+        filters={"vehicle": vehicle_name},
+        fields=fields,
+        order_by="timestamp desc",
+        limit=200,
+    )
+
+    latest = {}
+    for row in rows:
+        latest.setdefault(row.sensor_type, row)
+    return latest
+
+
+def _first_sensor_value(latest_sensors, sensor_type):
+    row = latest_sensors.get(sensor_type)
+    return row.get("value") if row else None
+
+
+def _vehicle_telemetry_record_counts(vehicle_name):
+    counts = {}
+    for doctype, key in (
+        ("Vehicle Location", "locations"),
+        ("Vehicle Fuel Level", "fuel_levels"),
+        ("Vehicle Sensor Data", "sensor_readings"),
+    ):
+        counts[key] = frappe.db.count(doctype, {"vehicle": vehicle_name}) if frappe.db.exists("DocType", doctype) else 0
+    return counts
 
 
 @frappe.whitelist()
@@ -533,6 +657,7 @@ def get_vehicle_financials_full(vehicle_name):
 def get_vehicle_sensor_data(vehicle_name, timeframe="30d"):
     """Get sensor/telemetry data for the vehicle."""
     vehicle = frappe.get_doc("Vehicle", vehicle_name)
+    telemetry_summary = get_vehicle_telemetry_summary(vehicle_name, vehicle=vehicle)
 
     # Calculate date filter from timeframe
     days_map = {"7d": 7, "30d": 30, "90d": 90}
@@ -540,14 +665,22 @@ def get_vehicle_sensor_data(vehicle_name, timeframe="30d"):
     from_date = add_days(nowdate(), -days)
 
     # Check if we have a sensor data doctype
-    has_sensor_doctype = frappe.db.exists("DocType", "Vehicle Sensor Data")
+    has_sensor_doctype = bool(frappe.db.exists("DocType", "Vehicle Sensor Data"))
 
     live_status = {
         "odometer": vehicle.last_odometer,
-        "fuel_level": getattr(vehicle, "custom_fuel_level", None),
+        "fuel_level": telemetry_summary.get("fuel_level") or getattr(vehicle, "custom_fuel_level", None),
+        "fuel_volume_ml": telemetry_summary.get("fuel_volume_ml"),
+        "engine_state": telemetry_summary.get("engine_state"),
+        "tracker_status": telemetry_summary.get("tracker_status"),
+        "speed": telemetry_summary.get("speed"),
+        "heading": telemetry_summary.get("heading"),
+        "altitude": telemetry_summary.get("altitude"),
+        "device_id": telemetry_summary.get("device_id"),
+        "device_name": telemetry_summary.get("device_name"),
         "engine_hours": getattr(vehicle, "custom_engine_hours", None),
-        "last_sync": getattr(vehicle, "custom_last_location_update", None),
-        "sensor_health": "OK" if has_sensor_doctype else "No Sensors",
+        "last_sync": telemetry_summary.get("last_sync") or getattr(vehicle, "custom_last_location_update", None),
+        "sensor_health": telemetry_summary.get("sensor_health") if has_sensor_doctype else "No Sensors",
     }
 
     alerts = []
@@ -671,6 +804,7 @@ def get_vehicle_sensor_data(vehicle_name, timeframe="30d"):
         "raw_data": raw_data,
         "fuel_analysis": fuel_analysis,
         "has_sensors": has_sensor_doctype,
+        "telemetry_summary": telemetry_summary,
     }
 
 

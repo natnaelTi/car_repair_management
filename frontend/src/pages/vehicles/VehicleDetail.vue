@@ -76,6 +76,7 @@ const driverHistory = computed(() => dashboardData.value?.driver_history || [])
 const costOfOwnership = computed(() => dashboardData.value?.cost_of_ownership || [])
 const serviceReminders = computed(() => dashboardData.value?.service_reminders || { overdue: 0, due_soon: 0, snoozed: 0, items: [] })
 const openIssues = computed(() => dashboardData.value?.open_issues || { open: 0, overdue: 0, items: [] })
+const telemetry = computed(() => dashboardData.value?.telemetry || null)
 
 // Custodian / Driver management
 const showAddDriver = ref(false)
@@ -211,6 +212,18 @@ async function handleDeleteVehicle() {
 function formatMileage(value: number | null | undefined): string {
   if (!value) return '0 km'
   return `${value.toLocaleString()} km`
+}
+
+function formatTelemetryValue(value: any, unit = ''): string {
+  if (value === null || value === undefined || value === '') return '-'
+  const numeric = Number(value)
+  if (!Number.isNaN(numeric)) return `${numeric.toLocaleString()}${unit}`
+  return `${value}${unit}`
+}
+
+function formatDateTime(value: string | null | undefined): string {
+  if (!value) return '-'
+  return new Date(value).toLocaleString()
 }
 
 onMounted(loadDashboard)
@@ -459,6 +472,50 @@ onMounted(loadDashboard)
                 <p class="text-sm" style="color: var(--text-muted);">
                   {{ vehicle.location || $t('vehicles.no_location_data') }}
                 </p>
+              </div>
+            </div>
+          </Card>
+
+          <!-- Live Telematics -->
+          <Card v-if="telemetry?.device_id || telemetry?.last_sync">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-lg font-semibold" style="color: var(--text-primary);">
+                <LucideCpu class="inline size-5 mr-2" />
+                Live Telematics
+              </h3>
+              <Badge :variant="telemetry?.sensor_health === 'Connected' ? 'success' : 'default'" size="sm">
+                {{ telemetry?.sensor_health || 'Not Linked' }}
+              </Badge>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+              <div>
+                <p class="text-xs uppercase tracking-wide" style="color: var(--text-muted);">Device IMEI</p>
+                <p class="text-sm font-medium mt-1" style="color: var(--text-primary);">{{ telemetry?.device_id || '-' }}</p>
+              </div>
+              <div>
+                <p class="text-xs uppercase tracking-wide" style="color: var(--text-muted);">Engine</p>
+                <p class="text-sm font-medium mt-1" style="color: var(--text-primary);">{{ telemetry?.engine_state || '-' }}</p>
+              </div>
+              <div>
+                <p class="text-xs uppercase tracking-wide" style="color: var(--text-muted);">Tracker Status</p>
+                <p class="text-sm font-medium mt-1" style="color: var(--text-primary);">{{ telemetry?.tracker_status || '-' }}</p>
+              </div>
+              <div>
+                <p class="text-xs uppercase tracking-wide" style="color: var(--text-muted);">Speed</p>
+                <p class="text-sm font-medium mt-1" style="color: var(--text-primary);">{{ formatTelemetryValue(telemetry?.speed, ' km/h') }}</p>
+              </div>
+              <div>
+                <p class="text-xs uppercase tracking-wide" style="color: var(--text-muted);">Fuel</p>
+                <p class="text-sm font-medium mt-1" style="color: var(--text-primary);">
+                  {{ formatTelemetryValue(telemetry?.fuel_level, '%') }}
+                  <span v-if="telemetry?.fuel_volume_ml" style="color: var(--text-muted);">
+                    / {{ formatTelemetryValue(Number(telemetry.fuel_volume_ml) / 1000, ' L') }}
+                  </span>
+                </p>
+              </div>
+              <div>
+                <p class="text-xs uppercase tracking-wide" style="color: var(--text-muted);">Last Sync</p>
+                <p class="text-sm font-medium mt-1" style="color: var(--text-primary);">{{ formatDateTime(telemetry?.last_sync) }}</p>
               </div>
             </div>
           </Card>

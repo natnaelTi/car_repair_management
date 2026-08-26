@@ -5,11 +5,14 @@ import {
   LucideArrowLeft,
   LucideExternalLink,
   LucideRefreshCw,
-  LucideShield,
   LucideActivity,
   LucideHistory,
+  LucidePlay,
+  LucidePlus,
+  LucideSave,
+  LucideTrash2,
 } from 'lucide-vue-next'
-import { Card, Button, Badge, Skeleton, EmptyState, Input } from '@/components/ui'
+import { Card, Button, Badge, Skeleton, EmptyState } from '@/components/ui'
 import { apiCall } from '@/api'
 
 const props = defineProps<{ category: string }>()
@@ -41,6 +44,23 @@ const auditEntries = ref<any[]>([])
 const auditLoading = ref(false)
 const auditDoctype = ref('')
 const auditLimit = ref(20)
+const hardwareConfigSaving = ref(false)
+const hardwareConfigRunning = ref('')
+const hardwareConfigMessage = ref('')
+const hardwareConfigError = ref('')
+const hardwareConfigForm = ref<any>({
+  name: '',
+  configuration_name: '',
+  enabled: 1,
+  endpoint_url: '',
+  http_method: 'GET',
+  api_key_header: 'key',
+  api_key: '',
+  request_body_json: '',
+  response_root: '',
+  ingest_on_run: 1,
+  max_records_per_run: 50,
+})
 
 const meta = ref(CATEGORY_META[props.category] || { title: props.category, description: '' })
 
@@ -89,6 +109,113 @@ async function loadAuditLog() {
     console.warn('Failed to load audit log', e)
   } finally {
     auditLoading.value = false
+  }
+}
+
+function resetHardwareConfigForm() {
+  hardwareConfigForm.value = {
+    name: '',
+    configuration_name: '',
+    enabled: 1,
+    endpoint_url: '',
+    http_method: 'GET',
+    api_key_header: 'key',
+    api_key: '',
+    request_body_json: '',
+    response_root: '',
+    ingest_on_run: 1,
+    max_records_per_run: 50,
+  }
+  hardwareConfigMessage.value = ''
+  hardwareConfigError.value = ''
+}
+
+function editHardwareConfig(config: any) {
+  hardwareConfigForm.value = {
+    name: config.name,
+    configuration_name: config.configuration_name,
+    enabled: config.enabled ? 1 : 0,
+    endpoint_url: config.endpoint_url,
+    http_method: config.http_method || 'GET',
+    api_key_header: config.api_key_header || 'key',
+    api_key: '',
+    request_body_json: '',
+    response_root: config.response_root || '',
+    ingest_on_run: config.ingest_on_run ? 1 : 0,
+    max_records_per_run: config.max_records_per_run || 50,
+  }
+  hardwareConfigMessage.value = ''
+  hardwareConfigError.value = ''
+}
+
+async function saveHardwareConfig() {
+  hardwareConfigSaving.value = true
+  hardwareConfigMessage.value = ''
+  hardwareConfigError.value = ''
+  const form = hardwareConfigForm.value
+  const data: Record<string, unknown> = {
+    configuration_name: form.configuration_name,
+    enabled: form.enabled ? 1 : 0,
+    endpoint_url: form.endpoint_url,
+    http_method: form.http_method,
+    api_key_header: form.api_key_header || 'key',
+    request_body_json: form.request_body_json || '',
+    response_root: form.response_root || '',
+    ingest_on_run: form.ingest_on_run ? 1 : 0,
+    max_records_per_run: Number(form.max_records_per_run || 50),
+  }
+  if (form.api_key) data.api_key = form.api_key
+  try {
+    await apiCall('car_repair_management.api.telemetry.hardware_test_configuration', {
+      action: form.name ? 'update' : 'create',
+      name: form.name || undefined,
+      data,
+    })
+    hardwareConfigMessage.value = form.name ? 'Hardware test configuration updated.' : 'Hardware test configuration created.'
+    resetHardwareConfigForm()
+    await loadData()
+  } catch (e: any) {
+    hardwareConfigError.value = e?.message || 'Failed to save hardware test configuration'
+  } finally {
+    hardwareConfigSaving.value = false
+  }
+}
+
+async function runHardwareConfig(config: any) {
+  hardwareConfigRunning.value = config.name
+  hardwareConfigMessage.value = ''
+  hardwareConfigError.value = ''
+  try {
+    const res = await apiCall<any>('car_repair_management.api.telemetry.hardware_test_configuration', {
+      action: 'run',
+      name: config.name,
+    })
+    hardwareConfigMessage.value = `Fetched ${res.fetched_count || 0} payload(s), ingested ${res.ingested_count || 0}.`
+    await loadData()
+  } catch (e: any) {
+    hardwareConfigError.value = e?.message || 'Failed to run hardware test configuration'
+    await loadData()
+  } finally {
+    hardwareConfigRunning.value = ''
+  }
+}
+
+async function deleteHardwareConfig(config: any) {
+  hardwareConfigSaving.value = true
+  hardwareConfigMessage.value = ''
+  hardwareConfigError.value = ''
+  try {
+    await apiCall('car_repair_management.api.telemetry.hardware_test_configuration', {
+      action: 'delete',
+      name: config.name,
+    })
+    hardwareConfigMessage.value = 'Hardware test configuration deleted.'
+    if (hardwareConfigForm.value.name === config.name) resetHardwareConfigForm()
+    await loadData()
+  } catch (e: any) {
+    hardwareConfigError.value = e?.message || 'Failed to delete hardware test configuration'
+  } finally {
+    hardwareConfigSaving.value = false
   }
 }
 
@@ -198,9 +325,9 @@ watch(() => props.category, () => {
           </a>
         </div>
         <div v-if="settings.fleet_replacement_settings && Object.keys(settings.fleet_replacement_settings).length" class="grid grid-cols-2 gap-4">
-          <div v-for="(val, key) in settings.fleet_replacement_settings" :key="key as string"
-            class="py-2" v-show="!['name','doctype','owner','creation','modified','modified_by','docstatus','idx','__unsaved'].includes(key as string)">
-            <p class="text-xs" style="color: var(--text-muted);">{{ (key as string).replace(/_/g, ' ') }}</p>
+          <div v-for="(val, key) in settings.fleet_replacement_settings" :key="String(key)"
+            class="py-2" v-show="!['name','doctype','owner','creation','modified','modified_by','docstatus','idx','__unsaved'].includes(String(key))">
+            <p class="text-xs" style="color: var(--text-muted);">{{ String(key).replace(/_/g, ' ') }}</p>
             <p class="text-sm font-medium" style="color: var(--text-primary);">{{ val ?? 'N/A' }}</p>
           </div>
         </div>
@@ -455,6 +582,170 @@ watch(() => props.category, () => {
           </div>
         </div>
         <EmptyState v-else title="No email integrations" />
+      </Card>
+      <Card>
+        <div class="flex items-center justify-between gap-3 mb-4">
+          <h3 class="text-section-title" style="color: var(--text-primary);">Mock Hardware APIs</h3>
+          <Button variant="outline" size="sm" @click="resetHardwareConfigForm">
+            <LucidePlus class="size-4" />
+            New
+          </Button>
+        </div>
+
+        <div v-if="hardwareConfigMessage" class="mb-4 px-3 py-2 rounded text-sm" style="background: var(--bg-tertiary); color: var(--text-primary);">
+          {{ hardwareConfigMessage }}
+        </div>
+        <div v-if="hardwareConfigError" class="mb-4 px-3 py-2 rounded text-sm" style="background: rgba(239, 68, 68, 0.12); color: rgb(220, 38, 38);">
+          {{ hardwareConfigError }}
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-5">
+          <div>
+            <label class="block text-xs font-medium mb-1" style="color: var(--text-muted);">Configuration Name</label>
+            <input
+              v-model="hardwareConfigForm.configuration_name"
+              type="text"
+              class="w-full h-9 px-3 text-sm rounded border"
+              style="background: var(--bg-secondary); color: var(--text-primary); border-color: var(--border-color);"
+            />
+          </div>
+          <div>
+            <label class="block text-xs font-medium mb-1" style="color: var(--text-muted);">Endpoint URL</label>
+            <input
+              v-model="hardwareConfigForm.endpoint_url"
+              type="url"
+              placeholder="https://mellatech.et/et/api/api.php?api=user&ver=1.0&cmd=USER_GET_OBJECTS"
+              class="w-full h-9 px-3 text-sm rounded border"
+              style="background: var(--bg-secondary); color: var(--text-primary); border-color: var(--border-color);"
+            />
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-medium mb-1" style="color: var(--text-muted);">HTTP Method</label>
+              <select
+                v-model="hardwareConfigForm.http_method"
+                class="w-full h-9 px-2 text-sm rounded border"
+                style="background: var(--bg-secondary); color: var(--text-primary); border-color: var(--border-color);"
+              >
+                <option value="GET">GET</option>
+                <option value="POST">POST</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-medium mb-1" style="color: var(--text-muted);">API Key Header</label>
+              <input
+                v-model="hardwareConfigForm.api_key_header"
+                type="text"
+                class="w-full h-9 px-3 text-sm rounded border"
+                style="background: var(--bg-secondary); color: var(--text-primary); border-color: var(--border-color);"
+              />
+            </div>
+          </div>
+          <div>
+            <label class="block text-xs font-medium mb-1" style="color: var(--text-muted);">API Key</label>
+            <input
+              v-model="hardwareConfigForm.api_key"
+              type="password"
+              :placeholder="hardwareConfigForm.name ? 'Leave blank to keep existing key' : ''"
+              class="w-full h-9 px-3 text-sm rounded border"
+              style="background: var(--bg-secondary); color: var(--text-primary); border-color: var(--border-color);"
+            />
+          </div>
+          <div>
+            <label class="block text-xs font-medium mb-1" style="color: var(--text-muted);">Response Root</label>
+            <input
+              v-model="hardwareConfigForm.response_root"
+              type="text"
+              placeholder="data.objects"
+              class="w-full h-9 px-3 text-sm rounded border"
+              style="background: var(--bg-secondary); color: var(--text-primary); border-color: var(--border-color);"
+            />
+          </div>
+          <div class="grid grid-cols-3 gap-3">
+            <label class="inline-flex items-center gap-2 text-sm mt-6" style="color: var(--text-secondary);">
+              <input v-model="hardwareConfigForm.enabled" type="checkbox" :true-value="1" :false-value="0" />
+              Enabled
+            </label>
+            <label class="inline-flex items-center gap-2 text-sm mt-6" style="color: var(--text-secondary);">
+              <input v-model="hardwareConfigForm.ingest_on_run" type="checkbox" :true-value="1" :false-value="0" />
+              Ingest
+            </label>
+            <div>
+              <label class="block text-xs font-medium mb-1" style="color: var(--text-muted);">Max Records</label>
+              <input
+                v-model="hardwareConfigForm.max_records_per_run"
+                type="number"
+                min="1"
+                max="500"
+                class="w-full h-9 px-3 text-sm rounded border"
+                style="background: var(--bg-secondary); color: var(--text-primary); border-color: var(--border-color);"
+              />
+            </div>
+          </div>
+          <div class="lg:col-span-2">
+            <label class="block text-xs font-medium mb-1" style="color: var(--text-muted);">Request Body JSON</label>
+            <textarea
+              v-model="hardwareConfigForm.request_body_json"
+              rows="3"
+              class="w-full px-3 py-2 text-sm rounded border font-mono"
+              style="background: var(--bg-secondary); color: var(--text-primary); border-color: var(--border-color);"
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="flex justify-end gap-2 mb-5">
+          <Button variant="ghost" size="sm" @click="resetHardwareConfigForm">Clear</Button>
+          <Button variant="primary" size="sm" :loading="hardwareConfigSaving" @click="saveHardwareConfig">
+            <LucideSave class="size-4" />
+            Save
+          </Button>
+        </div>
+
+        <div v-if="settings.hardware_test_configurations?.length" class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b" style="border-color: var(--border-color);">
+                <th class="text-left py-2 px-3 font-medium" style="color: var(--text-muted);">Name</th>
+                <th class="text-left py-2 px-3 font-medium" style="color: var(--text-muted);">Endpoint</th>
+                <th class="text-center py-2 px-3 font-medium" style="color: var(--text-muted);">Status</th>
+                <th class="text-center py-2 px-3 font-medium" style="color: var(--text-muted);">Last Run</th>
+                <th class="text-right py-2 px-3 font-medium" style="color: var(--text-muted);">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="cfg in settings.hardware_test_configurations" :key="cfg.name" class="border-b" style="border-color: var(--border-subtle);">
+                <td class="py-2 px-3" style="color: var(--text-primary);">
+                  <button class="text-left hover:underline" @click="editHardwareConfig(cfg)">
+                    {{ cfg.configuration_name || cfg.name }}
+                  </button>
+                  <p class="text-xs" style="color: var(--text-muted);">{{ cfg.http_method }} · {{ cfg.api_key_header || 'key' }}</p>
+                </td>
+                <td class="py-2 px-3 text-xs truncate max-w-md" style="color: var(--text-muted);">{{ cfg.endpoint_url }}</td>
+                <td class="py-2 px-3 text-center">
+                  <Badge :variant="cfg.enabled ? (cfg.last_status === 'Failed' ? 'danger' : 'success') : 'default'" size="sm">
+                    {{ cfg.enabled ? (cfg.last_status || 'Enabled') : 'Disabled' }}
+                  </Badge>
+                </td>
+                <td class="py-2 px-3 text-center text-xs" style="color: var(--text-muted);">
+                  {{ cfg.last_run ? formatDate(cfg.last_run) : '-' }}
+                  <span v-if="cfg.last_ingested_count" class="block">{{ cfg.last_ingested_count }} ingested</span>
+                </td>
+                <td class="py-2 px-3">
+                  <div class="flex justify-end gap-1">
+                    <Button variant="ghost" size="sm" :loading="hardwareConfigRunning === cfg.name" @click="runHardwareConfig(cfg)">
+                      <LucidePlay class="size-4" />
+                    </Button>
+                    <Button variant="ghost" size="sm" @click="editHardwareConfig(cfg)">Edit</Button>
+                    <Button variant="ghost" size="sm" @click="deleteHardwareConfig(cfg)">
+                      <LucideTrash2 class="size-4" />
+                    </Button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <EmptyState v-else title="No mock hardware APIs configured" />
       </Card>
       <Card>
         <h3 class="text-section-title mb-4" style="color: var(--text-primary);">Webhooks</h3>

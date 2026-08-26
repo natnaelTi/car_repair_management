@@ -8,6 +8,11 @@ from frappe.utils import getdate, nowdate, add_days, flt, now_datetime
 
 
 REGISTRY_FILE = "demo_data_registry.json"
+MOCK_HARDWARE_DEVICE = {
+	"vehicle_plate": "P0325 AA",
+	"imei": "354002391335211",
+	"provider": "Mellatech",
+}
 
 # ── Data definitions ─────────────────────────────────────────────────────────
 
@@ -30,6 +35,7 @@ CUSTOMERS = [
 ]
 
 VEHICLES = [
+	("P0325 AA", "Toyota", "Land Cruiser", "SUV", 2022, "Diesel", "Automatic", "White"),
 	("3-10234", "Toyota", "Land Cruiser", "SUV", 2019, "Diesel", "Automatic", "White"),
 	("3-10567", "Toyota", "Land Cruiser", "SUV", 2020, "Diesel", "Automatic", "Silver"),
 	("3-11023", "Toyota", "Hilux", "Truck", 2021, "Diesel", "Manual", "White"),
@@ -488,6 +494,7 @@ def _seed_vehicles(registry, company=None):
 
 	for plate, make, model, vtype, year, fuel, trans, color in VEHICLES:
 		if frappe.db.exists("Vehicle", plate):
+			_apply_mock_hardware_mapping(plate)
 			_reg(registry, "Vehicle", plate)
 			continue
 
@@ -514,7 +521,7 @@ def _seed_vehicles(registry, company=None):
 
 		eng_type = random.choice(engine_types.get(fuel, ["Inline-4"]))
 
-		doc = frappe.get_doc({
+		vehicle_data = {
 			"doctype": "Vehicle",
 			"license_plate": plate,
 			"make": make,
@@ -565,11 +572,86 @@ def _seed_vehicles(registry, company=None):
 			# Fuel quota fields
 			"custom_fuel_capacity_liters": fuel_liters_map.get(vtype, 50),
 			"custom_km_per_liter": km_per_liter_map_v.get(vtype, 10),
-		})
+		}
+		vehicle_data.update(_get_mock_hardware_vehicle_fields(plate))
+		doc = frappe.get_doc(vehicle_data)
 		if company:
 			doc.company = company
 		doc.insert(ignore_permissions=True)
 		_reg(registry, "Vehicle", plate)
+
+
+def _get_mock_hardware_vehicle_fields(plate):
+	if plate != MOCK_HARDWARE_DEVICE["vehicle_plate"]:
+		return {}
+
+	fields = {}
+	if frappe.db.has_column("Vehicle", "custom_telematics_imei"):
+		fields["custom_telematics_imei"] = MOCK_HARDWARE_DEVICE["imei"]
+	if frappe.db.has_column("Vehicle", "custom_status"):
+		fields["custom_status"] = "Active"
+	if frappe.db.has_column("Vehicle", "custom_fuel_capacity_liters"):
+		fields["custom_fuel_capacity_liters"] = 80
+	return fields
+
+
+def _apply_mock_hardware_mapping(vehicle_name):
+	if vehicle_name != MOCK_HARDWARE_DEVICE["vehicle_plate"]:
+		return
+	if frappe.db.has_column("Vehicle", "custom_telematics_imei"):
+		for duplicate in frappe.get_all(
+			"Vehicle",
+			filters={"custom_telematics_imei": MOCK_HARDWARE_DEVICE["imei"], "name": ["!=", vehicle_name]},
+			pluck="name",
+		):
+			frappe.db.set_value("Vehicle", duplicate, "custom_telematics_imei", None, update_modified=False)
+	for fieldname, value in _get_mock_hardware_vehicle_fields(vehicle_name).items():
+		frappe.db.set_value("Vehicle", vehicle_name, fieldname, value, update_modified=False)
+
+
+@frappe.whitelist()
+def ensure_mock_hardware_demo_vehicle():
+	"""Create/update the one demo vehicle mapped to the provider mock hardware IMEI."""
+	plate = MOCK_HARDWARE_DEVICE["vehicle_plate"]
+	if frappe.db.exists("Vehicle", plate):
+		_apply_mock_hardware_mapping(plate)
+		frappe.db.commit()
+		return {"vehicle": plate, "created": False, "imei": MOCK_HARDWARE_DEVICE["imei"]}
+
+	vehicle_data = {
+		"doctype": "Vehicle",
+		"license_plate": plate,
+		"make": "Toyota",
+		"model": "Land Cruiser",
+		"variant": "VX",
+		"year": 2022,
+		"fuel_type": "Diesel",
+		"transmission": "Automatic",
+		"color": "White",
+		"uom": "Kilometer",
+		"custom_vehicle_type": "SUV",
+		"vehicle_type": "SUV",
+		"custom_status": "Active",
+		"last_odometer": 0,
+		"fuel_tank_capacity": "80L",
+		"custom_fuel_capacity_liters": 80,
+		"custom_km_per_liter": 8,
+		"chassis_no": _generate_chassis_no("Toyota"),
+		"engine_type": "V6 Turbo",
+		"engine_capacity": 4500,
+		"cylinders": 6,
+		"drivetrain": "4WD",
+		"engine_number": "ENG-TOY-MOCK",
+		"country_of_origin": "Japan",
+		"seating_capacity": 7,
+		"ownership_type": "Owned",
+		"registration_authority": "Addis Ababa Transport Authority",
+	}
+	vehicle_data.update(_get_mock_hardware_vehicle_fields(plate))
+	doc = frappe.get_doc(vehicle_data)
+	doc.insert(ignore_permissions=True)
+	frappe.db.commit()
+	return {"vehicle": doc.name, "created": True, "imei": MOCK_HARDWARE_DEVICE["imei"]}
 
 
 def _seed_vehicle_assignments(registry):
