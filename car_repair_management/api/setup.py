@@ -31,6 +31,28 @@ def setup_vehicle_custom_fields():
                 "insert_after": "custom_vehicle_type",
             },
             {
+                "fieldname": "custom_custodian",
+                "label": "Custodian",
+                "fieldtype": "Link",
+                "options": "Employee",
+                "insert_after": "custom_image",
+                "in_standard_filter": 1,
+            },
+            {
+                "fieldname": "custom_custodian_name",
+                "label": "Custodian Name",
+                "fieldtype": "Data",
+                "insert_after": "custom_custodian",
+                "read_only": 1,
+            },
+            {
+                "fieldname": "custom_drivers",
+                "label": "Drivers",
+                "fieldtype": "Table",
+                "options": "Vehicle Driver",
+                "insert_after": "custom_custodian_name",
+            },
+            {
                 "fieldname": "custom_last_known_latitude",
                 "label": "Last Known Latitude",
                 "fieldtype": "Float",

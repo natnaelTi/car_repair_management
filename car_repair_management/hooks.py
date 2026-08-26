@@ -77,9 +77,9 @@ scheduler_events = {
 }
 
 # Installation hooks
-# Run custom field creation, dashboard links, and seed demo data
+# Keep every installed site converged to the same schema/customization baseline.
 after_install = "car_repair_management.install.after_install"
-after_migrate = "car_repair_management.install.setup_telemetry_integration"
+after_migrate = "car_repair_management.install.after_migrate"
 
 # Fixtures: export workspace, charts, number cards, reports under our module
 fixtures = [

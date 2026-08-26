@@ -2,6 +2,19 @@ import frappe
 from frappe.custom.doctype.custom_field.custom_field import create_custom_fields
 
 
+CORE_ROLES = [
+    "Fleet Manager",
+    "Maintenance Manager",
+    "Maintenance User",
+    "Telemetry Integration User",
+    "Telemetry Integration Manager",
+]
+
+
+def after_migrate():
+    setup_site()
+
+
 def _ensure_asset_master_data():
     """Ensure Asset Category and fixed-asset Item exist for vehicle asset creation."""
     # Asset Category: Vehicles
@@ -60,17 +73,60 @@ def _ensure_asset_master_data():
 
 
 def after_install():
-    create_doctypes()
-    setup_telemetry_integration()
-    _ensure_asset_master_data()
-    create_customizations()
+    setup_site()
     # Seed demo data on fresh install
     try:
         from car_repair_management.demo_data import seed_demo_data
+
         seed_demo_data()
     except Exception:
         frappe.log_error(frappe.get_traceback(), "Car Repair Management: Demo data seeding")
 
+
+def setup_site():
+    """Idempotently provision everything this app expects on an installed site."""
+    create_doctypes()
+    _ensure_core_roles()
+    _ensure_vehicle_custom_fields()
+    _ensure_issue_custom_fields()
+    _ensure_fuel_custom_fields()
+    setup_telemetry_integration()
+    _ensure_asset_master_data()
+    create_customizations()
+    try:
+        _patch_workspace_shortcuts()
+    except Exception:
+        frappe.log_error(frappe.get_traceback(), "Car Repair Management: Workspace shortcut patch")
+
+
+def _ensure_core_roles():
+    for role_name in CORE_ROLES:
+        if not frappe.db.exists("Role", role_name):
+            frappe.get_doc(
+                {
+                    "doctype": "Role",
+                    "role_name": role_name,
+                    "desk_access": 1,
+                }
+            ).insert(ignore_permissions=True)
+
+
+def _ensure_vehicle_custom_fields():
+    from car_repair_management.api.setup import setup_vehicle_custom_fields
+
+    setup_vehicle_custom_fields()
+
+
+def _ensure_issue_custom_fields():
+    from car_repair_management.api.setup_issue_fields import setup_issue_custom_fields
+
+    setup_issue_custom_fields()
+
+
+def _ensure_fuel_custom_fields():
+    from car_repair_management.api.setup_fuel_fields import setup_fuel_custom_fields
+
+    setup_fuel_custom_fields()
 
 
 def create_doctypes():
