@@ -76,6 +76,7 @@ bench --site <your_site> execute car_repair_management.install._patch_workspace_
 
 - Install the app on each site where you want the features.
 - Fixtures (workspace, charts, number cards, reports) are versioned and installed with the app.
+- For cross-site install audits, repair commands, and smoke tests, see `documentation/site-audit-and-repair.md`.
 
 ---
 
