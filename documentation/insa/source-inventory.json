@@ -1,0 +1,5414 @@
+{
+  "baseline": "5974cf7addfef5d5cfc8fde325fc964343557a2f",
+  "doctypes": [
+    {
+      "name": "Customer Update",
+      "path": "car_repair_management/car_repair_management/doctype/customer_update/customer_update.json",
+      "child": true,
+      "submittable": false,
+      "autoname": "format:CSTMR-UPDT-{MM}-{YY}-{#####}",
+      "permissions": [],
+      "fields": [
+        {
+          "fieldname": "update_type",
+          "label": "Update Type",
+          "fieldtype": "Select",
+          "options": "Status\nNote\nAttachment",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "message",
+          "label": "Message",
+          "fieldtype": "Small Text",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "attachment",
+          "label": "Attachment",
+          "fieldtype": "Attach",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "visible_on_portal",
+          "label": "Visible on Portal",
+          "fieldtype": "Check",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        }
+      ]
+    },
+    {
+      "name": "Fleet Replacement Settings",
+      "path": "car_repair_management/car_repair_management/doctype/fleet_replacement_settings/fleet_replacement_settings.json",
+      "child": false,
+      "submittable": false,
+      "autoname": "",
+      "permissions": [
+        {
+          "create": 1,
+          "delete": 0,
+          "email": 0,
+          "print": 1,
+          "read": 1,
+          "role": "System Manager",
+          "share": 0,
+          "write": 1
+        },
+        {
+          "create": 0,
+          "delete": 0,
+          "email": 0,
+          "print": 1,
+          "read": 1,
+          "role": "Fleet Manager",
+          "share": 0,
+          "write": 1
+        },
+        {
+          "create": 0,
+          "delete": 0,
+          "email": 0,
+          "print": 0,
+          "read": 1,
+          "role": "All",
+          "share": 0,
+          "write": 0
+        }
+      ],
+      "fields": [
+        {
+          "fieldname": "age_threshold",
+          "label": "Age Threshold (Years)",
+          "fieldtype": "Int",
+          "options": null,
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "mileage_threshold",
+          "label": "Mileage Threshold (KM)",
+          "fieldtype": "Int",
+          "options": null,
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "cost_to_value_ratio_threshold",
+          "label": "Cost-to-Value Ratio Threshold",
+          "fieldtype": "Float",
+          "options": null,
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "downtime_threshold",
+          "label": "Downtime Threshold (Days/Year)",
+          "fieldtype": "Int",
+          "options": null,
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "maintenance_frequency_threshold",
+          "label": "Maintenance Frequency Threshold",
+          "fieldtype": "Int",
+          "options": null,
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "weight_age",
+          "label": "Age Weight (%)",
+          "fieldtype": "Int",
+          "options": null,
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "weight_mileage",
+          "label": "Mileage Weight (%)",
+          "fieldtype": "Int",
+          "options": null,
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "weight_cost_ratio",
+          "label": "Cost Ratio Weight (%)",
+          "fieldtype": "Int",
+          "options": null,
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "weight_downtime",
+          "label": "Downtime Weight (%)",
+          "fieldtype": "Int",
+          "options": null,
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "weight_maintenance_frequency",
+          "label": "Maintenance Frequency Weight (%)",
+          "fieldtype": "Int",
+          "options": null,
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "total_weight",
+          "label": "Total Weight",
+          "fieldtype": "Int",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "keep_max_score",
+          "label": "Keep \u2014 Max Score",
+          "fieldtype": "Int",
+          "options": null,
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "monitor_max_score",
+          "label": "Monitor \u2014 Max Score",
+          "fieldtype": "Int",
+          "options": null,
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        }
+      ]
+    },
+    {
+      "name": "Handover Checklist Item",
+      "path": "car_repair_management/car_repair_management/doctype/handover_checklist_item/handover_checklist_item.json",
+      "child": false,
+      "submittable": false,
+      "autoname": "field:item_name",
+      "permissions": [
+        {
+          "create": 1,
+          "delete": 1,
+          "read": 1,
+          "role": "System Manager",
+          "write": 1
+        },
+        {
+          "create": 1,
+          "delete": 1,
+          "email": 1,
+          "export": 1,
+          "print": 1,
+          "read": 1,
+          "report": 1,
+          "role": "Maintenance Manager",
+          "share": 1,
+          "write": 1
+        },
+        {
+          "email": 1,
+          "export": 1,
+          "print": 1,
+          "read": 1,
+          "report": 1,
+          "role": "Maintenance User",
+          "share": 1
+        }
+      ],
+      "fields": [
+        {
+          "fieldname": "item_name",
+          "label": "Item Name",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": 1,
+          "unique": 1,
+          "read_only": null
+        },
+        {
+          "fieldname": "type",
+          "label": "Type",
+          "fieldtype": "Select",
+          "options": "Pass/Fail\nScale\nNotes Required",
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        }
+      ]
+    },
+    {
+      "name": "Hardware Test Configuration",
+      "path": "car_repair_management/car_repair_management/doctype/hardware_test_configuration/hardware_test_configuration.json",
+      "child": false,
+      "submittable": false,
+      "autoname": "field:configuration_name",
+      "permissions": [
+        {
+          "create": 1,
+          "delete": 1,
+          "email": 1,
+          "export": 1,
+          "print": 1,
+          "read": 1,
+          "report": 1,
+          "role": "System Manager",
+          "share": 1,
+          "write": 1
+        },
+        {
+          "create": 1,
+          "delete": 1,
+          "email": 1,
+          "export": 1,
+          "print": 1,
+          "read": 1,
+          "report": 1,
+          "role": "Telemetry Integration Manager",
+          "share": 1,
+          "write": 1
+        }
+      ],
+      "fields": [
+        {
+          "fieldname": "auto_poll_enabled",
+          "label": "Automatic Polling Enabled",
+          "fieldtype": "Check",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "running_poll_seconds",
+          "label": "Engine Running Interval (seconds)",
+          "fieldtype": "Int",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "idle_poll_seconds",
+          "label": "Engine Idle Interval (seconds)",
+          "fieldtype": "Int",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "off_poll_seconds",
+          "label": "Engine Off Interval (seconds)",
+          "fieldtype": "Int",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "is_active",
+          "label": "Active API",
+          "fieldtype": "Check",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "configuration_name",
+          "label": "Configuration Name",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": 1,
+          "unique": 1,
+          "read_only": null
+        },
+        {
+          "fieldname": "enabled",
+          "label": "Enabled",
+          "fieldtype": "Check",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "endpoint_url",
+          "label": "Endpoint URL",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "http_method",
+          "label": "HTTP Method",
+          "fieldtype": "Select",
+          "options": "GET\nPOST",
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "api_key_header",
+          "label": "API Key Header",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "api_key",
+          "label": "API Key",
+          "fieldtype": "Password",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "request_body_json",
+          "label": "Request Body JSON",
+          "fieldtype": "Code",
+          "options": "JSON",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "response_root",
+          "label": "Response Root",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "ingest_on_run",
+          "label": "Ingest On Run",
+          "fieldtype": "Check",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "max_records_per_run",
+          "label": "Max Records Per Run",
+          "fieldtype": "Int",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "last_run",
+          "label": "Last Run",
+          "fieldtype": "Datetime",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "last_status",
+          "label": "Last Status",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "last_ingested_count",
+          "label": "Last Ingested Count",
+          "fieldtype": "Int",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "last_error",
+          "label": "Last Error",
+          "fieldtype": "Small Text",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "last_response_sample",
+          "label": "Last Response Sample",
+          "fieldtype": "Code",
+          "options": "JSON",
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        }
+      ]
+    },
+    {
+      "name": "Inspection Form Item",
+      "path": "car_repair_management/car_repair_management/doctype/inspection_form_item/inspection_form_item.json",
+      "child": true,
+      "submittable": false,
+      "autoname": "",
+      "permissions": [],
+      "fields": [
+        {
+          "fieldname": "item_label",
+          "label": "Item Label",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "item_type",
+          "label": "Item Type",
+          "fieldtype": "Select",
+          "options": "Pass/Fail\nN-A\nRating\nNumeric\nText",
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "section_name",
+          "label": "Section Name",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "is_required",
+          "label": "Is Required",
+          "fieldtype": "Check",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "fail_triggers_severity",
+          "label": "Fail Triggers Severity",
+          "fieldtype": "Select",
+          "options": "\nLow\nMedium\nHigh\nCritical",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "numeric_min",
+          "label": "Numeric Min",
+          "fieldtype": "Float",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "numeric_max",
+          "label": "Numeric Max",
+          "fieldtype": "Float",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "photo_required",
+          "label": "Photo Required",
+          "fieldtype": "Check",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "signature_required",
+          "label": "Signature Required",
+          "fieldtype": "Check",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "description",
+          "label": "Description",
+          "fieldtype": "Small Text",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        }
+      ]
+    },
+    {
+      "name": "Inspection Form Template",
+      "path": "car_repair_management/car_repair_management/doctype/inspection_form_template/inspection_form_template.json",
+      "child": false,
+      "submittable": false,
+      "autoname": "naming_series:",
+      "permissions": [
+        {
+          "create": 1,
+          "delete": 1,
+          "read": 1,
+          "role": "System Manager",
+          "write": 1
+        },
+        {
+          "read": 1,
+          "role": "All"
+        }
+      ],
+      "fields": [
+        {
+          "fieldname": "naming_series",
+          "label": "Naming Series",
+          "fieldtype": "Select",
+          "options": "IFT-.YYYY.-.#####",
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "title",
+          "label": "Title",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "category",
+          "label": "Category",
+          "fieldtype": "Select",
+          "options": "\nPre-Trip\nPost-Trip\nSafety\nRegulatory\nCustom",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "status",
+          "label": "Status",
+          "fieldtype": "Select",
+          "options": "Draft\nActive\nArchived",
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "description",
+          "label": "Description",
+          "fieldtype": "Small Text",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "version",
+          "label": "Version",
+          "fieldtype": "Int",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "usage_count",
+          "label": "Usage Count",
+          "fieldtype": "Int",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "items",
+          "label": "Items",
+          "fieldtype": "Table",
+          "options": "Inspection Form Item",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        }
+      ]
+    },
+    {
+      "name": "Inspection Item Failure",
+      "path": "car_repair_management/car_repair_management/doctype/inspection_item_failure/inspection_item_failure.json",
+      "child": false,
+      "submittable": false,
+      "autoname": "naming_series:",
+      "permissions": [
+        {
+          "create": 1,
+          "delete": 1,
+          "read": 1,
+          "role": "System Manager",
+          "write": 1
+        },
+        {
+          "read": 1,
+          "role": "All"
+        }
+      ],
+      "fields": [
+        {
+          "fieldname": "naming_series",
+          "label": "Naming Series",
+          "fieldtype": "Select",
+          "options": "IF-.YYYY.-.#####",
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "item_name",
+          "label": "Item Name",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "vehicle",
+          "label": "Vehicle",
+          "fieldtype": "Link",
+          "options": "Vehicle",
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "inspection",
+          "label": "Inspection",
+          "fieldtype": "Link",
+          "options": "Vehicle Inspection",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "severity",
+          "label": "Severity",
+          "fieldtype": "Select",
+          "options": "Low\nMedium\nHigh\nCritical",
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "status",
+          "label": "Status",
+          "fieldtype": "Select",
+          "options": "Open\nConverted\nResolved\nIgnored",
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "failure_reason",
+          "label": "Failure Reason",
+          "fieldtype": "Small Text",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "resolution_type",
+          "label": "Resolution Type",
+          "fieldtype": "Select",
+          "options": "\nWork Order\nQuick Fix\nDeferred\nN/A",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "linked_work_order",
+          "label": "Linked Work Order",
+          "fieldtype": "Link",
+          "options": "Repair Order",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "assigned_to",
+          "label": "Assigned To",
+          "fieldtype": "Link",
+          "options": "User",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "reported_date",
+          "label": "Reported Date",
+          "fieldtype": "Date",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "resolved_date",
+          "label": "Resolved Date",
+          "fieldtype": "Date",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "is_recurring",
+          "label": "Is Recurring",
+          "fieldtype": "Check",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "evidence",
+          "label": "Evidence",
+          "fieldtype": "Attach Image",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "notes",
+          "label": "Notes",
+          "fieldtype": "Text Editor",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        }
+      ]
+    },
+    {
+      "name": "Inspection Schedule",
+      "path": "car_repair_management/car_repair_management/doctype/inspection_schedule/inspection_schedule.json",
+      "child": false,
+      "submittable": false,
+      "autoname": "naming_series:",
+      "permissions": [
+        {
+          "create": 1,
+          "delete": 1,
+          "read": 1,
+          "role": "System Manager",
+          "write": 1
+        },
+        {
+          "read": 1,
+          "role": "All"
+        }
+      ],
+      "fields": [
+        {
+          "fieldname": "naming_series",
+          "label": "Naming Series",
+          "fieldtype": "Select",
+          "options": "IS-.YYYY.-.#####",
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "title",
+          "label": "Title",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "vehicle",
+          "label": "Vehicle",
+          "fieldtype": "Link",
+          "options": "Vehicle",
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "form_template",
+          "label": "Form Template",
+          "fieldtype": "Link",
+          "options": "Inspection Form Template",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "assigned_to",
+          "label": "Assigned To",
+          "fieldtype": "Link",
+          "options": "Employee",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "status",
+          "label": "Status",
+          "fieldtype": "Select",
+          "options": "Active\nPaused\nCompleted\nCancelled",
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "frequency",
+          "label": "Frequency",
+          "fieldtype": "Select",
+          "options": "\nDaily\nWeekly\nBi-Weekly\nMonthly\nQuarterly\nSemi-Annually\nAnnually\nOne-Time",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "scheduled_date",
+          "label": "Scheduled Date",
+          "fieldtype": "Date",
+          "options": null,
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "next_due",
+          "label": "Next Due",
+          "fieldtype": "Date",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "last_completed",
+          "label": "Last Completed",
+          "fieldtype": "Date",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "last_inspection",
+          "label": "Last Inspection",
+          "fieldtype": "Link",
+          "options": "Vehicle Inspection",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "auto_create_inspection",
+          "label": "Auto Create Inspection",
+          "fieldtype": "Check",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "notify_before_days",
+          "label": "Notify Before Days",
+          "fieldtype": "Int",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "notes",
+          "label": "Notes",
+          "fieldtype": "Small Text",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        }
+      ]
+    },
+    {
+      "name": "Job Costing",
+      "path": "car_repair_management/car_repair_management/doctype/job_costing/job_costing.json",
+      "child": false,
+      "submittable": false,
+      "autoname": "format:JB-COST-{repair_order}-{YY}",
+      "permissions": [
+        {
+          "create": 1,
+          "delete": 1,
+          "read": 1,
+          "role": "System Manager",
+          "write": 1
+        },
+        {
+          "create": 1,
+          "delete": 1,
+          "email": 1,
+          "export": 1,
+          "print": 1,
+          "read": 1,
+          "report": 1,
+          "role": "Projects Manager",
+          "share": 1,
+          "write": 1
+        },
+        {
+          "create": 1,
+          "delete": 1,
+          "email": 1,
+          "export": 1,
+          "print": 1,
+          "read": 1,
+          "report": 1,
+          "role": "Maintenance Manager",
+          "share": 1,
+          "write": 1
+        },
+        {
+          "email": 1,
+          "export": 1,
+          "print": 1,
+          "read": 1,
+          "report": 1,
+          "role": "Maintenance User",
+          "share": 1
+        }
+      ],
+      "fields": [
+        {
+          "fieldname": "repair_order",
+          "label": "Repair Order",
+          "fieldtype": "Link",
+          "options": "Repair Order",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "project",
+          "label": "Project",
+          "fieldtype": "Link",
+          "options": "Project",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "vehicle",
+          "label": "Vehicle",
+          "fieldtype": "Link",
+          "options": "Vehicle",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "parts_cost",
+          "label": "Parts Cost",
+          "fieldtype": "Currency",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "labor_cost",
+          "label": "Labor Cost",
+          "fieldtype": "Currency",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "other_charges",
+          "label": "Other Charges",
+          "fieldtype": "Currency",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "total_job_cost",
+          "label": "Total Job Cost",
+          "fieldtype": "Currency",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "margin_snapshot",
+          "label": "Margin Snapshot",
+          "fieldtype": "Currency",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        }
+      ]
+    },
+    {
+      "name": "Repair Checklist",
+      "path": "car_repair_management/car_repair_management/doctype/repair_checklist/repair_checklist.json",
+      "child": false,
+      "submittable": false,
+      "autoname": "field:title",
+      "permissions": [
+        {
+          "create": 1,
+          "delete": 1,
+          "read": 1,
+          "role": "System Manager",
+          "write": 1
+        },
+        {
+          "create": 1,
+          "delete": 1,
+          "email": 1,
+          "export": 1,
+          "print": 1,
+          "read": 1,
+          "report": 1,
+          "role": "Maintenance Manager",
+          "share": 1,
+          "write": 1
+        },
+        {
+          "email": 1,
+          "export": 1,
+          "print": 1,
+          "read": 1,
+          "report": 1,
+          "role": "Maintenance User",
+          "share": 1
+        }
+      ],
+      "fields": [
+        {
+          "fieldname": "title",
+          "label": "Title",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": 1,
+          "unique": 1,
+          "read_only": null
+        },
+        {
+          "fieldname": "check_items",
+          "label": "Check Items",
+          "fieldtype": "Table",
+          "options": "Repair Checklist Item",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        }
+      ]
+    },
+    {
+      "name": "Repair Checklist Item",
+      "path": "car_repair_management/car_repair_management/doctype/repair_checklist_item/repair_checklist_item.json",
+      "child": true,
+      "submittable": false,
+      "autoname": "format:RPR-CHK-ITM-{check_item}-{#####}",
+      "permissions": [],
+      "fields": [
+        {
+          "fieldname": "check_item",
+          "label": "Check Item",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "type",
+          "label": "Type",
+          "fieldtype": "Select",
+          "options": "Pass/Fail\nScale\nNotes Required",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        }
+      ]
+    },
+    {
+      "name": "Repair Checklist Response",
+      "path": "car_repair_management/car_repair_management/doctype/repair_checklist_response/repair_checklist_response.json",
+      "child": true,
+      "submittable": false,
+      "autoname": "format:RPR-CHK-RSPN-{check_item}-{#####}",
+      "permissions": [],
+      "fields": [
+        {
+          "fieldname": "check_item",
+          "label": "Check Item",
+          "fieldtype": "Link",
+          "options": "Handover Checklist Item",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "type",
+          "label": "Type",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "value",
+          "label": "Value",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "notes",
+          "label": "Notes",
+          "fieldtype": "Small Text",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "passed",
+          "label": "Passed",
+          "fieldtype": "Check",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        }
+      ]
+    },
+    {
+      "name": "Repair Operation Line",
+      "path": "car_repair_management/car_repair_management/doctype/repair_operation_line/repair_operation_line.json",
+      "child": true,
+      "submittable": false,
+      "autoname": "format:RPR-OP-{task}-{#####}",
+      "permissions": [],
+      "fields": [
+        {
+          "fieldname": "task",
+          "label": "Task",
+          "fieldtype": "Link",
+          "options": "Task",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "operation_name",
+          "label": "Operation Name",
+          "fieldtype": "Link",
+          "options": "Operation",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "planned_minutes",
+          "label": "Planned Minutes",
+          "fieldtype": "Int",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "assigned_to",
+          "label": "Assigned To",
+          "fieldtype": "Link",
+          "options": "User",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "workstation",
+          "label": "Workstation",
+          "fieldtype": "Link",
+          "options": "Workstation",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "is_qc",
+          "label": "Is QC",
+          "fieldtype": "Check",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "status",
+          "label": "Status",
+          "fieldtype": "Select",
+          "options": "Open\nWorking\nPending Review\nCompleted\nRejected\nCancelled",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        }
+      ]
+    },
+    {
+      "name": "Repair Order",
+      "path": "car_repair_management/car_repair_management/doctype/repair_order/repair_order.json",
+      "child": false,
+      "submittable": true,
+      "autoname": "naming_series:",
+      "permissions": [
+        {
+          "amend": 1,
+          "cancel": 1,
+          "create": 1,
+          "delete": 1,
+          "read": 1,
+          "role": "System Manager",
+          "submit": 1,
+          "write": 1
+        },
+        {
+          "amend": 1,
+          "cancel": 1,
+          "create": 1,
+          "delete": 1,
+          "read": 1,
+          "role": "Projects Manager",
+          "submit": 1,
+          "write": 1
+        },
+        {
+          "create": 1,
+          "delete": 1,
+          "email": 1,
+          "export": 1,
+          "print": 1,
+          "read": 1,
+          "report": 1,
+          "role": "Maintenance Manager",
+          "share": 1,
+          "write": 1
+        },
+        {
+          "email": 1,
+          "export": 1,
+          "print": 1,
+          "read": 1,
+          "report": 1,
+          "role": "Maintenance User",
+          "share": 1
+        }
+      ],
+      "fields": [
+        {
+          "fieldname": "naming_series",
+          "label": "Naming Series",
+          "fieldtype": "Select",
+          "options": "RO-.YYYY.-.#####",
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "amended_from",
+          "label": "Amended From",
+          "fieldtype": "Link",
+          "options": "Repair Order",
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "status",
+          "label": "Status",
+          "fieldtype": "Select",
+          "options": "Draft\nScheduled\nIn Progress\nAwaiting Parts\nReady for Handover\nDelivered\nClosed\nOn Hold\nCancelled",
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "order_for",
+          "label": "Order For",
+          "fieldtype": "Select",
+          "options": "Customer\nCompany",
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "company",
+          "label": "Company",
+          "fieldtype": "Link",
+          "options": "Company",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "customer",
+          "label": "Customer",
+          "fieldtype": "Link",
+          "options": "Customer",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "vehicle",
+          "label": "Vehicle",
+          "fieldtype": "Link",
+          "options": "Vehicle",
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "intake_channel",
+          "label": "Intake Channel",
+          "fieldtype": "Select",
+          "options": "Walk-in\nWeb Intake\nPhone\nPartner",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "problem_summary",
+          "label": "Problem Summary",
+          "fieldtype": "Small Text",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "problem_details",
+          "label": "Problem Details",
+          "fieldtype": "Long Text",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "priority",
+          "label": "Priority",
+          "fieldtype": "Select",
+          "options": "Low\nNormal\nHigh\nUrgent",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "sla_response_by",
+          "label": "SLA Response By",
+          "fieldtype": "Datetime",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "sla_delivery_by",
+          "label": "SLA Delivery By",
+          "fieldtype": "Datetime",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "expected_delivery_datetime",
+          "label": "Expected Delivery",
+          "fieldtype": "Datetime",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "entry_datetime",
+          "label": "Entry Date/Time",
+          "fieldtype": "Datetime",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "sla_template",
+          "label": "SLA Template",
+          "fieldtype": "Link",
+          "options": "SLA Template",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "project",
+          "label": "Project",
+          "fieldtype": "Link",
+          "options": "Project",
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "service_template",
+          "label": "Service Template",
+          "fieldtype": "Link",
+          "options": "Service Template",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "quotation",
+          "label": "Quotation",
+          "fieldtype": "Link",
+          "options": "Quotation",
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "sales_order",
+          "label": "Sales Order",
+          "fieldtype": "Link",
+          "options": "Sales Order",
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "sales_invoice",
+          "label": "Sales Invoice",
+          "fieldtype": "Link",
+          "options": "Sales Invoice",
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "operations",
+          "label": "Operations",
+          "fieldtype": "Table",
+          "options": "Repair Operation Line",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "parts_plan",
+          "label": "Parts Plan",
+          "fieldtype": "Table",
+          "options": "Repair Parts Plan",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "handover_checklist",
+          "label": "Handover Checklist",
+          "fieldtype": "Table",
+          "options": "Repair Checklist Response",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "customer_updates",
+          "label": "Customer Updates",
+          "fieldtype": "Table",
+          "options": "Customer Update",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "parts_cost",
+          "label": "Parts Cost",
+          "fieldtype": "Currency",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "labor_cost",
+          "label": "Labor Cost",
+          "fieldtype": "Currency",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "other_charges",
+          "label": "Other Charges",
+          "fieldtype": "Currency",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "total_job_cost",
+          "label": "Total Job Cost",
+          "fieldtype": "Currency",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "quoted_amount",
+          "label": "Quoted Amount",
+          "fieldtype": "Currency",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "invoiced_amount",
+          "label": "Invoiced Amount",
+          "fieldtype": "Currency",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "gross_margin",
+          "label": "Gross Margin",
+          "fieldtype": "Currency",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "feedback_score",
+          "label": "Feedback Score",
+          "fieldtype": "Int",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "feedback_notes",
+          "label": "Feedback Notes",
+          "fieldtype": "Small Text",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        }
+      ]
+    },
+    {
+      "name": "Repair Parts Plan",
+      "path": "car_repair_management/car_repair_management/doctype/repair_parts_plan/repair_parts_plan.json",
+      "child": true,
+      "submittable": false,
+      "autoname": "format:RPR-PRT-{item_code}-{#####}",
+      "permissions": [],
+      "fields": [
+        {
+          "fieldname": "item_code",
+          "label": "Item Code",
+          "fieldtype": "Link",
+          "options": "Item",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "item_name",
+          "label": "Item Name",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "uom",
+          "label": "UOM",
+          "fieldtype": "Link",
+          "options": "UOM",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "qty_planned",
+          "label": "Qty Planned",
+          "fieldtype": "Float",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "is_billable",
+          "label": "Is Billable",
+          "fieldtype": "Check",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "is_foc",
+          "label": "Is FoC",
+          "fieldtype": "Check",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "notes",
+          "label": "Notes",
+          "fieldtype": "Small Text",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        }
+      ]
+    },
+    {
+      "name": "Service Template",
+      "path": "car_repair_management/car_repair_management/doctype/service_template/service_template.json",
+      "child": false,
+      "submittable": false,
+      "autoname": "field:template_name",
+      "permissions": [
+        {
+          "create": 1,
+          "delete": 1,
+          "read": 1,
+          "role": "System Manager",
+          "write": 1
+        },
+        {
+          "create": 1,
+          "delete": 1,
+          "email": 1,
+          "export": 1,
+          "print": 1,
+          "read": 1,
+          "report": 1,
+          "role": "Maintenance Manager",
+          "share": 1,
+          "write": 1
+        },
+        {
+          "email": 1,
+          "export": 1,
+          "print": 1,
+          "read": 1,
+          "report": 1,
+          "role": "Maintenance User",
+          "share": 1
+        }
+      ],
+      "fields": [
+        {
+          "fieldname": "template_name",
+          "label": "Template Name",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": 1,
+          "unique": 1,
+          "read_only": null
+        },
+        {
+          "fieldname": "default_operations",
+          "label": "Default Operations",
+          "fieldtype": "Table",
+          "options": "Service Template Operation",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "default_parts",
+          "label": "Default Parts",
+          "fieldtype": "Table",
+          "options": "Service Template Part",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "default_checklist",
+          "label": "Default Checklist",
+          "fieldtype": "Table",
+          "options": "Service Template Checklist Item",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        }
+      ]
+    },
+    {
+      "name": "Service Template Checklist Item",
+      "path": "car_repair_management/car_repair_management/doctype/service_template_checklist_item/service_template_checklist_item.json",
+      "child": true,
+      "submittable": false,
+      "autoname": "format:CHK-{check_item}-{#####}",
+      "permissions": [],
+      "fields": [
+        {
+          "fieldname": "check_item",
+          "label": "Check Item",
+          "fieldtype": "Link",
+          "options": "Handover Checklist Item",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "type",
+          "label": "Type",
+          "fieldtype": "Select",
+          "options": "Pass/Fail\nScale\nNotes Required",
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        }
+      ]
+    },
+    {
+      "name": "Service Template Operation",
+      "path": "car_repair_management/car_repair_management/doctype/service_template_operation/service_template_operation.json",
+      "child": true,
+      "submittable": false,
+      "autoname": "format:SERV-OP-{operation}-{#####}",
+      "permissions": [],
+      "fields": [
+        {
+          "fieldname": "operation_name",
+          "label": "Operation",
+          "fieldtype": "Link",
+          "options": "Operation",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "planned_minutes",
+          "label": "Planned Minutes",
+          "fieldtype": "Int",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "workstation",
+          "label": "Workstation",
+          "fieldtype": "Link",
+          "options": "Workstation",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "is_qc",
+          "label": "Is QC",
+          "fieldtype": "Check",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        }
+      ]
+    },
+    {
+      "name": "Service Template Part",
+      "path": "car_repair_management/car_repair_management/doctype/service_template_part/service_template_part.json",
+      "child": true,
+      "submittable": false,
+      "autoname": "format:SERV-PART-{item_code}-{#####}",
+      "permissions": [],
+      "fields": [
+        {
+          "fieldname": "item_code",
+          "label": "Item Code",
+          "fieldtype": "Link",
+          "options": "Item",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "item_name",
+          "label": "Item Name",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "uom",
+          "label": "UOM",
+          "fieldtype": "Link",
+          "options": "UOM",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "qty_planned",
+          "label": "Qty Planned",
+          "fieldtype": "Float",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "is_billable",
+          "label": "Is Billable",
+          "fieldtype": "Check",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "is_foc",
+          "label": "Is FoC",
+          "fieldtype": "Check",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "price_list",
+          "label": "Price List",
+          "fieldtype": "Link",
+          "options": "Price List",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "price_list_rate",
+          "label": "Price List Rate",
+          "fieldtype": "Currency",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "notes",
+          "label": "Notes",
+          "fieldtype": "Small Text",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        }
+      ]
+    },
+    {
+      "name": "SLA Template",
+      "path": "car_repair_management/car_repair_management/doctype/sla_template/sla_template.json",
+      "child": false,
+      "submittable": false,
+      "autoname": "field:template_name",
+      "permissions": [
+        {
+          "create": 1,
+          "delete": 1,
+          "read": 1,
+          "role": "System Manager",
+          "write": 1
+        },
+        {
+          "create": 1,
+          "delete": 1,
+          "email": 1,
+          "export": 1,
+          "print": 1,
+          "read": 1,
+          "report": 1,
+          "role": "Maintenance Manager",
+          "share": 1,
+          "write": 1
+        },
+        {
+          "email": 1,
+          "export": 1,
+          "print": 1,
+          "read": 1,
+          "report": 1,
+          "role": "Maintenance User",
+          "share": 1
+        }
+      ],
+      "fields": [
+        {
+          "fieldname": "template_name",
+          "label": "Template Name",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": 1,
+          "unique": 1,
+          "read_only": null
+        },
+        {
+          "fieldname": "enabled",
+          "label": "Enabled",
+          "fieldtype": "Check",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "description",
+          "label": "Description",
+          "fieldtype": "Small Text",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "priority",
+          "label": "Priority",
+          "fieldtype": "Select",
+          "options": "\nLow\nNormal\nHigh\nUrgent",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "intake_channel",
+          "label": "Intake Channel",
+          "fieldtype": "Select",
+          "options": "\nWalk-in\nWeb Intake\nPhone\nPartner",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "service_template",
+          "label": "Service Template",
+          "fieldtype": "Link",
+          "options": "Service Template",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "response_time_hours",
+          "label": "Response Time (Hours)",
+          "fieldtype": "Float",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "resolution_time_hours",
+          "label": "Resolution Time (Hours)",
+          "fieldtype": "Float",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "response_time_jinja",
+          "label": "Response Time (Jinja Expression)",
+          "fieldtype": "Code",
+          "options": "Jinja",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "resolution_time_jinja",
+          "label": "Resolution Time (Jinja Expression)",
+          "fieldtype": "Code",
+          "options": "Jinja",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "escalation_after_hours",
+          "label": "Escalate After (Hours)",
+          "fieldtype": "Float",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "escalate_to",
+          "label": "Escalate To",
+          "fieldtype": "Link",
+          "options": "User",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        }
+      ]
+    },
+    {
+      "name": "Vehicle Driver",
+      "path": "car_repair_management/car_repair_management/doctype/vehicle_driver/vehicle_driver.json",
+      "child": true,
+      "submittable": false,
+      "autoname": "",
+      "permissions": [],
+      "fields": [
+        {
+          "fieldname": "employee",
+          "label": "Employee",
+          "fieldtype": "Link",
+          "options": "Employee",
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "employee_name",
+          "label": "Employee Name",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "assigned_date",
+          "label": "Assigned Date",
+          "fieldtype": "Date",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "assigned_by",
+          "label": "Assigned By",
+          "fieldtype": "Link",
+          "options": "Employee",
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "status",
+          "label": "Status",
+          "fieldtype": "Select",
+          "options": "Active\nRemoval Requested\nRemoved",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "ended_date",
+          "label": "Ended Date",
+          "fieldtype": "Date",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "ended_by",
+          "label": "Ended By",
+          "fieldtype": "Link",
+          "options": "Employee",
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "removal_reason",
+          "label": "Removal Reason",
+          "fieldtype": "Small Text",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        }
+      ]
+    },
+    {
+      "name": "Vehicle Expense",
+      "path": "car_repair_management/car_repair_management/doctype/vehicle_expense/vehicle_expense.json",
+      "child": false,
+      "submittable": false,
+      "autoname": "naming_series:",
+      "permissions": [
+        {
+          "create": 1,
+          "delete": 1,
+          "email": 1,
+          "export": 1,
+          "print": 1,
+          "read": 1,
+          "report": 1,
+          "role": "System Manager",
+          "share": 1,
+          "write": 1
+        }
+      ],
+      "fields": [
+        {
+          "fieldname": "naming_series",
+          "label": "Naming Series",
+          "fieldtype": "Select",
+          "options": "VE-.YYYY.-.#####",
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "title",
+          "label": "Title",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "expense_date",
+          "label": "Expense Date",
+          "fieldtype": "Date",
+          "options": null,
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "category",
+          "label": "Category",
+          "fieldtype": "Select",
+          "options": "Fuel\nParts\nLabor\nExternal Service\nInsurance\nTaxes\nOther",
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "amount",
+          "label": "Amount",
+          "fieldtype": "Currency",
+          "options": null,
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "vehicle",
+          "label": "Vehicle",
+          "fieldtype": "Link",
+          "options": "Vehicle",
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "vendor",
+          "label": "Vendor",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "payment_method",
+          "label": "Payment Method",
+          "fieldtype": "Select",
+          "options": "\nCash\nBank Transfer\nCredit Card\nCheck\nOther",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "work_order",
+          "label": "Work Order",
+          "fieldtype": "Link",
+          "options": "Repair Order",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "quantity",
+          "label": "Quantity",
+          "fieldtype": "Float",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "unit_cost",
+          "label": "Unit Cost",
+          "fieldtype": "Currency",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "odometer_reading",
+          "label": "Odometer Reading",
+          "fieldtype": "Int",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "payment_status",
+          "label": "Payment Status",
+          "fieldtype": "Select",
+          "options": "Unpaid\nPaid\nPartially Paid",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "receipt_required",
+          "label": "Receipt Required",
+          "fieldtype": "Check",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "notes",
+          "label": "Notes",
+          "fieldtype": "Small Text",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "receipt_attachment",
+          "label": "Receipt Attachment",
+          "fieldtype": "Attach Image",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "amended_from",
+          "label": "Amended From",
+          "fieldtype": "Link",
+          "options": "Vehicle Expense",
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        }
+      ]
+    },
+    {
+      "name": "Vehicle Fault",
+      "path": "car_repair_management/car_repair_management/doctype/vehicle_fault/vehicle_fault.json",
+      "child": false,
+      "submittable": false,
+      "autoname": "naming_series:",
+      "permissions": [
+        {
+          "create": 1,
+          "delete": 1,
+          "read": 1,
+          "role": "System Manager",
+          "write": 1
+        },
+        {
+          "read": 1,
+          "role": "All"
+        }
+      ],
+      "fields": [
+        {
+          "fieldname": "naming_series",
+          "label": "Naming Series",
+          "fieldtype": "Select",
+          "options": "VF-.YYYY.-.#####",
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "title",
+          "label": "Title",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "vehicle",
+          "label": "Vehicle",
+          "fieldtype": "Link",
+          "options": "Vehicle",
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "fault_code",
+          "label": "Fault Code",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "detection_type",
+          "label": "Detection Type",
+          "fieldtype": "Select",
+          "options": "\nOBD Scan\nManual Inspection\nDriver Report\nSensor Alert\nOther",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "severity",
+          "label": "Severity",
+          "fieldtype": "Select",
+          "options": "Low\nMedium\nHigh\nCritical",
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "component_system",
+          "label": "Component System",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "confirmed",
+          "label": "Confirmed",
+          "fieldtype": "Select",
+          "options": "Unconfirmed\nConfirmed\nFalse Positive",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "status",
+          "label": "Status",
+          "fieldtype": "Select",
+          "options": "Open\nIn Progress\nResolved\nClosed",
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "reported_by",
+          "label": "Reported By",
+          "fieldtype": "Link",
+          "options": "User",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "reported_date",
+          "label": "Reported Date",
+          "fieldtype": "Date",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "resolved_date",
+          "label": "Resolved Date",
+          "fieldtype": "Date",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "description",
+          "label": "Description",
+          "fieldtype": "Text Editor",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "linked_work_order",
+          "label": "Linked Work Order",
+          "fieldtype": "Link",
+          "options": "Repair Order",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "linked_inspection",
+          "label": "Linked Inspection",
+          "fieldtype": "Link",
+          "options": "Vehicle Inspection",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "evidence",
+          "label": "Evidence",
+          "fieldtype": "Attach Image",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "notes",
+          "label": "Notes",
+          "fieldtype": "Small Text",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        }
+      ]
+    },
+    {
+      "name": "Vehicle Fuel Quota",
+      "path": "car_repair_management/car_repair_management/doctype/vehicle_fuel_quota/vehicle_fuel_quota.json",
+      "child": false,
+      "submittable": false,
+      "autoname": "format:FQ-{vehicle}-{quota_month}",
+      "permissions": [
+        {
+          "role": "System Manager",
+          "read": 1,
+          "write": 1,
+          "create": 1,
+          "delete": 1
+        },
+        {
+          "role": "Fleet Manager",
+          "read": 1,
+          "write": 1,
+          "create": 1
+        }
+      ],
+      "fields": [
+        {
+          "fieldname": "vehicle",
+          "label": "Vehicle",
+          "fieldtype": "Link",
+          "options": "Vehicle",
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "quota_month",
+          "label": "Quota Month",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "fuel_capacity_liters",
+          "label": "Fuel Capacity (Liters)",
+          "fieldtype": "Float",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "km_per_liter",
+          "label": "KM per Liter",
+          "fieldtype": "Float",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "quota_liters",
+          "label": "Monthly Quota (Liters)",
+          "fieldtype": "Float",
+          "options": null,
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "consumed_liters",
+          "label": "Consumed (Liters)",
+          "fieldtype": "Float",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "remaining_liters",
+          "label": "Remaining (Liters)",
+          "fieldtype": "Float",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "status",
+          "label": "Status",
+          "fieldtype": "Select",
+          "options": "Active\nExhausted\nClosed",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        }
+      ]
+    },
+    {
+      "name": "Vehicle Inspection",
+      "path": "car_repair_management/car_repair_management/doctype/vehicle_inspection/vehicle_inspection.json",
+      "child": false,
+      "submittable": false,
+      "autoname": "naming_series:",
+      "permissions": [
+        {
+          "create": 1,
+          "delete": 1,
+          "read": 1,
+          "role": "System Manager",
+          "write": 1
+        },
+        {
+          "read": 1,
+          "role": "All"
+        }
+      ],
+      "fields": [
+        {
+          "fieldname": "naming_series",
+          "label": "Naming Series",
+          "fieldtype": "Select",
+          "options": "VI-.YYYY.-.#####",
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "title",
+          "label": "Title",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "vehicle",
+          "label": "Vehicle",
+          "fieldtype": "Link",
+          "options": "Vehicle",
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "inspection_date",
+          "label": "Inspection Date",
+          "fieldtype": "Datetime",
+          "options": null,
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "inspection_type",
+          "label": "Inspection Type",
+          "fieldtype": "Select",
+          "options": "Pre-Trip\nPost-Trip\nPeriodic\nAd-Hoc\nRegulatory",
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "form_template",
+          "label": "Form Template",
+          "fieldtype": "Link",
+          "options": "Inspection Form Template",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "inspector",
+          "label": "Inspector",
+          "fieldtype": "Link",
+          "options": "Employee",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "result",
+          "label": "Result",
+          "fieldtype": "Select",
+          "options": "\nPass\nConditional\nFail",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "score",
+          "label": "Score",
+          "fieldtype": "Percent",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "status",
+          "label": "Status",
+          "fieldtype": "Select",
+          "options": "Draft\nIn Progress\nCompleted\nCancelled",
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "findings",
+          "label": "Findings",
+          "fieldtype": "Text Editor",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "notes",
+          "label": "Notes",
+          "fieldtype": "Small Text",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "follow_up_required",
+          "label": "Follow Up Required",
+          "fieldtype": "Check",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "follow_up_due_date",
+          "label": "Follow Up Due Date",
+          "fieldtype": "Date",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "follow_up_assigned_to",
+          "label": "Follow Up Assigned To",
+          "fieldtype": "Link",
+          "options": "User",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "linked_work_order",
+          "label": "Linked Work Order",
+          "fieldtype": "Link",
+          "options": "Repair Order",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "handover_checklist_item",
+          "label": "Handover Checklist Item",
+          "fieldtype": "Link",
+          "options": "Handover Checklist Item",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "failures_count",
+          "label": "Failures Count",
+          "fieldtype": "Int",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        }
+      ]
+    },
+    {
+      "name": "Vehicle Recall",
+      "path": "car_repair_management/car_repair_management/doctype/vehicle_recall/vehicle_recall.json",
+      "child": false,
+      "submittable": false,
+      "autoname": "naming_series:",
+      "permissions": [
+        {
+          "create": 1,
+          "delete": 1,
+          "read": 1,
+          "role": "System Manager",
+          "write": 1
+        },
+        {
+          "read": 1,
+          "role": "All"
+        }
+      ],
+      "fields": [
+        {
+          "fieldname": "naming_series",
+          "label": "Naming Series",
+          "fieldtype": "Select",
+          "options": "VR-.YYYY.-.#####",
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "title",
+          "label": "Title",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "manufacturer",
+          "label": "Manufacturer",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "affected_models",
+          "label": "Affected Models",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "affected_years",
+          "label": "Affected Years",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "issue_type",
+          "label": "Issue Type",
+          "fieldtype": "Select",
+          "options": "\nSafety\nEmissions\nMechanical\nElectrical\nSoftware\nOther",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "status",
+          "label": "Status",
+          "fieldtype": "Select",
+          "options": "Active\nIn Progress\nCompleted\nCancelled",
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "priority",
+          "label": "Priority",
+          "fieldtype": "Select",
+          "options": "Low\nMedium\nHigh\nCritical",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "recall_start_date",
+          "label": "Recall Start Date",
+          "fieldtype": "Date",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "deadline",
+          "label": "Deadline",
+          "fieldtype": "Date",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "external_reference",
+          "label": "External Reference",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "description",
+          "label": "Description",
+          "fieldtype": "Text Editor",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "vehicles_affected",
+          "label": "Vehicles Affected",
+          "fieldtype": "Int",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "vehicles_completed",
+          "label": "Vehicles Completed",
+          "fieldtype": "Int",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "compliance_pct",
+          "label": "Compliance %",
+          "fieldtype": "Percent",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "notes",
+          "label": "Notes",
+          "fieldtype": "Small Text",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        }
+      ]
+    },
+    {
+      "name": "Vehicle Refueling Record",
+      "path": "car_repair_management/car_repair_management/doctype/vehicle_refueling_record/vehicle_refueling_record.json",
+      "child": false,
+      "submittable": false,
+      "autoname": "hash",
+      "permissions": [
+        {
+          "role": "System Manager",
+          "read": 1,
+          "write": 1,
+          "create": 1,
+          "delete": 1
+        },
+        {
+          "role": "Fleet Manager",
+          "read": 1,
+          "write": 1,
+          "create": 1
+        }
+      ],
+      "fields": [
+        {
+          "fieldname": "vehicle",
+          "label": "Vehicle",
+          "fieldtype": "Link",
+          "options": "Vehicle",
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "refuel_date",
+          "label": "Refuel Date",
+          "fieldtype": "Date",
+          "options": null,
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "driver",
+          "label": "Driver",
+          "fieldtype": "Link",
+          "options": "Employee",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "odometer_reading",
+          "label": "Odometer Reading",
+          "fieldtype": "Float",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "liters",
+          "label": "Liters",
+          "fieldtype": "Float",
+          "options": null,
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "cost_per_liter",
+          "label": "Cost per Liter",
+          "fieldtype": "Currency",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "total_cost",
+          "label": "Total Cost",
+          "fieldtype": "Currency",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "fuel_station",
+          "label": "Fuel Station",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "quota_link",
+          "label": "Fuel Quota",
+          "fieldtype": "Link",
+          "options": "Vehicle Fuel Quota",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "consumed_before",
+          "label": "Consumed Before",
+          "fieldtype": "Float",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "consumed_after",
+          "label": "Consumed After",
+          "fieldtype": "Float",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "is_over_quota",
+          "label": "Is Over Quota",
+          "fieldtype": "Check",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "over_quota_liters",
+          "label": "Over Quota Liters",
+          "fieldtype": "Float",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "approval_status",
+          "label": "Approval Status",
+          "fieldtype": "Select",
+          "options": "Approved\nPending Dept Head Approval\nPending Depot Manager Approval\nDept Head Approved\nRejected",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "dept_head_approved_by",
+          "label": "Dept Head Approved By",
+          "fieldtype": "Link",
+          "options": "Employee",
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "dept_head_approved_on",
+          "label": "Dept Head Approved On",
+          "fieldtype": "Datetime",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "depot_manager_approved_by",
+          "label": "Depot Manager Approved By",
+          "fieldtype": "Link",
+          "options": "Employee",
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "depot_manager_approved_on",
+          "label": "Depot Manager Approved On",
+          "fieldtype": "Datetime",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "rejection_reason",
+          "label": "Rejection Reason",
+          "fieldtype": "Small Text",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "notes",
+          "label": "Notes",
+          "fieldtype": "Small Text",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        }
+      ]
+    },
+    {
+      "name": "Workshop Report Schedule",
+      "path": "car_repair_management/car_repair_management/doctype/workshop_report_schedule/workshop_report_schedule.json",
+      "child": false,
+      "submittable": false,
+      "autoname": "naming_series:",
+      "permissions": [
+        {
+          "create": 1,
+          "delete": 1,
+          "email": 1,
+          "export": 1,
+          "print": 1,
+          "read": 1,
+          "report": 1,
+          "role": "System Manager",
+          "share": 1,
+          "write": 1
+        },
+        {
+          "read": 1,
+          "role": "All"
+        }
+      ],
+      "fields": [
+        {
+          "fieldname": "naming_series",
+          "label": "Naming Series",
+          "fieldtype": "Select",
+          "options": "WRSC-.YYYY.-.#####",
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "title",
+          "label": "Title",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "report_id",
+          "label": "Report ID",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "report_title",
+          "label": "Report Title",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "frequency",
+          "label": "Frequency",
+          "fieldtype": "Select",
+          "options": "Daily\nWeekly\nMonthly",
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "delivery_method",
+          "label": "Delivery Method",
+          "fieldtype": "Select",
+          "options": "Email\nIn-App\nDownload Link",
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "export_format",
+          "label": "Export Format",
+          "fieldtype": "Select",
+          "options": "CSV\nPDF\nExcel",
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "enabled",
+          "label": "Enabled",
+          "fieldtype": "Check",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "recipients",
+          "label": "Recipients",
+          "fieldtype": "Small Text",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "filters_json",
+          "label": "Filters JSON",
+          "fieldtype": "Small Text",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "date_from",
+          "label": "Date From",
+          "fieldtype": "Date",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "date_to",
+          "label": "Date To",
+          "fieldtype": "Date",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "delivery_time",
+          "label": "Delivery Time",
+          "fieldtype": "Time",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "next_run",
+          "label": "Next Run",
+          "fieldtype": "Datetime",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "last_sent",
+          "label": "Last Sent",
+          "fieldtype": "Datetime",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "last_status",
+          "label": "Last Status",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        }
+      ]
+    },
+    {
+      "name": "Workshop Saved Report",
+      "path": "car_repair_management/car_repair_management/doctype/workshop_saved_report/workshop_saved_report.json",
+      "child": false,
+      "submittable": false,
+      "autoname": "naming_series:",
+      "permissions": [
+        {
+          "create": 1,
+          "delete": 1,
+          "email": 1,
+          "export": 1,
+          "print": 1,
+          "read": 1,
+          "report": 1,
+          "role": "System Manager",
+          "share": 1,
+          "write": 1
+        },
+        {
+          "read": 1,
+          "role": "All"
+        }
+      ],
+      "fields": [
+        {
+          "fieldname": "naming_series",
+          "label": "Naming Series",
+          "fieldtype": "Select",
+          "options": "WSR-.YYYY.-.#####",
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "title",
+          "label": "Title",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "report_id",
+          "label": "Report ID",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "report_title",
+          "label": "Report Title",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "category",
+          "label": "Category",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "report_type",
+          "label": "Report Type",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "filters_json",
+          "label": "Filters JSON",
+          "fieldtype": "Small Text",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "date_from",
+          "label": "Date From",
+          "fieldtype": "Date",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "date_to",
+          "label": "Date To",
+          "fieldtype": "Date",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "shared_with",
+          "label": "Shared With",
+          "fieldtype": "Small Text",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "last_run",
+          "label": "Last Run",
+          "fieldtype": "Datetime",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "description",
+          "label": "Description",
+          "fieldtype": "Small Text",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        }
+      ]
+    }
+  ],
+  "api_modules": [
+    {
+      "path": "car_repair_management/api/__init__.py",
+      "methods": []
+    },
+    {
+      "path": "car_repair_management/api/activity.py",
+      "methods": [
+        {
+          "name": "get_document_activity",
+          "signature": "doctype, name, limit=50",
+          "line": 6,
+          "whitelist": {}
+        }
+      ]
+    },
+    {
+      "path": "car_repair_management/api/aging_analysis.py",
+      "methods": [
+        {
+          "name": "get_aging_analysis",
+          "signature": "vehicles=None, department=None",
+          "line": 20,
+          "whitelist": {}
+        }
+      ]
+    },
+    {
+      "path": "car_repair_management/api/customer.py",
+      "methods": [
+        {
+          "name": "get_customers",
+          "signature": "search=None, customer_group=None, customer_type=None, territory=None, status=None, limit_start=0, limit_page_length=20",
+          "line": 6,
+          "whitelist": {}
+        },
+        {
+          "name": "get_customer_detail",
+          "signature": "name",
+          "line": 90,
+          "whitelist": {}
+        }
+      ]
+    },
+    {
+      "path": "car_repair_management/api/employee.py",
+      "methods": [
+        {
+          "name": "get_employees",
+          "signature": "search=None, department=None, designation=None, status=None, supervisor=None, limit_start=0, limit_page_length=20",
+          "line": 6,
+          "whitelist": {}
+        },
+        {
+          "name": "get_employee_detail",
+          "signature": "name",
+          "line": 109,
+          "whitelist": {}
+        }
+      ]
+    },
+    {
+      "path": "car_repair_management/api/expense.py",
+      "methods": [
+        {
+          "name": "get_expenses",
+          "signature": "date_from=None, date_to=None, vehicle=None, category=None, vendor=None, work_order=None, payment_status=None, has_receipt=None, search=None, limit_start=0, limit_page_length=20",
+          "line": 7,
+          "whitelist": {}
+        },
+        {
+          "name": "get_expense_detail",
+          "signature": "name",
+          "line": 93,
+          "whitelist": {}
+        },
+        {
+          "name": "create_expense",
+          "signature": "**kwargs",
+          "line": 112,
+          "whitelist": {}
+        },
+        {
+          "name": "update_expense",
+          "signature": "name, **kwargs",
+          "line": 120,
+          "whitelist": {}
+        }
+      ]
+    },
+    {
+      "path": "car_repair_management/api/expense_history.py",
+      "methods": [
+        {
+          "name": "get_expense_history",
+          "signature": "date_from=None, date_to=None, vehicles=None, category=None",
+          "line": 8,
+          "whitelist": {}
+        }
+      ]
+    },
+    {
+      "path": "car_repair_management/api/fuel.py",
+      "methods": [
+        {
+          "name": "get_vehicle_quota_status",
+          "signature": "vehicle, month=None",
+          "line": 6,
+          "whitelist": {}
+        },
+        {
+          "name": "get_refueling_records",
+          "signature": "vehicle=None, month=None, status=None, search=None, limit_start=0, limit_page_length=20",
+          "line": 60,
+          "whitelist": {}
+        },
+        {
+          "name": "get_refueling_detail",
+          "signature": "name",
+          "line": 102,
+          "whitelist": {}
+        },
+        {
+          "name": "create_refueling_record",
+          "signature": "vehicle, liters, refuel_date=None, odometer_reading=None, cost_per_liter=None, fuel_station=None, notes=None",
+          "line": 129,
+          "whitelist": {}
+        },
+        {
+          "name": "approve_refueling",
+          "signature": "name, role",
+          "line": 187,
+          "whitelist": {}
+        },
+        {
+          "name": "reject_refueling",
+          "signature": "name, reason",
+          "line": 222,
+          "whitelist": {}
+        },
+        {
+          "name": "get_fuel_quotas",
+          "signature": "vehicle=None, month=None, status=None, search=None, limit_start=0, limit_page_length=20",
+          "line": 233,
+          "whitelist": {}
+        },
+        {
+          "name": "update_fuel_quota",
+          "signature": "name, quota_liters=None, status=None",
+          "line": 270,
+          "whitelist": {}
+        }
+      ]
+    },
+    {
+      "path": "car_repair_management/api/hardware.py",
+      "methods": [
+        {
+          "name": "vehicle_hardware",
+          "signature": "vehicle, action='read', imei=None, configuration=None, enabled=1",
+          "line": 132,
+          "whitelist": {
+            "methods": [
+              "POST"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "path": "car_repair_management/api/health.py",
+      "methods": [
+        {
+          "name": "audit_site",
+          "signature": "repair=False",
+          "line": 133,
+          "whitelist": {}
+        }
+      ]
+    },
+    {
+      "path": "car_repair_management/api/inspection.py",
+      "methods": [
+        {
+          "name": "get_inspection_history",
+          "signature": "date_from=None, date_to=None, vehicles=None, inspector=None, inspection_type=None, result=None, form_template=None, has_failures=None, search=None, limit_start=0, limit_page_length=20",
+          "line": 7,
+          "whitelist": {}
+        },
+        {
+          "name": "get_inspection_detail",
+          "signature": "name",
+          "line": 89,
+          "whitelist": {}
+        },
+        {
+          "name": "update_inspection",
+          "signature": "name, updates",
+          "line": 118,
+          "whitelist": {}
+        },
+        {
+          "name": "get_item_failures",
+          "signature": "date_from=None, date_to=None, vehicle=None, component=None, severity=None, status=None, form_template=None, is_recurring=None, search=None, limit_start=0, limit_page_length=20",
+          "line": 158,
+          "whitelist": {}
+        },
+        {
+          "name": "get_failure_detail",
+          "signature": "name",
+          "line": 242,
+          "whitelist": {}
+        },
+        {
+          "name": "get_schedules",
+          "signature": "date_from=None, date_to=None, vehicle=None, form_template=None, inspector=None, status=None, frequency=None, search=None, limit_start=0, limit_page_length=20",
+          "line": 275,
+          "whitelist": {}
+        },
+        {
+          "name": "get_schedule_detail",
+          "signature": "name",
+          "line": 327,
+          "whitelist": {}
+        },
+        {
+          "name": "get_form_templates",
+          "signature": "search=None, category=None, status=None, limit_start=0, limit_page_length=20",
+          "line": 355,
+          "whitelist": {}
+        },
+        {
+          "name": "get_form_template_detail",
+          "signature": "name",
+          "line": 396,
+          "whitelist": {}
+        },
+        {
+          "name": "create_schedule",
+          "signature": "data",
+          "line": 403,
+          "whitelist": {}
+        },
+        {
+          "name": "update_schedule",
+          "signature": "name, updates",
+          "line": 428,
+          "whitelist": {}
+        },
+        {
+          "name": "generate_inspection_now",
+          "signature": "schedule_name",
+          "line": 455,
+          "whitelist": {}
+        },
+        {
+          "name": "cancel_schedule",
+          "signature": "name",
+          "line": 492,
+          "whitelist": {}
+        },
+        {
+          "name": "update_failure",
+          "signature": "name, updates",
+          "line": 502,
+          "whitelist": {}
+        },
+        {
+          "name": "create_work_order_from_failure",
+          "signature": "name",
+          "line": 531,
+          "whitelist": {}
+        }
+      ]
+    },
+    {
+      "path": "car_repair_management/api/invoice.py",
+      "methods": [
+        {
+          "name": "get_invoices",
+          "signature": "date_from=None, date_to=None, invoice_type=None, status=None, customer=None, supplier=None, work_order_linked=None, amount_min=None, amount_max=None, search=None, limit_start=0, limit_page_length=20",
+          "line": 6,
+          "whitelist": {}
+        },
+        {
+          "name": "get_invoice_detail",
+          "signature": "name, invoice_type='Sales'",
+          "line": 141,
+          "whitelist": {}
+        }
+      ]
+    },
+    {
+      "path": "car_repair_management/api/issue.py",
+      "methods": [
+        {
+          "name": "get_issues",
+          "signature": "date_from=None, date_to=None, vehicle=None, source=None, category=None, severity=None, status=None, assigned_to=None, search=None, limit_start=0, limit_page_length=20",
+          "line": 7,
+          "whitelist": {}
+        },
+        {
+          "name": "get_issue_detail",
+          "signature": "name",
+          "line": 102,
+          "whitelist": {}
+        },
+        {
+          "name": "get_faults",
+          "signature": "date_from=None, date_to=None, vehicle=None, detection_type=None, fault_code=None, component_system=None, confirmed=None, severity=None, status=None, search=None, limit_start=0, limit_page_length=20",
+          "line": 154,
+          "whitelist": {}
+        },
+        {
+          "name": "get_fault_detail",
+          "signature": "name",
+          "line": 213,
+          "whitelist": {}
+        },
+        {
+          "name": "convert_issue_to_work_order",
+          "signature": "issue_name, order_for='Company', customer=None, company=None",
+          "line": 246,
+          "whitelist": {}
+        },
+        {
+          "name": "mark_issue_duplicate",
+          "signature": "issue_name, duplicate_of",
+          "line": 302,
+          "whitelist": {}
+        },
+        {
+          "name": "close_issue_with_reason",
+          "signature": "issue_name, reason",
+          "line": 330,
+          "whitelist": {}
+        },
+        {
+          "name": "get_recalls",
+          "signature": "manufacturer=None, model=None, year_from=None, year_to=None, status=None, priority=None, search=None, limit_start=0, limit_page_length=20",
+          "line": 351,
+          "whitelist": {}
+        },
+        {
+          "name": "get_recall_detail",
+          "signature": "name",
+          "line": 395,
+          "whitelist": {}
+        },
+        {
+          "name": "search_vehicles",
+          "signature": "txt=None, limit_page_length=20",
+          "line": 451,
+          "whitelist": {}
+        },
+        {
+          "name": "search_link_options",
+          "signature": "doctype, txt=None, limit_page_length=20",
+          "line": 475,
+          "whitelist": {}
+        },
+        {
+          "name": "create_issue",
+          "signature": "subject, vehicle, severity=None, category=None, source=None, description=None, assigned_to=None",
+          "line": 495,
+          "whitelist": {}
+        },
+        {
+          "name": "approve_issue",
+          "signature": "issue_name",
+          "line": 541,
+          "whitelist": {}
+        },
+        {
+          "name": "reject_issue",
+          "signature": "issue_name, reason=None",
+          "line": 576,
+          "whitelist": {}
+        }
+      ]
+    },
+    {
+      "path": "car_repair_management/api/meter_history.py",
+      "methods": [
+        {
+          "name": "get_meter_history",
+          "signature": "date_from=None, date_to=None, vehicles=None, source=None",
+          "line": 9,
+          "whitelist": {}
+        }
+      ]
+    },
+    {
+      "path": "car_repair_management/api/notification.py",
+      "methods": [
+        {
+          "name": "get_notifications",
+          "signature": "limit=20",
+          "line": 5,
+          "whitelist": {}
+        },
+        {
+          "name": "mark_as_read",
+          "signature": "name=None",
+          "line": 22,
+          "whitelist": {}
+        }
+      ]
+    },
+    {
+      "path": "car_repair_management/api/parts.py",
+      "methods": [
+        {
+          "name": "get_parts",
+          "signature": "search=None, item_group=None, stock_status=None, is_stock_item=None, uom=None, limit_start=0, limit_page_length=20",
+          "line": 6,
+          "whitelist": {}
+        },
+        {
+          "name": "get_part_detail",
+          "signature": "name",
+          "line": 116,
+          "whitelist": {}
+        },
+        {
+          "name": "create_part",
+          "signature": "**kwargs",
+          "line": 163,
+          "whitelist": {}
+        }
+      ]
+    },
+    {
+      "path": "car_repair_management/api/replacement_analysis.py",
+      "methods": [
+        {
+          "name": "get_replacement_analysis",
+          "signature": "vehicles=None, department=None",
+          "line": 13,
+          "whitelist": {}
+        },
+        {
+          "name": "run_financial_simulation",
+          "signature": "vehicle, resale_value=0, acquisition_cost=0, maintenance_reduction_pct=0, downtime_reduction_pct=0",
+          "line": 126,
+          "whitelist": {}
+        }
+      ]
+    },
+    {
+      "path": "car_repair_management/api/reports.py",
+      "methods": [
+        {
+          "name": "get_reports_home",
+          "signature": "",
+          "line": 48,
+          "whitelist": {}
+        },
+        {
+          "name": "get_reports_library",
+          "signature": "search=None, category=None, report_type=None, limit_start=0, limit_page_length=50",
+          "line": 157,
+          "whitelist": {}
+        },
+        {
+          "name": "get_report_data",
+          "signature": "report_id, date_from=None, date_to=None, filters=None, limit_start=0, limit_page_length=50",
+          "line": 175,
+          "whitelist": {}
+        },
+        {
+          "name": "get_saved_reports",
+          "signature": "search=None, limit_start=0, limit_page_length=20",
+          "line": 207,
+          "whitelist": {}
+        },
+        {
+          "name": "save_report",
+          "signature": "title, report_id, filters_json=None, date_from=None, date_to=None, description=None, shared_with=None",
+          "line": 241,
+          "whitelist": {}
+        },
+        {
+          "name": "delete_saved_report",
+          "signature": "name",
+          "line": 266,
+          "whitelist": {}
+        },
+        {
+          "name": "duplicate_saved_report",
+          "signature": "name",
+          "line": 276,
+          "whitelist": {}
+        },
+        {
+          "name": "get_scheduled_reports",
+          "signature": "search=None, limit_start=0, limit_page_length=20",
+          "line": 296,
+          "whitelist": {}
+        },
+        {
+          "name": "create_report_schedule",
+          "signature": "title, report_id, frequency, delivery_method='Email', export_format='CSV', recipients=None, filters_json=None, date_from=None, date_to=None, delivery_time=None",
+          "line": 317,
+          "whitelist": {}
+        },
+        {
+          "name": "toggle_report_schedule",
+          "signature": "name, enabled",
+          "line": 345,
+          "whitelist": {}
+        },
+        {
+          "name": "delete_report_schedule",
+          "signature": "name",
+          "line": 356,
+          "whitelist": {}
+        },
+        {
+          "name": "run_report_now",
+          "signature": "name",
+          "line": 363,
+          "whitelist": {}
+        },
+        {
+          "name": "get_pinned_reports",
+          "signature": "",
+          "line": 452,
+          "whitelist": {}
+        },
+        {
+          "name": "toggle_pin_report",
+          "signature": "report_id",
+          "line": 466,
+          "whitelist": {}
+        }
+      ]
+    },
+    {
+      "path": "car_repair_management/api/settings.py",
+      "methods": [
+        {
+          "name": "get_settings_home",
+          "signature": "",
+          "line": 24,
+          "whitelist": {}
+        },
+        {
+          "name": "get_settings_category",
+          "signature": "category",
+          "line": 78,
+          "whitelist": {}
+        },
+        {
+          "name": "update_setting",
+          "signature": "category, key, value",
+          "line": 107,
+          "whitelist": {}
+        },
+        {
+          "name": "reset_setting",
+          "signature": "category, key",
+          "line": 159,
+          "whitelist": {}
+        },
+        {
+          "name": "get_audit_log",
+          "signature": "doctype=None, name=None, limit=20",
+          "line": 179,
+          "whitelist": {}
+        },
+        {
+          "name": "get_system_health",
+          "signature": "",
+          "line": 197,
+          "whitelist": {}
+        },
+        {
+          "name": "seed_demo",
+          "signature": "",
+          "line": 555,
+          "whitelist": {}
+        },
+        {
+          "name": "clear_demo",
+          "signature": "",
+          "line": 562,
+          "whitelist": {}
+        },
+        {
+          "name": "demo_status",
+          "signature": "",
+          "line": 569,
+          "whitelist": {}
+        }
+      ]
+    },
+    {
+      "path": "car_repair_management/api/setup.py",
+      "methods": []
+    },
+    {
+      "path": "car_repair_management/api/setup_fuel_fields.py",
+      "methods": [
+        {
+          "name": "setup_fuel_custom_fields",
+          "signature": "",
+          "line": 5,
+          "whitelist": {}
+        }
+      ]
+    },
+    {
+      "path": "car_repair_management/api/setup_issue_fields.py",
+      "methods": [
+        {
+          "name": "setup_issue_custom_fields",
+          "signature": "",
+          "line": 5,
+          "whitelist": {}
+        }
+      ]
+    },
+    {
+      "path": "car_repair_management/api/telemetry.py",
+      "methods": [
+        {
+          "name": "telemetry",
+          "signature": "action='create', payload=None, batch_id=None, vehicle=None, imei=None, date_from=None, date_to=None, limit_start=0, limit_page_length=20",
+          "line": 32,
+          "whitelist": {
+            "methods": [
+              "POST",
+              "GET"
+            ]
+          }
+        },
+        {
+          "name": "hardware_test_configuration",
+          "signature": "action='list', name=None, data=None",
+          "line": 434,
+          "whitelist": {
+            "methods": [
+              "POST",
+              "GET"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "path": "car_repair_management/api/vehicle.py",
+      "methods": [
+        {
+          "name": "get_vehicle_dashboard",
+          "signature": "vehicle_name",
+          "line": 10,
+          "whitelist": {}
+        },
+        {
+          "name": "get_vehicle_specs",
+          "signature": "vehicle_name",
+          "line": 371,
+          "whitelist": {}
+        },
+        {
+          "name": "get_vehicle_financial",
+          "signature": "vehicle_name",
+          "line": 401,
+          "whitelist": {}
+        },
+        {
+          "name": "get_vehicle_work_orders",
+          "signature": "vehicle_name, limit=20, offset=0",
+          "line": 437,
+          "whitelist": {}
+        },
+        {
+          "name": "scrap_vehicle",
+          "signature": "vehicle_name",
+          "line": 460,
+          "whitelist": {}
+        },
+        {
+          "name": "delete_vehicle",
+          "signature": "vehicle_name",
+          "line": 469,
+          "whitelist": {}
+        },
+        {
+          "name": "get_vehicle_specs_full",
+          "signature": "vehicle_name",
+          "line": 485,
+          "whitelist": {}
+        },
+        {
+          "name": "get_vehicle_financials_full",
+          "signature": "vehicle_name",
+          "line": 549,
+          "whitelist": {}
+        },
+        {
+          "name": "get_vehicle_sensor_data",
+          "signature": "vehicle_name, timeframe='30d'",
+          "line": 676,
+          "whitelist": {}
+        },
+        {
+          "name": "get_vehicle_service_history",
+          "signature": "vehicle_name",
+          "line": 895,
+          "whitelist": {}
+        },
+        {
+          "name": "get_vehicle_inspection_history",
+          "signature": "vehicle_name",
+          "line": 952,
+          "whitelist": {}
+        },
+        {
+          "name": "get_vehicle_work_orders_full",
+          "signature": "vehicle_name, status_filter=None, limit=20, offset=0",
+          "line": 1022,
+          "whitelist": {}
+        },
+        {
+          "name": "get_vehicle_reminders_full",
+          "signature": "vehicle_name",
+          "line": 1080,
+          "whitelist": {}
+        },
+        {
+          "name": "create_vehicle_reminder",
+          "signature": "vehicle_name, remind_at, description, reminder_type='General'",
+          "line": 1150,
+          "whitelist": {}
+        },
+        {
+          "name": "dismiss_vehicle_reminder",
+          "signature": "reminder_name",
+          "line": 1166,
+          "whitelist": {}
+        },
+        {
+          "name": "snooze_vehicle_reminder",
+          "signature": "reminder_name, days=7",
+          "line": 1176,
+          "whitelist": {}
+        },
+        {
+          "name": "get_vehicle_issues_full",
+          "signature": "vehicle_name",
+          "line": 1192,
+          "whitelist": {}
+        },
+        {
+          "name": "get_vehicle_attachments",
+          "signature": "vehicle_name",
+          "line": 1245,
+          "whitelist": {}
+        },
+        {
+          "name": "upload_vehicle_attachment",
+          "signature": "vehicle_name, file_url, category=None",
+          "line": 1329,
+          "whitelist": {}
+        },
+        {
+          "name": "move_vehicle_attachment",
+          "signature": "file_name, vehicle_name, target_category",
+          "line": 1351,
+          "whitelist": {}
+        },
+        {
+          "name": "set_custodian",
+          "signature": "vehicle_name, employee",
+          "line": 1448,
+          "whitelist": {}
+        },
+        {
+          "name": "add_driver",
+          "signature": "vehicle_name, employee",
+          "line": 1462,
+          "whitelist": {}
+        },
+        {
+          "name": "remove_driver",
+          "signature": "vehicle_name, driver_row_name",
+          "line": 1496,
+          "whitelist": {}
+        },
+        {
+          "name": "request_driver_removal",
+          "signature": "vehicle_name, driver_row_name",
+          "line": 1521,
+          "whitelist": {}
+        },
+        {
+          "name": "get_vehicle_assignments_data",
+          "signature": "vehicle_name",
+          "line": 1546,
+          "whitelist": {}
+        },
+        {
+          "name": "get_vehicle_driver_history",
+          "signature": "vehicle_name",
+          "line": 1553,
+          "whitelist": {}
+        }
+      ]
+    },
+    {
+      "path": "car_repair_management/api/vehicle_assignments.py",
+      "methods": [
+        {
+          "name": "get_vehicle_assignments",
+          "signature": "range_start, range_end",
+          "line": 6,
+          "whitelist": {}
+        }
+      ]
+    },
+    {
+      "path": "car_repair_management/car_repair_management/doctype/repair_order/repair_order.py",
+      "methods": [
+        {
+          "name": "make_quotation_from_repair_order",
+          "signature": "name: str",
+          "line": 153,
+          "whitelist": {}
+        },
+        {
+          "name": "make_material_request_from_repair_order",
+          "signature": "name: str",
+          "line": 190,
+          "whitelist": {}
+        },
+        {
+          "name": "apply_service_template",
+          "signature": "name: str, template: str",
+          "line": 251,
+          "whitelist": {}
+        },
+        {
+          "name": "make_sales_order_from_quotation",
+          "signature": "quotation_name: str",
+          "line": 263,
+          "whitelist": {}
+        },
+        {
+          "name": "make_sales_invoice_from_sales_order",
+          "signature": "sales_order_name: str",
+          "line": 288,
+          "whitelist": {}
+        },
+        {
+          "name": "set_status",
+          "signature": "name: str, status: str",
+          "line": 545,
+          "whitelist": {}
+        },
+        {
+          "name": "start_work",
+          "signature": "name: str",
+          "line": 560,
+          "whitelist": {}
+        },
+        {
+          "name": "get_repair_order_detail",
+          "signature": "name: str",
+          "line": 584,
+          "whitelist": {}
+        },
+        {
+          "name": "get_repair_order_timeline",
+          "signature": "name: str",
+          "line": 623,
+          "whitelist": {}
+        },
+        {
+          "name": "get_repair_order_attachments",
+          "signature": "name: str",
+          "line": 711,
+          "whitelist": {}
+        },
+        {
+          "name": "upload_repair_order_attachment",
+          "signature": "name: str, file_url: str, category: str='other'",
+          "line": 765,
+          "whitelist": {}
+        },
+        {
+          "name": "add_repair_order_comment",
+          "signature": "name: str, content: str",
+          "line": 789,
+          "whitelist": {}
+        },
+        {
+          "name": "get_service_template_data",
+          "signature": "template_name: str",
+          "line": 809,
+          "whitelist": {}
+        },
+        {
+          "name": "get_vehicles_for_customer",
+          "signature": "customer",
+          "line": 852,
+          "whitelist": {}
+        },
+        {
+          "name": "get_vehicles_for_company",
+          "signature": "company",
+          "line": 884,
+          "whitelist": {}
+        },
+        {
+          "name": "get_operation_detail",
+          "signature": "repair_order: str, operation_idx: str",
+          "line": 901,
+          "whitelist": {}
+        },
+        {
+          "name": "update_operation_status",
+          "signature": "repair_order: str, operation_idx: str, status: str",
+          "line": 1005,
+          "whitelist": {}
+        },
+        {
+          "name": "assign_operation",
+          "signature": "repair_order: str, operation_idx: str, user: str",
+          "line": 1043,
+          "whitelist": {}
+        },
+        {
+          "name": "add_operation_comment",
+          "signature": "repair_order: str, operation_idx: str, content: str",
+          "line": 1076,
+          "whitelist": {}
+        },
+        {
+          "name": "get_handover_checklist_status",
+          "signature": "repair_order: str",
+          "line": 1109,
+          "whitelist": {}
+        },
+        {
+          "name": "create_handover_inspection",
+          "signature": "repair_order: str, checklist_item_name: str",
+          "line": 1150,
+          "whitelist": {}
+        }
+      ]
+    }
+  ],
+  "setup_fields": [
+    {
+      "path": "car_repair_management/install.py",
+      "fields": [
+        {
+          "fieldname": "acquisition_cost",
+          "fieldtype": "Currency",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "altitude",
+          "fieldtype": "Float",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "battery_capacity",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "comprehensive_insurance",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "country_of_origin",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "custom_engine_hours",
+          "fieldtype": "Float",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "custom_fuel_level",
+          "fieldtype": "Percent",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "custom_hardware_configuration",
+          "fieldtype": "Link",
+          "options": "Hardware Test Configuration",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "custom_hardware_enabled",
+          "fieldtype": "Check",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "custom_hardware_engine_condition",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "custom_hardware_last_polled",
+          "fieldtype": "Datetime",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "custom_hardware_next_poll",
+          "fieldtype": "Datetime",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "custom_hardware_poll_error",
+          "fieldtype": "Small Text",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "custom_hardware_poll_source",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "custom_hardware_sample_hash",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "custom_last_known_latitude",
+          "fieldtype": "Float",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "custom_last_known_longitude",
+          "fieldtype": "Float",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "custom_last_location_update",
+          "fieldtype": "Datetime",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "custom_repair_order",
+          "fieldtype": "Link",
+          "options": "Repair Order",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "custom_telematics_imei",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": null,
+          "unique": 1,
+          "read_only": null
+        },
+        {
+          "fieldname": "cylinders",
+          "fieldtype": "Int",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "depreciation_method",
+          "fieldtype": "Select",
+          "options": "\nStraight Line\nDouble Declining Balance\nWritten Down Value",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "depreciation_months",
+          "fieldtype": "Int",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "device_name",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "direction",
+          "fieldtype": "Float",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "drivetrain",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "engine_capacity",
+          "fieldtype": "Int",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "engine_number",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "engine_type",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "entry_datetime",
+          "fieldtype": "Datetime",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "entry_datetime_editable",
+          "fieldtype": "Check",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "erpnext_asset",
+          "fieldtype": "Link",
+          "options": "Asset",
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "expected_delivery_datetime",
+          "fieldtype": "Datetime",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "fuel_level",
+          "fieldtype": "Percent",
+          "options": null,
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "fuel_tank_capacity",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "gross_vehicle_weight",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "insurance_expiry",
+          "fieldtype": "Date",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "insurance_policy",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "insurance_start_date",
+          "fieldtype": "Date",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "insured_value",
+          "fieldtype": "Currency",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "jobs_count",
+          "fieldtype": "Int",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "last_service_date",
+          "fieldtype": "Date",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "latitude",
+          "fieldtype": "Float",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "location",
+          "fieldtype": "Link",
+          "options": "Vehicle Location",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "longitude",
+          "fieldtype": "Float",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "next_service_due_date",
+          "fieldtype": "Date",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "odometer_at_last_service",
+          "fieldtype": "Int",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "ownership_type",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "payload_capacity",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "registration_authority",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "registration_expiry",
+          "fieldtype": "Date",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "repair_cost_to_date",
+          "fieldtype": "Currency",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "repair_order",
+          "fieldtype": "Link",
+          "options": "Repair Order",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "revenue_billed_to_date",
+          "fieldtype": "Currency",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "seating_capacity",
+          "fieldtype": "Int",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "sensor_type",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "source_imei",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "speed",
+          "fieldtype": "Float",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "telemetry_batch_id",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "timestamp",
+          "fieldtype": "Datetime",
+          "options": null,
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "towing_capacity",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "transmission",
+          "fieldtype": "Select",
+          "options": "Manual\nAutomatic\nCVT",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "unit",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "value",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": 1,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "variant",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "vehicle",
+          "fieldtype": "Link",
+          "options": "Vehicle",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "vehicle_type",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "year",
+          "fieldtype": "Int",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        }
+      ]
+    },
+    {
+      "path": "car_repair_management/api/setup.py",
+      "fields": [
+        {
+          "fieldname": "custom_custodian",
+          "fieldtype": "Link",
+          "options": "Employee",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "custom_custodian_name",
+          "fieldtype": "Data",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "custom_drivers",
+          "fieldtype": "Table",
+          "options": "Vehicle Driver",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "custom_image",
+          "fieldtype": "Attach Image",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "custom_last_known_latitude",
+          "fieldtype": "Float",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "custom_last_known_longitude",
+          "fieldtype": "Float",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "custom_last_location_update",
+          "fieldtype": "Datetime",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "custom_status",
+          "fieldtype": "Select",
+          "options": "Active\nIn Maintenance\nUndergoing Tests\nDelivered to Customer\nScrapped",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "custom_vehicle_type",
+          "fieldtype": "Select",
+          "options": "Car\nSUV\nTruck\nVan\nMotorcycle\nBus\nOther",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        }
+      ]
+    },
+    {
+      "path": "car_repair_management/api/setup_fuel_fields.py",
+      "fields": [
+        {
+          "fieldname": "custom_column_break_fuel",
+          "fieldtype": "Column Break",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "custom_fuel_capacity_liters",
+          "fieldtype": "Float",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "custom_fuel_quota_section",
+          "fieldtype": "Section Break",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "custom_km_per_liter",
+          "fieldtype": "Float",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "custom_monthly_fuel_quota",
+          "fieldtype": "Float",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        }
+      ]
+    },
+    {
+      "path": "car_repair_management/api/setup_issue_fields.py",
+      "fields": [
+        {
+          "fieldname": "custom_approved_by",
+          "fieldtype": "Link",
+          "options": "Employee",
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "custom_approved_on",
+          "fieldtype": "Datetime",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "custom_assigned_to",
+          "fieldtype": "Link",
+          "options": "User",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "custom_category",
+          "fieldtype": "Select",
+          "options": "\nMechanical\nElectrical\nBody/Paint\nInterior\nSafety\nCompliance\nOther",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "custom_linked_fault",
+          "fieldtype": "Link",
+          "options": "Vehicle Fault",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "custom_linked_inspection",
+          "fieldtype": "Link",
+          "options": "Vehicle Inspection",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "custom_linked_work_order",
+          "fieldtype": "Link",
+          "options": "Repair Order",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "custom_rejected_by",
+          "fieldtype": "Link",
+          "options": "Employee",
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "custom_rejected_on",
+          "fieldtype": "Datetime",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "custom_rejection_reason",
+          "fieldtype": "Small Text",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "custom_requested_by_employee",
+          "fieldtype": "Link",
+          "options": "Employee",
+          "reqd": null,
+          "unique": null,
+          "read_only": 1
+        },
+        {
+          "fieldname": "custom_resolution_notes",
+          "fieldtype": "Text Editor",
+          "options": null,
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "custom_severity",
+          "fieldtype": "Select",
+          "options": "\nLow\nMedium\nHigh\nCritical",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "custom_source",
+          "fieldtype": "Select",
+          "options": "\nInspection\nDriver Report\nMechanic\nCustomer\nSensor\nOther",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "custom_vehicle",
+          "fieldtype": "Link",
+          "options": "Vehicle",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        },
+        {
+          "fieldname": "custom_workflow_state",
+          "fieldtype": "Select",
+          "options": "\nDraft\nPending Custodian Approval\nRejected\nSubmitted\nWork Order Created",
+          "reqd": null,
+          "unique": null,
+          "read_only": null
+        }
+      ]
+    }
+  ],
+  "routes": [
+    "/auth/login",
+    "/auth/forgot",
+    "/",
+    "/repair-orders",
+    "/repair-orders/new",
+    "/repair-orders/:id",
+    "/repair-orders/:id/edit",
+    "/repair-orders/:roId/operations/:opId",
+    "/vehicles",
+    "/vehicles/new",
+    "/vehicles/assignments",
+    "/vehicles/meter-history",
+    "/vehicles/expense-history",
+    "/vehicles/replacement-analysis",
+    "/vehicles/aging-analysis",
+    "/vehicles/:id",
+    "/vehicles/:id/edit",
+    "/customers",
+    "/customers/:id",
+    "/employees",
+    "/employees/:id",
+    "/tasks",
+    "/inspections",
+    "/inspections/:id",
+    "/inspections/item-failures",
+    "/inspections/item-failures/:id",
+    "/inspections/schedules",
+    "/inspections/schedules/:id",
+    "/inspections/forms",
+    "/inspections/forms/:id",
+    "/issues",
+    "/issues/new",
+    "/issues/:id",
+    "/issues/faults",
+    "/issues/faults/:id",
+    "/issues/recalls",
+    "/issues/recalls/:id",
+    "/expenses",
+    "/expenses/new",
+    "/expenses/:id",
+    "/expenses/:id/edit",
+    "/parts",
+    "/parts/new",
+    "/parts/:id",
+    "/parts/:id/edit",
+    "/invoices",
+    "/invoices/:id",
+    "/reports",
+    "/reports/library",
+    "/reports/saved",
+    "/reports/scheduled",
+    "/reports/view/:id",
+    "/settings",
+    "/settings/:category",
+    "/fuel",
+    "/fuel/new",
+    "/fuel/quotas",
+    "/fuel/:id",
+    "/:pathMatch(.*)*"
+  ],
+  "sources": {
+    "car_repair_management/car_repair_management/doctype/customer_update/customer_update.json": "f0c6a4a7d982c90e7ea8ea2426c4b99d457aa16b3efbfac67ef57c26bc6ce0f4",
+    "car_repair_management/car_repair_management/doctype/fleet_replacement_settings/fleet_replacement_settings.json": "45c130965b11c6a8c8d6f2f58bfec813f5a6e8abe875bf2502080dd0ebded298",
+    "car_repair_management/car_repair_management/doctype/handover_checklist_item/handover_checklist_item.json": "b50290052e90370c6b2ca84d25af944e2a2798c870dd397e0d8e9b0e076e5d51",
+    "car_repair_management/car_repair_management/doctype/hardware_test_configuration/hardware_test_configuration.json": "9ba2b34fc63f3313e1005b2037f1663f7423db934d363c79b1b0389fc04fba5c",
+    "car_repair_management/car_repair_management/doctype/inspection_form_item/inspection_form_item.json": "585e2fb963330b896be2d92d78b84d6a2c7ed2983ae50d484bb330e975472fec",
+    "car_repair_management/car_repair_management/doctype/inspection_form_template/inspection_form_template.json": "588fd46de13ff706057eaf29548677fd086b4b0572d3d464238a6d4b11f86596",
+    "car_repair_management/car_repair_management/doctype/inspection_item_failure/inspection_item_failure.json": "23c14aaf595f26ff192d80986cd5530b3a4174b32b4839000c30088020d4a9c4",
+    "car_repair_management/car_repair_management/doctype/inspection_schedule/inspection_schedule.json": "68af39f29aa2780b6d22e7c1e8ae333b985ad621199fdcc4e860cfdfde3148a9",
+    "car_repair_management/car_repair_management/doctype/job_costing/job_costing.json": "3ec2daf79c79e53e9f583122b0470a1e6ea233efe7aeda482ba1e6acea57b943",
+    "car_repair_management/car_repair_management/doctype/repair_checklist/repair_checklist.json": "c95244c1229088dd7775d5a5cfd93aaf555481caf129574738ec75090660cc2d",
+    "car_repair_management/car_repair_management/doctype/repair_checklist_item/repair_checklist_item.json": "603a348ff3d43456de6b1df372dd11398e852033043580a5cfae5f5bfcf9bd55",
+    "car_repair_management/car_repair_management/doctype/repair_checklist_response/repair_checklist_response.json": "c226f420c6035d06b35fa3001e4dfaf78ad3238d50f732ad280df9e330d190d3",
+    "car_repair_management/car_repair_management/doctype/repair_operation_line/repair_operation_line.json": "4d6cbb7c4f4ca439b25fca2c713b457557d3029c4310311a9bac5735e99ba055",
+    "car_repair_management/car_repair_management/doctype/repair_order/repair_order.json": "4481ae554a73c856b95ea1e4064c7790c845286353f7d2f7cccfce8da6718d24",
+    "car_repair_management/car_repair_management/doctype/repair_parts_plan/repair_parts_plan.json": "60381d53d9377fb64dfec563f33f45fe542016903f49a6f59115662c0153077f",
+    "car_repair_management/car_repair_management/doctype/service_template/service_template.json": "d3574d5dd239fc968bf048203fc7e7735fe7c47ca033996cda92b9d0c1f10cc7",
+    "car_repair_management/car_repair_management/doctype/service_template_checklist_item/service_template_checklist_item.json": "1eb3c1ad4d2b2f3fa1803d269db4db87f087fdfa664bba19f56b8d91c1aa9fc6",
+    "car_repair_management/car_repair_management/doctype/service_template_operation/service_template_operation.json": "f91b87abedab6ead6f134c80a2088e1c7a1c443f196e0dff7d87bb497d085ecc",
+    "car_repair_management/car_repair_management/doctype/service_template_part/service_template_part.json": "8c6af1bfcbdad603e9b561942fc9cca775f63ede2bcc452ba19b0f0b0c81d064",
+    "car_repair_management/car_repair_management/doctype/sla_template/sla_template.json": "ea93a44b815c131b9929ae730d009b1699b1fdaefb15895c3a36ee049f25b48f",
+    "car_repair_management/car_repair_management/doctype/vehicle_driver/vehicle_driver.json": "e70bbafd5adec074a9e3fdc454bd3eff7ff9c2a5cf4b6f42a0c5039f28f4c924",
+    "car_repair_management/car_repair_management/doctype/vehicle_expense/vehicle_expense.json": "f6c95b832ad802eb96ffc59a41b873a55fbf36f8789887828b5e2171b1b58d32",
+    "car_repair_management/car_repair_management/doctype/vehicle_fault/vehicle_fault.json": "d85a4e5d6e969dec5838dc467cc9fa9e2ab99c9689b4e99919d47b30897012ee",
+    "car_repair_management/car_repair_management/doctype/vehicle_fuel_quota/vehicle_fuel_quota.json": "38df6c6d8353457563a9e722aede15deaaae2d1492a77a1a08fc7a21ef829336",
+    "car_repair_management/car_repair_management/doctype/vehicle_inspection/vehicle_inspection.json": "d6e53439996f807ec31517f8f7df63272bca53324a5dfc208c7d1d3b4c3acd88",
+    "car_repair_management/car_repair_management/doctype/vehicle_recall/vehicle_recall.json": "04184b7873b14b8b55bd3afd0ed063fc7ba7601b093f77a68197b41bd2d4d5fe",
+    "car_repair_management/car_repair_management/doctype/vehicle_refueling_record/vehicle_refueling_record.json": "6d4151fd8b07162a4bf2e90b09d91ddbf57795bd54ed8b46780cc5e96bb17952",
+    "car_repair_management/car_repair_management/doctype/workshop_report_schedule/workshop_report_schedule.json": "c8a63feb0bc7ea45058d50772935d0781baa3c4e6fde31ec673b58f9ae54bbf8",
+    "car_repair_management/car_repair_management/doctype/workshop_saved_report/workshop_saved_report.json": "8bb61f7e3e053b5d64fe58b4d23a665b242fdd5e33f07fdee680fa4caf4746bc",
+    "car_repair_management/api/__init__.py": "2d7679347c02f75bc264a7694a9c5d026345f512636a57a1e7e2046be65d5505",
+    "car_repair_management/api/activity.py": "7ba5cf3c1e011fb9da7cfdf6e87a09ffb5c82ade4fa141764070b0cfeb10feb3",
+    "car_repair_management/api/aging_analysis.py": "e3b39cee69c8dd617314fb08adad85775303f1fe84f49df20a6294213e1ed029",
+    "car_repair_management/api/customer.py": "6bac0b13550065ece73d4b075071969ea98ede0bc53a32061b91caf57eb97805",
+    "car_repair_management/api/employee.py": "9c1f3a3863f48a0068d920cd53b522f5541756b54f885fb8fba2e2cf17783638",
+    "car_repair_management/api/expense.py": "41b236724d35a9dcf8426fd008d032875b109b0e2531eabe6e918baf9b7ed806",
+    "car_repair_management/api/expense_history.py": "5bce2fe6bfde0f7747f156da3dc00a5ad6eeb2c24fd9cc20c5709b10edd254f0",
+    "car_repair_management/api/fuel.py": "132eb488aaab0ec3a900b733749a94f94b8cff94fef1a65cbd94384a58260371",
+    "car_repair_management/api/hardware.py": "f8cc20f1a9695ca400c853db05a74fc786bed548d86ff32253a2a0ad8d3a6158",
+    "car_repair_management/api/health.py": "4230b2800e704616fc555ba49d19f2391f78b0552effea14e93f87370b315701",
+    "car_repair_management/api/inspection.py": "c4a2a7d5f03b66cffa9d4556a4bca6749a4793fa6ea71c6407d75ec1c8a92bb9",
+    "car_repair_management/api/invoice.py": "57fedaa41505404439e1e58cd28fc2fbca01935657f0fd2b01bdf76e36d45b6b",
+    "car_repair_management/api/issue.py": "a9dc965573ff201c1699d3f41db1ccc7982dc681a07b63fec758d20d730061ba",
+    "car_repair_management/api/meter_history.py": "e38a4138895c35ef87020af6a84333614ec16ea8b1a341771e450898a4dbf50c",
+    "car_repair_management/api/notification.py": "9b644aeb3eb13f0dd291f63283451085d6cfec6db131d791938bb73c7348cee3",
+    "car_repair_management/api/parts.py": "c78e6651b4a7c6698b4721fdd1fe2cd7cc3abdcc03b11f16782e79b47fec81e9",
+    "car_repair_management/api/replacement_analysis.py": "de9455c91952561aee599fa3d06d846f362bd1c7fec80a41495990b91f89a82a",
+    "car_repair_management/api/reports.py": "5c320e276e37e6119459e4feb9d66e0d9eef3d238bf7a35dc8627aaa0a804afc",
+    "car_repair_management/api/settings.py": "c4d47f9bcb5e321ada14c5025cbad6fb412c78dd189cb698fcd3ad642c2fe15f",
+    "car_repair_management/api/setup.py": "53cfb4598d84f7c810e032e8a2675c94658ef6fd08693a4b2cfcf5df20be01eb",
+    "car_repair_management/api/setup_fuel_fields.py": "b3b99e57e5655e2e99af010b12d755efe430f14547f5c774b8388d7926bd89c4",
+    "car_repair_management/api/setup_issue_fields.py": "3406983549c9f8e30c23ef33aa2c3d3be1c4edb46e86b61c91e8104359b63e5e",
+    "car_repair_management/api/telemetry.py": "bf2ce3377a9825eddc8bc7b9270189ce28d9a631986a065235fbfbf274156797",
+    "car_repair_management/api/vehicle.py": "9133aeae07d832de68f989aa9c119bc2de13801132bea80a695ef8936b56b90e",
+    "car_repair_management/api/vehicle_assignments.py": "27970c27546344d610b7da1c54f3efeb8a08d5a0eebab09a2b16cbb3ddb093e3",
+    "car_repair_management/car_repair_management/doctype/repair_order/repair_order.py": "f9369dfba43d0355f8a17d6ed5bbad5f0e2bee2d73a54816b0ea4be368162728",
+    "car_repair_management/install.py": "5b21767b2ca3a8a0083dcd8d601edbc623486dea145e3342c95292940f7758e1",
+    "frontend/src/router.ts": "f384781297f25d85826732fa669843a4f48bc9c2b714a6a7035f40b8b3c316be",
+    "car_repair_management/hooks.py": "6fd6e3c3729123906f4a6a2bc51c35713ade45242cee17e7583cd277c8c4687a",
+    "car_repair_management/polling.py": "bd634955fcdaf61bf3b50e6cba9259fc9cc5d00c5f28f5be0fa1177c62470a1f",
+    "car_repair_management/tasks.py": "919b98b36789387be80f50b08205de6cc77fedf3425c5b45ec3ece4a9288e069",
+    "car_repair_management/overrides/vehicle.py": "e2d4bf29c9f71086b8ed6ef32a56ece433f66ec2bedf1b3367fe9f9fe6c14c74",
+    "car_repair_management/www/workshop.py": "3411c9a7f606651c0bd124f4a1484c00b5efa8d1c37eb7926a864500c906f7f8",
+    "frontend/src/api/client.ts": "1d1fe63c50c13793f112c06bfa4cdf2cde6b47f9d7d4b67ed9e5c91c9abcbb7b",
+    "frontend/package.json": "0eba0e6634ee0633ff87a120e9f721e2461ac3dd3b063475194a92f20390652e",
+    "pyproject.toml": "ec2de8d9efbbb9d36595d283e00c55d46962a1cac24fcad53cdcb2e4e4c7def1",
+    "docker/Dockerfile": "3fcc0e0fed4813d2d94e1959ab26f67f72b359a49e21991eb9a15c90bfef6df4",
+    "docker/compose.car-repair-management.yaml": "ad027805e3d6af615580ff5fb64fcc573130f520188584eec82922fb86d3cb2b",
+    "docker/README.md": "48892d89f585855fcac0d8194b8c3c9619411d9157eae0ba5e13c2779364ffb3"
+  }
+}

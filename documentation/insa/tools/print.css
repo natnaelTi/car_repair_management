@@ -1,0 +1,33 @@
+@page {
+  size: A4;
+  margin: 22mm 16mm 20mm;
+  @top-left { content: "AAP Fleet Management System"; font: 8pt sans-serif; color: #425466; }
+  @top-right { content: "Assessment Dossier | v1.0"; font: 8pt sans-serif; color: #425466; }
+  @bottom-left { content: "Addis Ababa Police Commission | Review Draft"; font: 7.5pt sans-serif; color: #425466; }
+  @bottom-right { content: counter(page) " / " counter(pages); font: 8pt sans-serif; color: #425466; }
+}
+html { font-family: "DejaVu Sans", sans-serif; font-size: 9pt; line-height: 1.42; color: #17202a; }
+body { margin: 0; }
+h1 { font-size: 24pt; line-height: 1.17; color: #173c48; border-bottom: 2pt solid #197270; padding-bottom: 10pt; margin: 8pt 0 20pt; }
+h2 { font-size: 15pt; line-height: 1.25; color: #173c48; margin: 20pt 0 9pt; }
+h3 { font-size: 11pt; line-height: 1.3; color: #173c48; margin: 15pt 0 6pt; }
+h4 { font-size: 10pt; margin: 12pt 0 5pt; }
+h1, h2, h3, h4 { break-after: avoid; }
+p, li { orphans: 3; widows: 3; overflow-wrap: anywhere; }
+p { margin: 6pt 0; }
+li { margin: 3pt 0; }
+a { color: #125b71; text-decoration: none; overflow-wrap: anywhere; }
+table { width: 100%; border-collapse: collapse; table-layout: fixed; margin: 10pt 0; font-size: 8pt; line-height: 1.35; }
+thead { display: table-header-group; }
+th { background: #e5eef0; color: #173c48; text-align: left; font-weight: bold; }
+th, td { border: 0.5pt solid #c7d1d5; padding: 5pt; vertical-align: top; overflow-wrap: anywhere; }
+tr { break-inside: avoid; }
+code { font-family: "DejaVu Sans Mono", monospace; font-size: 8pt; overflow-wrap: anywhere; }
+pre { background: #f1f4f5; padding: 9pt; border-left: 2pt solid #197270; white-space: pre-wrap; overflow-wrap: anywhere; font-size: 7.5pt; line-height: 1.35; }
+pre code { font-size: inherit; }
+blockquote { border-left: 2pt solid #197270; margin-left: 0; padding-left: 10pt; }
+.toc { break-after: page; }
+.toc ul { list-style: none; padding-left: 0; }
+.toc ul ul { padding-left: 12pt; }
+.toc a::after { content: leader(".") target-counter(attr(href), page); }
+.document-body > h2:first-child { margin-top: 0; }
