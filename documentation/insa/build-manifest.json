@@ -1,0 +1,29 @@
+{
+  "document_version": "1.0",
+  "issue_date": "2026-11-13",
+  "product": "AAP Fleet Management System",
+  "source_baseline": "5974cf7addfef5d5cfc8fde325fc964343557a2f",
+  "renderer": {
+    "Markdown": "3.5.2",
+    "weasyprint": "66.0",
+    "pypdf": "6.6.0"
+  },
+  "sha256": {
+    "01-software-requirements-prd.md": "52a2de53f65345b83f857abcf3ef718289e2d3eefcc519235520900f30d488d3",
+    "pdf/01-software-requirements-prd.pdf": "9bd6a9c09e9d39a21639dfca3a31dfab2f9a169dcbc32602c52c275f48f011f1",
+    "02-system-architecture-sdd.md": "fbc9bf36778ccc18c6893c13a6c41a193166075704652401e41b40cbd6c47889",
+    "pdf/02-system-architecture-sdd.pdf": "7ca87494b31012eb13a13e82f074822ce02b31dcdd42c4828ff43d447893554e",
+    "03-technical-specifications-tdd.md": "4256fdfeb9a617159207c2f0443b2edd140440c20cc48e00147eb21d35158940",
+    "pdf/03-technical-specifications-tdd.pdf": "e9ba22ff25824f93916763a56bc2ab39564c6a9960373b707000f47f8c077c46",
+    "04-user-guide.md": "ce45b7fcc2b1b1d7b69158de23983c6c99fb2fce1281c8701aab4a7c123e8a64",
+    "pdf/04-user-guide.pdf": "3ae8222a3cdfebabdd9c03690072f351a7fdf43d7d7e8d70b8244dd45f36564d",
+    "05-security-documentation.md": "8f8d585e6417dd345b439c92d370977df93c42ac7ab142b1855363ce35ec3580",
+    "pdf/05-security-documentation.pdf": "917ca5b4912827df613593c6935309029082a35af8589aaed49d92d95b46f9fa",
+    "source-inventory.json": "e11879eed68ba6413b61bf17d189d61cd569570bcdeaebe301c121c2816b1580",
+    "verification.md": "2025dcb7d5c4d5e9b1096cb83ccb59651d96cf297118f198363a31f44a0073dd",
+    "README.md": "e2194a6cfc8e6af209062334ca1913a4bd02187eac2e60c816cb8f8687128cb7",
+    "tools/build_dossier.py": "66ec8bc7c1c058808eeea29134706d9245897312190bdc372167ed326c1a8910",
+    "tools/print.css": "74b91770424cc2ca1fdf5d8e8080be3391538ece1a38239db2e38d79b1a3e998",
+    "tools/requirements.txt": "ba8b4d9290c8fb1e57acf98b7743bb41638cd9588517196c52f0f9db015514c7"
+  }
+}

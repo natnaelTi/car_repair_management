@@ -15,6 +15,10 @@ Car Repair Management is a comprehensive Frappe/ERPNext application for fleet ma
 
 ## Table of Contents
 
+### Production Assessment Dossier
+
+[AAP Fleet Management System - INSA Documentation](insa/README.md): source-grounded PRD, system design, technical specifications, user guide and security documentation, each with a PDF edition, source inventory and verification record for Addis Ababa Police Commission.
+
 ### Developer Guides
 
 1. [Architecture Overview](architecture.md) — System architecture, directory structure, integration points
